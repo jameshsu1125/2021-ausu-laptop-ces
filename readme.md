@@ -23,9 +23,9 @@ dist
 		<div class="Key">value</div>
 		<div class="example-title">第 10 世代インテル® Core™ プロセッサー搭載</div>
 		<!--
-         make div into comment block to hide
-         <div class="example-hide-element">さらに詳しい情報は：https://www.asus.com/jp/</div>
-      -->
+			make div into comment block to hide
+			<div class="example-hide-element">さらに詳しい情報は：https://www.asus.com/jp/</div>
+		-->
 	</div>
 	<script src="./js/index.min.js"></script>
 </div>
