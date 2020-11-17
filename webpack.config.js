@@ -75,7 +75,7 @@ module.exports = (env) => {
 			maxAssetSize: 512000,
 		},
 	};
-	if (env && env.unused)
+	if (env && env.unused) {
 		config.plugins.push(
 			new UnusedFilesWebpackPlugin({
 				globOptions: {
@@ -84,5 +84,9 @@ module.exports = (env) => {
 				},
 			})
 		);
+	}
+	if (env && env.cdn) {
+		config.module[3].use[0].options.name = env.cdn + 'img/[path][name].[ext]';
+	}
 	return config;
 };
