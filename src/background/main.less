@@ -1,0 +1,13 @@
+.main {
+	.background {
+		position: absolute;
+		@img: './img/bg.jpg';
+		background-image: url(@img);
+		height: 100%;
+		background-size: auto 100%;
+		padding-right: image-width(@img) / image-height(@img) * 100vh;
+		background-position: center;
+		background-repeat: no-repeat;
+		top: 0;
+	}
+}
