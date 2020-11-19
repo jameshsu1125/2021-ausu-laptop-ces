@@ -1,13 +1,26 @@
 .main {
 	.background {
 		position: absolute;
-		@img: './img/bg.jpg';
-		background-image: url(@img);
+		width: 100%;
 		height: 100%;
-		background-size: auto 100%;
-		padding-right: image-width(@img) / image-height(@img) * 100vh;
+		//background-image: url('./img/bg_wireframe.jpg');
+		background-image: url('./img/bg.jpg');
+		background-size: 100% auto;
 		background-position: center;
 		background-repeat: no-repeat;
-		top: 0;
+
+		& > div {
+			position: absolute;
+			background-size: 100%;
+			display: none;
+		}
+	}
+}
+
+@media only screen and (max-width: 1300px) {
+	.main {
+		.content {
+			background-size: auto 100%;
+		}
 	}
 }

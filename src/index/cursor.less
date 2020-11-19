@@ -1,0 +1,26 @@
+@img: './img/cursor.png';
+.content {
+	.cursor {
+		position: absolute;
+		width: image-width(@img);
+		height: image-height(@img);
+		pointer-events: none;
+
+		& > div {
+			pointer-events: none;
+		}
+
+		.ico {
+			position: absolute;
+			width: 100%;
+			height: 100%;
+			background-image: url(@img);
+			transition: 0.2s;
+			transform: scale(0);
+		}
+
+		.on {
+			transform: scale(1);
+		}
+	}
+}

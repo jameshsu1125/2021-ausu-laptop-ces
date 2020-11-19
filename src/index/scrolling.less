@@ -1,0 +1,33 @@
+@img: './img/panto.svg';
+.main {
+	.scrolling {
+		position: fixed;
+		left: 50%;
+		top: 50%;
+		pointer-events: none;
+		@r: 0.2;
+		.ico {
+			position: absolute;
+
+			background-image: url(@img);
+			width: image-width(@img) * @r;
+			height: image-height(@img) * @r;
+			background-size: 100%;
+			margin: image-height(@img) * @r * -0.5 image-width(@img) * @r * -0.5;
+			left: 0px;
+		}
+	}
+}
+
+@media only screen and (max-width: 768px) {
+	.main {
+		.scrolling {
+			@r: 0.4;
+			.ico {
+				width: image-width(@img) * @r;
+				height: image-height(@img) * @r;
+				margin: image-height(@img) * @r * -0.5 image-width(@img) * @r * -0.5;
+			}
+		}
+	}
+}

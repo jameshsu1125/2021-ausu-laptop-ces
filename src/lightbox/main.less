@@ -1,0 +1,268 @@
+@border-color: #738088;
+
+.main {
+	.lightbox {
+		position: fixed;
+		width: 100%;
+		height: 100%;
+
+		.lightbox-bg {
+			position: absolute;
+			top: 0;
+			width: 100%;
+			height: 100%;
+			background-color: rgba(0, 0, 0, 0.84);
+		}
+
+		.context {
+			position: absolute;
+			width: 100%;
+			height: 100%;
+			top: 0;
+
+			display: flex;
+			flex-direction: column;
+			justify-content: center;
+			align-items: center;
+
+			pointer-events: none;
+
+			.window {
+				position: relative;
+				width: 1300px;
+				height: auto;
+				border: solid 3px @border-color;
+				user-select: none;
+				pointer-events: painted;
+
+				.body {
+					float: left;
+					width: 100%;
+					height: auto;
+					padding: 60px 50px;
+					box-sizing: border-box;
+
+					display: grid;
+					grid-template-columns: 50% 50%;
+
+					.box {
+						position: relative;
+						float: left;
+						width: 100%;
+						height: 100%;
+						box-sizing: border-box;
+						display: flex;
+						flex-direction: column;
+						align-items: center;
+
+						& > div {
+							width: 100%;
+							float: left;
+							padding: 0px 0px 0px 30px;
+							box-sizing: border-box;
+							text-align: left;
+						}
+
+						.buttons {
+							position: absolute;
+							height: 56px;
+							bottom: 0px;
+							padding: 0px 0px 0px 10px;
+
+							.btns {
+								position: relative;
+								float: left;
+								width: 212px;
+								height: 55px;
+								margin-left: 18px;
+								color: #fff;
+								line-height: 55px;
+								text-indent: 30px;
+								font-family: 'Xolonium', '微軟正黑體', Arial, Helvetica, sans-serif;
+								cursor: pointer;
+								transition-duration: 0.2s;
+							}
+
+							.lightbox-see {
+								.btns;
+								background: linear-gradient(60deg, #b81d9b, #7015cc);
+
+								& > div {
+									position: absolute;
+									width: 100%;
+									height: 100%;
+									pointer-events: none;
+									top: 0;
+									mask-image: url('./img/arrow.svg');
+									mask-position: right 20px center;
+									mask-repeat: no-repeat;
+									mask-size: 30px auto;
+									background-color: #fff;
+								}
+
+								&:hover {
+									color: #000;
+									background: linear-gradient(60deg, #5b2ad6, #2b6bf7);
+
+									& > div {
+										background-color: #000;
+									}
+								}
+							}
+
+							.lightbox-buy {
+								.btns;
+								background: linear-gradient(60deg, #5b2ad6, #2b6bf7);
+
+								& > div {
+									position: absolute;
+									width: 100%;
+									height: 100%;
+									pointer-events: none;
+									top: 0;
+									mask-image: url('./img/cart.svg');
+									mask-position: right 20px center;
+									mask-repeat: no-repeat;
+									mask-size: 25px auto;
+									background-color: #fff;
+								}
+
+								&:hover {
+									color: #000;
+									background: linear-gradient(60deg, #b81d9b, #7015cc);
+
+									& > div {
+										background-color: #000;
+									}
+								}
+							}
+						}
+
+						.list {
+							color: #fff;
+
+							ul {
+								padding-inline-start: 20px;
+								margin-block-start: 0rem;
+								margin-block-end: 4.6rem;
+
+								li {
+									font-size: 1rem;
+									line-height: 1.8rem;
+								}
+							}
+						}
+
+						.sub {
+							margin-block-start: 1.5rem;
+							margin-block-end: 1.5rem;
+							span {
+								font-family: 'Xolonium', monospace, Helvetica, sans-serif;
+								color: #fff;
+								font-size: 2rem;
+							}
+						}
+
+						.title {
+							margin-top: -10px;
+
+							span {
+								font-family: 'ROG Fonts', monospace, Helvetica, sans-serif;
+								background: linear-gradient(0deg, #bebebe 10%, #ffffff 13%, #ffffff 22%, #656565 43%, #ffffff 44%);
+								-webkit-background-clip: text;
+								-webkit-text-fill-color: transparent;
+								font-size: 5rem;
+								line-height: 1.5rem;
+							}
+						}
+
+						.img {
+							width: 594px;
+							height: 374px;
+							border: solid 1px @border-color;
+						}
+					}
+				}
+
+				.nav {
+					float: left;
+					width: 100%;
+					height: 52px;
+					background-color: #333b40;
+					background-image: url('./img/window_ico.jpg');
+					background-repeat: no-repeat;
+					background-size: auto 50%;
+					background-position: 15px center;
+					color: #959595;
+					font-size: 0.9rem;
+					line-height: 52px;
+					text-indent: 58px;
+
+					.lightbox-close {
+						float: right;
+						width: 42px;
+						height: 42px;
+						background-color: #738088;
+						margin: 5px;
+						background-image: url('./img/window_close.png');
+						background-position: center;
+						background-repeat: no-repeat;
+						cursor: pointer;
+
+						&:hover {
+							background-color: #191c1f;
+						}
+					}
+				}
+			}
+		}
+	}
+}
+
+@media only screen and (max-width: 768px) {
+	.main {
+		.lightbox {
+			.context {
+				.window {
+					width: 666px;
+					.body {
+						grid-template-columns: none;
+						//grid-template-rows: 50% 50%;
+
+						.box {
+							.buttons {
+								position: relative;
+								display: flex;
+								flex-direction: row;
+								justify-content: center;
+								align-items: center;
+							}
+
+							.list {
+								ul {
+									margin-block-end: 1rem;
+									li {
+										font-size: 1.2rem;
+										line-height: 2.5rem;
+									}
+								}
+							}
+
+							.sub {
+								text-align: center;
+							}
+
+							.title {
+								text-align: center;
+								margin-top: 30px;
+							}
+							.img {
+								width: 100%;
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+}

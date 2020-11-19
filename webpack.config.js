@@ -20,7 +20,7 @@ module.exports = (env) => {
 				{ test: /\.(png|jpg|gif|svg)$/, use: [{ loader: 'file-loader', options: { publicPath: '../', name: 'img/[path][name].[ext]', context: 'src' } }] },
 				{ test: /\.(ogv|mp4)$/, use: [{ loader: 'file-loader', options: { name: 'vid/[path][name].[ext]', context: 'src' } }] },
 				{ test: /\.(wav|mp3)$/, use: [{ loader: 'file-loader', options: { name: 'aud/[path][name].[ext]', context: 'src' } }] },
-				{ test: /\.(eot|woff|woff2|ttf)$/, use: [{ loader: 'file-loader', options: { name: 'font/[path][name].[ext]', context: 'src' } }] },
+				{ test: /\.(eot|woff|woff2|ttf)$/, use: [{ loader: 'file-loader', options: { publicPath: '../', name: 'font/[path][name].[ext]', context: 'src' } }] },
 			],
 		},
 		resolve: {
@@ -84,9 +84,6 @@ module.exports = (env) => {
 				},
 			})
 		);
-	}
-	if (env && env.cdn) {
-		config.module[3].use[0].options.name = env.cdn + 'img/[path][name].[ext]';
 	}
 	return config;
 };

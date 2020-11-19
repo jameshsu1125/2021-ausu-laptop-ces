@@ -1,0 +1,53 @@
+@color: #f50504;
+@top: 33.9%, 55%, 26%, 34%, 26%, 70%, 42%, 78%;
+@left: 7.5%, 21%, 33%, 49%, 57%, 79%, 87%, 90.6%;
+@offset_x: -580%, -530%, -510%, -470%, -510%, -1010%, -850%, -650%;
+@offset_w: 770%, 720%, 630%, 660%, 620%, 1120%, 960%, 770%;
+@offset_h: 640%, 870%, 690%, 550%, 1030%, 920%, 810%, 730%;
+
+.loop(@n, @l:0) when (@l <= @n) {
+	.tips-@{l} {
+		top: extract(@top, @l);
+		left: extract((@left), @l);
+
+		& > div:nth-child(2) {
+			position: absolute;
+			width: 100%;
+			height: 100%;
+			border: solid 1px @color;
+			border-radius: 3px;
+			background-image: url('./img/arr.png');
+			background-repeat: no-repeat;
+			background-position: center;
+			background-size: 75%;
+			color: @color;
+			pointer-events: none;
+		}
+
+		& > div:nth-child(1) {
+			position: absolute;
+			width: extract((@offset_w), @l);
+			height: extract((@offset_h), @l);
+			left: extract((@offset_x), @l);
+			cursor: pointer;
+			//background-color: rgba(255, 255, 0, 0.5); //debug
+		}
+	}
+	.loop(@n,(@l+1));
+}
+
+.main {
+	.tips {
+		position: absolute;
+		width: 100%;
+		height: 100%;
+
+		.loop(8);
+
+		& > div {
+			position: absolute;
+			width: 1.3%;
+			height: 1.9%;
+		}
+	}
+}
