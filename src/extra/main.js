@@ -1,24 +1,27 @@
 import React from 'react';
 import './main.less';
-import './fonts/ROG/stylesheet.css';
-import './../enter/fonts/Xolonium/stylesheet.css';
+
+import Content from './content';
 
 import $ from 'jquery';
 require('jquery-easing');
 require('jquery.waitforimages');
 
-export default class lightbox extends React.Component {
+export default class extra extends React.Component {
 	constructor(props) {
 		super(props);
+
+		let data = [];
+		for (let i in this.props.data) {
+			data.push(this.props.data[i]);
+		}
+		this.state = { content: data };
+
 		const root = this;
-
-		this.data = this.props.data['tips-' + this.props.index];
-
 		this.tr = {
 			init() {
 				this.bg.init();
 				this.window.init();
-				this.img.init();
 			},
 			in() {
 				this.bg.in();
@@ -27,14 +30,6 @@ export default class lightbox extends React.Component {
 			out() {
 				this.bg.out();
 				this.window.out();
-			},
-			img: {
-				init() {
-					this.c = $(root.refs.img);
-					this.c.css({
-						background: `rgba(0, 0, 0, 0) url(${root.data.img}) no-repeat scroll center center / cover`,
-					});
-				},
 			},
 			window: {
 				s: 1,
@@ -94,7 +89,7 @@ export default class lightbox extends React.Component {
 				},
 				reszie() {
 					let s,
-						w = 1700,
+						w = 1500,
 						h = 1200;
 					s = window.innerWidth / w;
 
@@ -138,7 +133,7 @@ export default class lightbox extends React.Component {
 								step: () => this.tran(),
 								complete: () => {
 									this.tran();
-									root.props.distory('lightbox');
+									root.props.distory('extra');
 								},
 								easing: 'easeOutQuart',
 							}
@@ -158,11 +153,6 @@ export default class lightbox extends React.Component {
 		};
 	}
 
-	componentWillUnmount() {
-		window.TouchEvent.remove('.lightbox-bg');
-		window.TouchEvent.remove('.lightbox-close');
-	}
-
 	componentDidMount() {
 		this.tr.init();
 		$(this.refs.main).waitForImages({
@@ -171,48 +161,23 @@ export default class lightbox extends React.Component {
 		});
 	}
 
-	append_list() {
-		if (this.data.list) {
-			return this.data.list.map((i, index) => <li key={index}>{i}</li>);
+	append_contents() {
+		if (this.state.content) {
+			return this.state.content.map((i, index) => <Content data={i} key={index} />);
 		}
 	}
 
 	render() {
 		return (
-			<div ref='main' className='lightbox'>
-				<div ref='bg' className='lightbox-bg'></div>
+			<div className='extra'>
+				<div ref='bg' className='bg'></div>
 				<div className='context'>
-					<div ref='window' className='window'>
+					<div ref='window' ref='window' className='window'>
 						<div className='nav'>
 							C:\Windows\Security\Metadata_Extract.exe
 							<div className='lightbox-close'></div>
 						</div>
-						<div className='body'>
-							<div className='box'>
-								<div ref='img' className='img'></div>
-							</div>
-							<div className='box'>
-								<div className='title'>
-									<span ref='title'>{this.data.title}</span>
-								</div>
-								<div className='sub'>
-									<span>{this.data.subTitle}</span>
-								</div>
-								<div className='list'>
-									<ul>{this.append_list()}</ul>
-								</div>
-								<div className='buttons'>
-									<div className='lightbox-see'>
-										See More
-										<div></div>
-									</div>
-									<div className='lightbox-buy'>
-										Buy Now
-										<div></div>
-									</div>
-								</div>
-							</div>
-						</div>
+						<div className='body'>{this.append_contents()}</div>
 					</div>
 				</div>
 			</div>

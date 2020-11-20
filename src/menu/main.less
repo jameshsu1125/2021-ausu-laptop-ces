@@ -1,0 +1,150 @@
+.main {
+	.menu {
+		position: fixed;
+		left: 0;
+		bottom: 0;
+		width: 320px;
+		height: auto;
+		pointer-events: none;
+
+		@hamScale: 0.5;
+
+		.ham {
+			position: absolute;
+			@img: './img/ham.png';
+			background-image: url(@img);
+			width: image-width(@img) * @hamScale;
+			height: image-height(@img) * @hamScale;
+			background-size: 100%;
+			bottom: 10px;
+			left: 10px;
+			cursor: pointer;
+			pointer-events: auto;
+			display: none;
+		}
+
+		.context {
+			position: relative;
+			width: 100%;
+			height: 100%;
+
+			display: flex;
+			flex-direction: column;
+			align-items: center;
+
+			.menu-close {
+				position: absolute;
+				width: 80px;
+				height: 80px;
+				background: linear-gradient(60deg, #b81d9b, #7015cc);
+				right: 0;
+				top: 0;
+				cursor: pointer;
+				pointer-events: auto;
+				display: none;
+
+				& > div {
+					position: absolute;
+					width: 100%;
+					height: 100%;
+					background-image: url('./img/close.svg');
+					background-repeat: no-repeat;
+					background-size: 80%;
+					background-position: center;
+					pointer-events: none;
+				}
+			}
+
+			.menu-button {
+				position: relative;
+				display: inline;
+				float: left;
+				width: 100%;
+				height: 60px;
+				line-height: 60px;
+				color: #fff;
+				cursor: pointer;
+
+				& > div {
+					position: absolute;
+					width: 100%;
+					height: 100%;
+					top: 0;
+					pointer-events: none;
+				}
+
+				& > div:nth-child(1) {
+					width: 0%;
+					background: linear-gradient(60deg, #b81d9b, #7015cc);
+					transition: 0.2s;
+				}
+
+				& > div:nth-child(2) {
+					mask-image: url('./../lightbox/img/arrow.svg');
+					mask-position: right 20px center;
+					mask-repeat: no-repeat;
+					mask-size: 30px auto;
+					background-color: #fff;
+				}
+
+				& > div:nth-child(3) {
+					text-indent: 20px;
+					font-family: 'Xolonium', monospace, Helvetica, sans-serif;
+					font-size: 1.4rem;
+				}
+
+				& > div:nth-child(4) {
+					background-color: rgba(0, 0, 0, 0);
+					pointer-events: auto;
+				}
+
+				&:hover {
+					& > div:nth-child(1) {
+						width: 100%;
+					}
+					& > div:nth-child(2) {
+						background-color: #000;
+					}
+				}
+			}
+		}
+	}
+}
+
+@media only screen and (max-width: 731px) {
+	.main {
+		.menu {
+			position: fixed;
+			left: 0;
+			bottom: 0;
+			width: 100%;
+			height: 100%;
+
+			.ham {
+				display: block;
+			}
+
+			.context {
+				padding-top: 100px;
+				box-sizing: border-box;
+				background-color: rgba(0, 0, 0, 0.8);
+				opacity: 0;
+				display: none;
+
+				.menu-close {
+					display: block;
+				}
+
+				.menu-button {
+					width: 80%;
+					height: 120px;
+					line-height: 120px;
+
+					& > div:nth-child(3) {
+						font-size: 2rem;
+					}
+				}
+			}
+		}
+	}
+}

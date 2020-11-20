@@ -8,7 +8,7 @@ export default class tip extends React.Component {
 
 	componentDidMount() {
 		this.delay = true;
-		window.TouchEvent.add('.' + this.props.name + '_evt', (e) => {
+		TouchEvent.add('.' + this.props.name + '_evt', (e) => {
 			if (!this.delay) return;
 			this.delay = false;
 

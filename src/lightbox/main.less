@@ -163,16 +163,23 @@
 							}
 						}
 
+						.gradient {
+							background: linear-gradient(0deg, #bebebe 10%, #ffffff 13%, #ffffff 22%, #656565 43%, #ffffff 44%);
+							-webkit-background-clip: text;
+							-webkit-text-fill-color: transparent;
+							background-color: #fff;
+						}
+
 						.title {
 							margin-top: -10px;
 
 							span {
 								font-family: 'ROG Fonts', monospace, Helvetica, sans-serif;
-								background: linear-gradient(0deg, #bebebe 10%, #ffffff 13%, #ffffff 22%, #656565 43%, #ffffff 44%);
-								-webkit-background-clip: text;
-								-webkit-text-fill-color: transparent;
+								//background: linear-gradient(0deg, #bebebe 10%, #ffffff 13%, #ffffff 22%, #656565 43%, #ffffff 44%);
+								color: #fff;
 								font-size: 5rem;
 								line-height: 1.5rem;
+								.gradient;
 							}
 						}
 
@@ -219,7 +226,7 @@
 	}
 }
 
-@media only screen and (max-width: 768px) {
+@media only screen and (max-width: 731px) {
 	.main {
 		.lightbox {
 			.context {

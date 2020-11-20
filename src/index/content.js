@@ -10,7 +10,6 @@ export default class content extends React.Component {
 	constructor(props) {
 		super(props);
 		this.state = { background: this.props.data.background, cursor: UserAgent.get() == 'desktop' };
-		//console.log(this.props);
 	}
 
 	get_width_fit() {

@@ -28,9 +28,18 @@ export default class scrolling extends React.Component {
 						}
 					)
 					.animate(
-						{ px: 100, o: 0 },
+						{ px: 100 },
 						{
 							duration: 1000,
+							step: () => this.tran(),
+							complete: () => this.tran(),
+							easing: 'easeInOutQuart',
+						}
+					)
+					.animate(
+						{ o: 0 },
+						{
+							duration: 300,
 							step: () => this.tran(),
 							complete: () => {
 								this.tran();
