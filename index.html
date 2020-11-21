@@ -21,6 +21,10 @@
 	</head>
 	<body>
 		<div class="index">
+			<!-- 
+				background : Monitors split animation.
+							 begin from left to right => 1, 2, 3, 4, 5, 6, 7, 8.
+			 -->
 			<div class="background">
 				<div class="animate_screen_1"></div>
 				<div class="animate_screen_2"></div>
@@ -31,6 +35,16 @@
 				<div class="animate_screen_7"></div>
 				<div class="animate_screen_8"></div>
 			</div>
+
+			<!-- 
+				tips : Monitors clickable arrow buttons with lightbox infomation
+						tips-xxx => It a key for JSON. ( xxx = non-repeating key name )
+						img => lightbox image url
+						title => lightbox first row title
+						subTitle => lightbox second row sub-title
+						list => lightbox ul > li items. (keep <p> tag stay.)
+					
+			 -->
 			<div class="tips">
 				<div class="tips-g14">
 					<div class="img">./img/lightbox/img0.jpg</div>
@@ -122,6 +136,12 @@
 					</div>
 				</div>
 			</div>
+
+			<!-- 
+				menu : at left-bottom items
+						Name => display innerText
+						url => window.open( your innerText )
+			 -->
 			<div class="menu">
 				<div class="menu-presskit">
 					<div class="name">PRESS KIT</div>
@@ -132,6 +152,15 @@
 					<div class="url">https://play.google.com/store/apps/details?id=com.asus.gallery&hl=en_US&gl=US</div>
 				</div>
 			</div>
+
+			<!-- 
+				more :  The contents of scroll-up 
+						rot-xxx => It a key for JSON. ( xxx = non-repeating key name )
+						img => lightbox image url
+						title => lightbox first row title
+						subTitle => lightbox second row sub-title
+						list => lightbox ul > li items. (keep <p> tag stay.)
+			 -->
 			<div class="more">
 				<div class="rog-I">
 					<div class="img">./img/lightbox/img0.jpg</div>
@@ -167,6 +196,10 @@
 					</div>
 				</div>
 			</div>
+
+			<!-- 
+				enter : an animation for hacking in.
+			 -->
 			<div class="enter">Приступите лабораторији производа РОГ</div>
 		</div>
 		<script src="./js/index.min.js"></script>
