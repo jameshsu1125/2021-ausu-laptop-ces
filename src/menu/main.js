@@ -5,8 +5,6 @@ import './../enter/fonts/Xolonium/stylesheet.css';
 import $ from 'jquery';
 require('jquery-easing');
 
-import TouchEvent from 'lesca/lib/LESCA/Event/TouchEvent';
-
 export default class menu extends React.Component {
 	constructor(props) {
 		super(props);
@@ -14,7 +12,7 @@ export default class menu extends React.Component {
 		this.tr = {
 			o: 0,
 			is: true,
-			time: 500,
+			time: 200,
 			init() {
 				this.c = $(root.refs.ctx);
 				this.btn = $(root.refs.close);
@@ -90,7 +88,7 @@ export default class menu extends React.Component {
 		for (let i in this.props.data) {
 			op.push(
 				<div className='menu-button' key={i}>
-					<div></div>
+					<div ref='bg'></div>
 					<div></div>
 					<div>{this.props.data[i].name}</div>
 					<div className={i}></div>
@@ -112,7 +110,7 @@ export default class menu extends React.Component {
 						<div></div>
 					</div>
 				</div>
-				<div className='ham'></div>
+				<div ref='ham' className='ham'></div>
 			</div>
 		);
 	}

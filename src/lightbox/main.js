@@ -4,6 +4,7 @@ import './fonts/ROG/stylesheet.css';
 import './../enter/fonts/Xolonium/stylesheet.css';
 
 import $ from 'jquery';
+import TouchEvent from 'lesca/lib/LESCA/Event/TouchEvent';
 require('jquery-easing');
 require('jquery.waitforimages');
 
@@ -19,6 +20,7 @@ export default class lightbox extends React.Component {
 				this.bg.init();
 				this.window.init();
 				this.img.init();
+				return this;
 			},
 			in() {
 				this.bg.in();
@@ -77,7 +79,8 @@ export default class lightbox extends React.Component {
 					);
 				},
 				evt() {
-					window.TouchEvent.add('.lightbox-close', () => {
+					TouchEvent.add('.lightbox-close', () => {
+						TouchEvent.remove('.lightbox-close');
 						root.tr.out();
 					});
 				},
@@ -145,7 +148,8 @@ export default class lightbox extends React.Component {
 						);
 				},
 				evt() {
-					window.TouchEvent.add('.lightbox-bg', () => {
+					TouchEvent.add('.lightbox-bg', () => {
+						TouchEvent.remove('.lightbox-bg');
 						root.tr.out();
 					});
 				},
@@ -159,16 +163,12 @@ export default class lightbox extends React.Component {
 	}
 
 	componentWillUnmount() {
-		window.TouchEvent.remove('.lightbox-bg');
-		window.TouchEvent.remove('.lightbox-close');
+		TouchEvent.remove('.lightbox-bg');
+		TouchEvent.remove('.lightbox-close');
 	}
 
 	componentDidMount() {
-		this.tr.init();
-		$(this.refs.main).waitForImages({
-			finished: () => this.tr.in(),
-			waitForAll: true,
-		});
+		this.tr.init().in();
 	}
 
 	append_list() {
@@ -185,7 +185,7 @@ export default class lightbox extends React.Component {
 					<div ref='window' className='window'>
 						<div className='nav'>
 							C:\Windows\Security\Metadata_Extract.exe
-							<div className='lightbox-close'></div>
+							<div ref='close' className='lightbox-close'></div>
 						</div>
 						<div className='body'>
 							<div className='box'>

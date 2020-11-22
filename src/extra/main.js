@@ -22,6 +22,7 @@ export default class extra extends React.Component {
 			init() {
 				this.bg.init();
 				this.window.init();
+				return this;
 			},
 			in() {
 				this.bg.in();
@@ -38,6 +39,7 @@ export default class extra extends React.Component {
 				time: 500,
 				init() {
 					this.c = $(root.refs.window);
+					this.close = $(root.refs.close);
 					this.reszie();
 					$(window).resize(() => this.reszie());
 				},
@@ -72,7 +74,7 @@ export default class extra extends React.Component {
 					);
 				},
 				evt() {
-					window.TouchEvent.add('.lightbox-close', () => {
+					TouchEvent.add('.extra-close', () => {
 						root.tr.out();
 					});
 				},
@@ -140,11 +142,12 @@ export default class extra extends React.Component {
 						);
 				},
 				evt() {
-					window.TouchEvent.add('.lightbox-bg', () => {
+					TouchEvent.add('.extra-bg', () => {
 						root.tr.out();
 					});
 				},
 				tran() {
+					return;
 					this.c.css({
 						opacity: this.o,
 					});
@@ -154,11 +157,11 @@ export default class extra extends React.Component {
 	}
 
 	componentDidMount() {
-		this.tr.init();
-		$(this.refs.main).waitForImages({
-			finished: () => this.tr.in(),
-			waitForAll: true,
-		});
+		this.tr.init().in();
+	}
+
+	componentWillUnmount() {
+		$(this.refs.bg).off();
 	}
 
 	append_contents() {
@@ -170,14 +173,19 @@ export default class extra extends React.Component {
 	render() {
 		return (
 			<div className='extra'>
-				<div ref='bg' className='bg'></div>
+				<div ref='bg' className='extra-bg'></div>
 				<div className='context'>
 					<div ref='window' ref='window' className='window'>
 						<div className='nav'>
 							C:\Windows\Security\Metadata_Extract.exe
-							<div className='lightbox-close'></div>
+							<div ref='close' className='extra-close'></div>
 						</div>
-						<div className='body'>{this.append_contents()}</div>
+						<div ref='body' className='extra-body'>
+							<div ref='container' className='extra-container'>
+								{this.append_contents()}
+							</div>
+							<div ref='bar' className='extra-bar'></div>
+						</div>
 					</div>
 				</div>
 			</div>
