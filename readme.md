@@ -11,7 +11,7 @@ dist
  ┃ ┗ style.css
  ┣ img                             // CDN / Local server
  ┃ ┗      .
- ┣ js                              // CDN / server
+ ┣ js                              // CDN server
  ┃ ┗ index.min.js
  ┗ index.html                      // Local server
 ```
