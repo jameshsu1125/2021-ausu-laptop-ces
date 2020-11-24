@@ -22,6 +22,17 @@ dist
 ```html
 <div class="main">
 	<div class="index">
+		<!-- 
+				tips : Monitors clickable arrow buttons with lightbox infomation
+						tips-xxx => It a key for JSON. ( xxx = non-repeating key name )
+						img => lightbox image url
+						title => lightbox first row title
+						subTitle => lightbox second row sub-title
+						list => lightbox ul > li items. (keep <p> tag stay.)
+						see-more => button url
+						buy-now => button label and url (max length 6)
+					
+			 -->
 		<div class="tips-g14">
 			<div class="content">
 				<div class="img">./img/lightbox/img0.jpg</div>
