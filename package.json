@@ -60,7 +60,7 @@
 		"jquery": "^3.5.0",
 		"jquery-easing": "0.0.1",
 		"jquery.waitforimages": "^2.4.0",
-		"lesca": "^0.1.15",
+		"lesca": "^0.1.16",
 		"mouse-wheel": "^1.2.0"
 	}
 }

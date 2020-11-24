@@ -113,15 +113,15 @@
 			pointer-events: none;
 		}
 
-		.close-container:hover .leftright {
+		& > div:nth-child(2):hover .leftright {
 			transform: rotate(-45deg);
 			background-color: @tomatored;
 		}
-		.close-container:hover .rightleft {
+		& > div:nth-child(2):hover .rightleft {
 			transform: rotate(45deg);
 			background-color: @tomatored;
 		}
-		.close-container:hover label {
+		& > div:nth-child(2):hover label {
 			opacity: 1;
 		}
 	}

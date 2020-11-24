@@ -94,7 +94,7 @@ export default class menu extends React.Component {
 				</div>
 			);
 			TouchEvent.add(`.${i}`, () => {
-				if (this.props.data[i].url === '#') window.location.href = '#';
+				if (this.props.data[i].url.split('#').length > 1) window.location.href = this.props.data[i].url;
 				else window.open(this.props.data[i].url);
 			});
 		}

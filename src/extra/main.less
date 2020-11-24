@@ -212,14 +212,7 @@
 										}
 									}
 
-									// .gradient {
-									// 	background: linear-gradient(0deg, #bebebe 10%, #ffffff 13%, #ffffff 22%, #656565 43%, #ffffff 44%);
-									// 	background-clip: text;
-									// 	-webkit-text-fill-color: transparent;
-									// 	background-color: #fff;
-									// }
 									.gradient {
-										//background: linear-gradient(0deg, #ffffff 20%, #656565 42%, #ffffff 45%);
 										background-image: url('./../lightbox/img/text-clip.jpg');
 										background-size: 1px 23.8px;
 										background-position: center 16.5px;
@@ -251,19 +244,6 @@
 											.gradient;
 										}
 									}
-
-									// .title {
-									// 	margin-top: -10px;
-
-									// 	span {
-									// 		font-family: 'ROG Fonts', monospace, Helvetica, sans-serif;
-									// 		//background: linear-gradient(0deg, #bebebe 10%, #ffffff 13%, #ffffff 22%, #656565 43%, #ffffff 44%);
-									// 		color: #fff;
-									// 		font-size: 3rem;
-									// 		line-height: 1.5rem;
-									// 		.gradient;
-									// 	}
-									// }
 								}
 
 								.img {
@@ -324,8 +304,9 @@
 
 						.extra-container {
 							.row {
-								grid-template-columns: none;
-								grid-template-rows: 50% 50%;
+								display: flex;
+								flex-direction: column;
+
 								.box {
 									.ctx {
 										padding: 2% 2%;

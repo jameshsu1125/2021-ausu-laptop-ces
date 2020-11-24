@@ -53,7 +53,7 @@ export default class buy extends React.Component {
 
 		for (let i in this.props.data) {
 			TouchEvent.add('.' + this.props.data[i].name, () => {
-				if (this.props.data[i].url === '#') window.location.href = '#';
+				if (this.props.data[i].url.split('#').length > 1) window.location.href = this.props.data[i].url;
 				else window.open(this.props.data[i].url);
 			});
 		}
