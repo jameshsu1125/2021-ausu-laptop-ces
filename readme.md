@@ -15,9 +15,9 @@ dist
 
 # localization Usage [index.html](https://github.com/jameshsu1125/ASUS-CES-2021/blob/main/dist/index.html)
 
-## download package
+### download [package](https://github.com/jameshsu1125/ASUS-CES-2021/archive/main.zip)
 
-## edit dist/index.html
+### edit dist/index.html
 
 ```html
 <div class="main">
