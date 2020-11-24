@@ -66,4 +66,4 @@ dist
 </div>
 ```
 
-### (3)update to server
+### (3)update files to server
