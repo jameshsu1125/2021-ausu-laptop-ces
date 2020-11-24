@@ -9,7 +9,7 @@ https://jameshsu1125.github.io/ASUS-CES-2021/
 dist
  ┣ css                             // CDN / Local server
  ┃ ┗ style.css
- ┣ img                             // CDN / Local server
+ ┣ img                             // Local server
  ┃ ┗      .
  ┣ js                              // CDN server
  ┃ ┗ index.min.js
