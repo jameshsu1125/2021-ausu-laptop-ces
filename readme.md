@@ -1,6 +1,9 @@
 [![dev by JamesHsu](https://img.shields.io/badge/Dev%20by-Jameshsu1125-green)](https://github.com/jameshsu1125/) [![made in Taiwan](https://img.shields.io/badge/Made%20in-Taiwan-orange)](https://github.com/jameshsu1125/) [![Design by realclear](https://img.shields.io/badge/Design%20by-瑞采數位科技-yellow)](http://realclear.com.tw/)
 
-# Deploy ./dist
+### Demo
+https://jameshsu1125.github.io/ASUS-CES-2021/
+
+## Deploy package ./dist 
 
 ```
 dist
@@ -13,11 +16,11 @@ dist
  ┗ index.html                      // Local server
 ```
 
-# localization Usage [index.html](https://github.com/jameshsu1125/ASUS-CES-2021/blob/main/dist/index.html)
+## localization Usage [index.html](https://github.com/jameshsu1125/ASUS-CES-2021/blob/main/dist/index.html)
 
-### download [package](https://github.com/jameshsu1125/ASUS-CES-2021/archive/main.zip)
+### (1)download [package](https://github.com/jameshsu1125/ASUS-CES-2021/archive/main.zip)
 
-### edit dist/index.html
+### (2)edit dist/index.html
 
 ```html
 <div class="main">
@@ -62,3 +65,5 @@ dist
 	<script src="./js/index.min.js"></script>
 </div>
 ```
+
+### (3)update to server
