@@ -9,8 +9,7 @@
 		"op": "export NODE_ENV=production && webpack -p",
 		"rm": "rm -rf node_modules/ package-lock.json",
 		"unused": "webpack --mode production --env.unused=true",
-		"deploy": "gh-pages -d dist",
-		"less": "lessc ./src/css/style.less ./dist/css/style.css"
+		"deploy": "gh-pages -d dist"
 	},
 	"private": "true",
 	"browserslist": {
