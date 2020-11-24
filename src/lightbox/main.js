@@ -80,6 +80,7 @@ export default class lightbox extends React.Component {
 					);
 				},
 				upper() {
+					if (window.innerWidth <= 731) return;
 					$(this).animate(
 						{ top: -142 },
 						{
@@ -94,6 +95,7 @@ export default class lightbox extends React.Component {
 					);
 				},
 				lower() {
+					if (window.innerWidth <= 731) return;
 					$(this).animate(
 						{ top: 0 },
 						{

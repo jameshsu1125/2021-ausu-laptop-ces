@@ -84,7 +84,6 @@ export default class menu extends React.Component {
 
 	append() {
 		let op = [];
-		console.log(this.props.data);
 		for (let i in this.props.data) {
 			op.push(
 				<div className='menu-button' key={i}>

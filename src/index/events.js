@@ -220,7 +220,7 @@ module.exports = {
 			extra_reset_timeout = setTimeout(() => {
 				extra_dy_force = 0;
 				extra_content_pushed = false;
-			}, 100);
+			}, 200);
 
 			// force max to turn on
 			if (extra_dy_force > 200) {
