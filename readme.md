@@ -22,12 +22,30 @@ dist
 ```html
 <div class="main">
 	<div class="index">
-		<div class="Key">value</div>
-		<div class="example-title">第 10 世代インテル® Core™ プロセッサー搭載</div>
-		<!--
-			make div into comment block to hide
-			<div class="example-hide-element">さらに詳しい情報は：https://www.asus.com/jp/</div>
-		-->
+		<div class="tips-g14">
+			<div class="content">
+				<div class="img">./img/lightbox/img0.jpg</div>
+				<div class="title">ROG Zephyrus g15 g16 g15 <sub>a</sub><sup>b</sup></div>
+				<div class="subTitle">Power Up. Do More.</div>
+				<div class="list">
+					<p>Up to NVIDIA® GeForce RTX™ 3090 GPU</p>
+					<p>Up to 16-core AMD® Ryzen™ R9-3950X CPU</p>
+					<p>Humanized eSports-friendly design</p>
+					<p>Multi air chamber boost cooling</p>
+				</div>
+			</div>
+			<div class="see-more">
+				<a href="#See More">See More</a>
+			</div>
+			<div class="buy-now">
+				<a href="#liverpool">www.liverpool.com</a>
+				<a href="#momoshop">momoshop</a>
+				<a href="#pchome">pchome</a>
+				<a href="#Costco">Costco</a>
+				<a href="#pchome">pchome</a>
+				<a href="#Costco">Costco</a>
+			</div>
+		</div>
 	</div>
 
 	<script src="./js/index.min.js"></script>
