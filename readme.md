@@ -4,18 +4,20 @@
 
 ```
 dist
- ┣ css                             // CDN server
+ ┣ css                             // CDN / Local server
  ┃ ┗ style.css
- ┣ img                             // CDN server
+ ┣ img                             // CDN / Local server
  ┃ ┗      .
- ┣ js                              // CDN server
+ ┣ js                              // CDN / server
  ┃ ┗ index.min.js
  ┗ index.html                      // Local server
 ```
 
-# localization Usage index.html
+# localization Usage [index.html](https://github.com/jameshsu1125/ASUS-CES-2021/blob/main/dist/index.html)
 
-## html render elements before convert to JSON [Dom2Json](https://github.com/jameshsu1125/lesca#dom2json)
+## download package
+
+## edit dist/index.html
 
 ```html
 <div class="main">
@@ -27,6 +29,7 @@ dist
 			<div class="example-hide-element">さらに詳しい情報は：https://www.asus.com/jp/</div>
 		-->
 	</div>
+
 	<script src="./js/index.min.js"></script>
 </div>
 ```

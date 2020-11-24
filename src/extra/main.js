@@ -2,10 +2,13 @@ import React from 'react';
 import './main.less';
 
 import Content from './content';
+import Buy from './buy';
 
 import $ from 'jquery';
 require('jquery-easing');
 require('jquery.waitforimages');
+
+import { UserAgent } from 'lesca';
 
 export default class extra extends React.Component {
 	constructor(props) {
@@ -15,7 +18,8 @@ export default class extra extends React.Component {
 		for (let i in this.props.data) {
 			data.push(this.props.data[i]);
 		}
-		this.state = { content: data };
+
+		this.state = { content: data, bar: UserAgent.get() == 'desktop' ? false : true, buy: false };
 
 		const root = this;
 		this.tr = {
@@ -50,7 +54,6 @@ export default class extra extends React.Component {
 							duration: this.time,
 							step: () => this.tran(),
 							complete: () => {
-								//$(root.refs.title).addClass('gradient');
 								this.tran();
 								this.evt();
 							},
@@ -59,7 +62,6 @@ export default class extra extends React.Component {
 					);
 				},
 				out() {
-					//$(root.refs.title).removeClass('gradient');
 					$(this).animate(
 						{ o: 0, top: 500 },
 						{
@@ -126,20 +128,18 @@ export default class extra extends React.Component {
 					);
 				},
 				out() {
-					$(this)
-						.delay(500)
-						.animate(
-							{ o: 0 },
-							{
-								duration: this.time,
-								step: () => this.tran(),
-								complete: () => {
-									this.tran();
-									root.props.distory('extra');
-								},
-								easing: 'easeOutQuart',
-							}
-						);
+					$(this).animate(
+						{ o: 0 },
+						{
+							duration: this.time,
+							step: () => this.tran(),
+							complete: () => {
+								this.tran();
+								root.props.distory('extra');
+							},
+							easing: 'easeOutQuart',
+						}
+					);
 				},
 				evt() {
 					TouchEvent.add('.extra-bg', () => {
@@ -147,7 +147,6 @@ export default class extra extends React.Component {
 					});
 				},
 				tran() {
-					return;
 					this.c.css({
 						opacity: this.o,
 					});
@@ -158,16 +157,39 @@ export default class extra extends React.Component {
 
 	componentDidMount() {
 		this.tr.init().in();
+		if (UserAgent.get() == 'desktop') {
+			TouchEvent.preventDefault = false;
+			$(this.refs.body).css({
+				'overflow-y': 'scroll',
+			});
+		}
 	}
 
 	componentWillUnmount() {
-		$(this.refs.bg).off();
+		TouchEvent.preventDefault = true;
 	}
 
 	append_contents() {
 		if (this.state.content) {
-			return this.state.content.map((i, index) => <Content data={i} key={index} />);
+			return this.state.content.map((i, index) => <Content data={i} index={index} key={index} add_buy={this.addBuyNow.bind(this)} />);
 		}
+	}
+
+	addBuyNow(e) {
+		this.buy_index = e;
+		this.setState({ buy: true });
+	}
+
+	append_bar() {
+		if (this.state.bar) return <div ref='bar' className='extra-bar'></div>;
+	}
+
+	distory() {
+		this.setState({ buy: false });
+	}
+
+	append_buy() {
+		if (this.state.buy && this.buy_index != undefined) return <Buy distory={this.distory.bind(this)} index={0} data={this.state.content[this.buy_index]['buy-now']} />;
 	}
 
 	render() {
@@ -184,9 +206,10 @@ export default class extra extends React.Component {
 							<div ref='container' className='extra-container'>
 								{this.append_contents()}
 							</div>
-							<div ref='bar' className='extra-bar'></div>
+							{this.append_bar()}
 						</div>
 					</div>
+					{this.append_buy()}
 				</div>
 			</div>
 		);

@@ -8,7 +8,7 @@ import Menu from './../menu/main';
 import Extra from './../extra/main';
 import Events from './events';
 
-import { TouchEvent } from 'lesca';
+import { TouchEvent, Landscape } from 'lesca';
 
 import $ from 'jquery';
 
@@ -39,7 +39,7 @@ export default class index extends React.Component {
 	}
 
 	addExtra() {
-		if (!this.state.extra) this.setState({ extra: true });
+		if (!this.state.extra && !this.state.lightbox) this.setState({ extra: true });
 	}
 
 	resize() {
@@ -99,6 +99,7 @@ export default class index extends React.Component {
 				{this.append_menu()}
 				{this.append_lightbox()}
 				{this.append_extra()}
+				<Landscape dw={731} />
 			</div>
 		);
 	}

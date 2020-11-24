@@ -164,21 +164,36 @@
 						}
 
 						.gradient {
-							background: linear-gradient(0deg, #bebebe 10%, #ffffff 13%, #ffffff 22%, #656565 43%, #ffffff 44%);
+							//background: linear-gradient(0deg, #ffffff 20%, #656565 42%, #ffffff 45%);
+							background-image: url('./img/text-clip.jpg');
+							background-size: 1px 47.8px;
+							background-position: center 31.5px;
 							background-clip: text;
 							-webkit-text-fill-color: transparent;
-							background-color: #fff;
 						}
 
 						.title {
-							margin-top: -10px;
+							margin-left: 10px;
+							position: relative;
+							height: auto;
+							width: 100%;
+							font-family: 'ROG Fonts', monospace, Helvetica, sans-serif;
+							color: #fff;
+							padding-bottom: 2px;
+							//background-color: red;
 
-							span {
-								font-family: 'ROG Fonts', monospace, Helvetica, sans-serif;
-								//background: linear-gradient(0deg, #bebebe 10%, #ffffff 13%, #ffffff 22%, #656565 43%, #ffffff 44%);
-								color: #fff;
+							overflow: hidden;
+
+							div {
+								float: left;
+								margin-top: -20px;
+								margin-left: -10px;
+								width: 100%;
+								height: auto;
 								font-size: 5rem;
-								line-height: 1.5rem;
+								line-height: 3rem;
+								padding-bottom: 20px;
+								border: solid 1px #000;
 								.gradient;
 							}
 						}
@@ -237,6 +252,10 @@
 						//grid-template-rows: 50% 50%;
 
 						.box {
+							& > div {
+								padding: 0px 0px 0px 0px;
+							}
+
 							.buttons {
 								position: relative;
 								display: flex;
@@ -247,6 +266,7 @@
 
 							.list {
 								ul {
+									padding-inline-start: 40px;
 									margin-block-end: 1rem;
 									li {
 										font-size: 1.2rem;
@@ -261,7 +281,7 @@
 
 							.title {
 								text-align: center;
-								margin-top: 30px;
+								margin-top: 20px;
 							}
 							.img {
 								width: 100%;

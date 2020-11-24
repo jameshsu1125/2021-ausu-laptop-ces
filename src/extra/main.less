@@ -38,12 +38,26 @@
 				.extra-body {
 					position: relative;
 					float: left;
-					width: 100%;
+					width: calc(~'100% - 3px');
 					height: 570px;
 					padding: 20px 50px 20px 50px;
 					box-sizing: border-box;
 					overflow-x: hidden;
 					overflow-y: hidden;
+					margin-right: 2%;
+
+					&::-webkit-scrollbar {
+						width: 16px;
+					}
+
+					&::-webkit-scrollbar-track {
+						background: transparent;
+					}
+
+					&::-webkit-scrollbar-thumb {
+						background: #4e4e4e;
+						border-radius: 8px;
+					}
 
 					.extra-bar {
 						position: absolute;
@@ -91,9 +105,6 @@
 								flex-direction: column;
 								align-items: center;
 
-								.extra-scroll {
-								}
-
 								.ctx {
 									float: left;
 									width: 100%;
@@ -121,7 +132,7 @@
 											transition-duration: 0.2s;
 										}
 
-										.lightbox-see {
+										.extra-see {
 											.btns;
 											background: linear-gradient(60deg, #b81d9b, #7015cc);
 
@@ -148,7 +159,7 @@
 											}
 										}
 
-										.lightbox-buy {
+										& > div:nth-child(2) {
 											.btns;
 											background: linear-gradient(60deg, #5b2ad6, #2b6bf7);
 
@@ -201,25 +212,58 @@
 										}
 									}
 
+									// .gradient {
+									// 	background: linear-gradient(0deg, #bebebe 10%, #ffffff 13%, #ffffff 22%, #656565 43%, #ffffff 44%);
+									// 	background-clip: text;
+									// 	-webkit-text-fill-color: transparent;
+									// 	background-color: #fff;
+									// }
 									.gradient {
-										background: linear-gradient(0deg, #bebebe 10%, #ffffff 13%, #ffffff 22%, #656565 43%, #ffffff 44%);
+										//background: linear-gradient(0deg, #ffffff 20%, #656565 42%, #ffffff 45%);
+										background-image: url('./../lightbox/img/text-clip.jpg');
+										background-size: 1px 23.8px;
+										background-position: center 16.5px;
 										background-clip: text;
 										-webkit-text-fill-color: transparent;
-										background-color: #fff;
 									}
 
 									.title {
-										margin-top: -10px;
+										margin-left: 0px;
+										position: relative;
+										height: auto;
+										width: 100%;
+										font-family: 'ROG Fonts', monospace, Helvetica, sans-serif;
+										color: #fff;
+										padding-bottom: 2px;
+										//background-color: red;
+										overflow: hidden;
 
-										span {
-											font-family: 'ROG Fonts', monospace, Helvetica, sans-serif;
-											//background: linear-gradient(0deg, #bebebe 10%, #ffffff 13%, #ffffff 22%, #656565 43%, #ffffff 44%);
-											color: #fff;
+										div {
+											float: left;
+											margin-top: -14px;
+											margin-left: -1px;
+											width: 100%;
+											height: auto;
+											padding-bottom: 15px;
 											font-size: 3rem;
 											line-height: 1.5rem;
+											border: solid 1px #000;
 											.gradient;
 										}
 									}
+
+									// .title {
+									// 	margin-top: -10px;
+
+									// 	span {
+									// 		font-family: 'ROG Fonts', monospace, Helvetica, sans-serif;
+									// 		//background: linear-gradient(0deg, #bebebe 10%, #ffffff 13%, #ffffff 22%, #656565 43%, #ffffff 44%);
+									// 		color: #fff;
+									// 		font-size: 3rem;
+									// 		line-height: 1.5rem;
+									// 		.gradient;
+									// 	}
+									// }
 								}
 
 								.img {
@@ -304,12 +348,10 @@
 										}
 
 										.sub {
-											//text-align: left;
 										}
 
 										.title {
-											//text-align: center;
-											margin-top: 0px;
+											margin-top: 20px;
 										}
 									}
 									.img {

@@ -71,7 +71,6 @@ export default class menu extends React.Component {
 		});
 
 		TouchEvent.add('.menu-close', () => {
-			console.log('aaa');
 			this.tr.switch();
 		});
 
@@ -85,6 +84,7 @@ export default class menu extends React.Component {
 
 	append() {
 		let op = [];
+		console.log(this.props.data);
 		for (let i in this.props.data) {
 			op.push(
 				<div className='menu-button' key={i}>
@@ -95,7 +95,8 @@ export default class menu extends React.Component {
 				</div>
 			);
 			TouchEvent.add(`.${i}`, () => {
-				window.open(this.props.data[i].url);
+				if (this.props.data[i].url === '#') window.location.href = '#';
+				else window.open(this.props.data[i].url);
 			});
 		}
 		return op;

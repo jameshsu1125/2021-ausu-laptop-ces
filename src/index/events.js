@@ -81,6 +81,10 @@ module.exports = {
 		switch (click_target) {
 			case 'none':
 				this.move_background(e);
+				if (dy * -1 > 200) {
+					extra_content_pushed = true;
+					call_extra_fn();
+				}
 				break;
 			case 'extra':
 				this.move_extra_by_body(e);
@@ -109,6 +113,7 @@ module.exports = {
 		}
 	},
 	move_extra_by_bar(e) {
+		if (UserAgent.get() === 'desktop') return;
 		const refs = get_extra_ref();
 		if (refs) {
 			let bar = refs.bar,
@@ -123,12 +128,12 @@ module.exports = {
 			$(bar).css('margin-top', y + 'px');
 
 			// use y set v to percent
-
 			let p = y / totol;
 			this.set_container_by_percent(p);
 		}
 	},
 	move_extra_by_body(e) {
+		if (UserAgent.get() === 'desktop') return;
 		const refs = get_extra_ref();
 		if (refs) {
 			let bar = refs.bar,
@@ -153,8 +158,12 @@ module.exports = {
 			cw = background.width() || parseInt(background.css('padding-right')),
 			max = 0,
 			min = window.innerWidth - cw;
+
 		if (px > max) px = 0;
 		else if (px < min) px = min;
+
+		if (window.innerWidth > cw) px = (window.innerWidth - cw) * 0.5;
+
 		background.css({
 			left: px + 'px',
 		});
@@ -183,6 +192,7 @@ module.exports = {
 	},
 	evt() {
 		TouchEvent.get = this.down;
+
 		if (UserAgent.get() === 'mobile') {
 			document.addEventListener('touchmove', (e) => this.move(e), {
 				passive: false,
@@ -192,15 +202,16 @@ module.exports = {
 		} else {
 			document.addEventListener('mousemove', (e) => this.move(e));
 			document.addEventListener('mouseup', (e) => this.up(e));
-			$(window).scroll(function () {
-				if ($(window).scrollTop() + $(window).height() == $(document).height()) page_end = true;
-				else page_end = false;
-			});
 		}
+		$(window).scroll(function () {
+			if ($(window).scrollTop() + $(window).height() == $(document).height()) page_end = true;
+			else page_end = false;
+		});
 		require('mouse-wheel')((dx, dy, dz, e) => this.wheel(dx, dy, dz, e));
 	},
 	wheel(dx, dy, dz, e) {
 		// Extra content event handler
+
 		if (page_end && dy > 0) {
 			extra_dy_force += dy;
 
@@ -211,6 +222,7 @@ module.exports = {
 				extra_content_pushed = false;
 			}, 100);
 
+			// force max to turn on
 			if (extra_dy_force > 200) {
 				if (extra_content_pushed) return;
 				extra_content_pushed = true;

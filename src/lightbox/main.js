@@ -4,16 +4,19 @@ import './fonts/ROG/stylesheet.css';
 import './../enter/fonts/Xolonium/stylesheet.css';
 
 import $ from 'jquery';
-import TouchEvent from 'lesca/lib/LESCA/Event/TouchEvent';
 require('jquery-easing');
 require('jquery.waitforimages');
+
+import ReactHtmlParser from 'react-html-parser';
+import Buy from './buy';
 
 export default class lightbox extends React.Component {
 	constructor(props) {
 		super(props);
 		const root = this;
-
 		this.data = this.props.data['tips-' + this.props.index];
+
+		this.state = { buy: false };
 
 		this.tr = {
 			init() {
@@ -34,7 +37,7 @@ export default class lightbox extends React.Component {
 				init() {
 					this.c = $(root.refs.img);
 					this.c.css({
-						background: `rgba(0, 0, 0, 0) url(${root.data.img}) no-repeat scroll center center / cover`,
+						background: `rgba(0, 0, 0, 0) url(${root.data.content.img}) no-repeat scroll center center / cover`,
 					});
 				},
 			},
@@ -55,7 +58,6 @@ export default class lightbox extends React.Component {
 							duration: this.time,
 							step: () => this.tran(),
 							complete: () => {
-								//$(root.refs.title).addClass('gradient');
 								this.tran();
 								this.evt();
 							},
@@ -64,7 +66,6 @@ export default class lightbox extends React.Component {
 					);
 				},
 				out() {
-					//$(root.refs.title).removeClass('gradient');
 					$(this).animate(
 						{ o: 0, top: 500 },
 						{
@@ -78,10 +79,48 @@ export default class lightbox extends React.Component {
 						}
 					);
 				},
+				upper() {
+					$(this).animate(
+						{ top: -142 },
+						{
+							duration: 300,
+							step: () => this.tran(),
+							complete: () => {
+								this.tran();
+								this.evt();
+							},
+							easing: 'easeOutQuart',
+						}
+					);
+				},
+				lower() {
+					$(this).animate(
+						{ top: 0 },
+						{
+							duration: 300,
+							step: () => this.tran(),
+							complete: () => {
+								this.tran();
+								this.evt();
+							},
+							easing: 'easeOutQuart',
+						}
+					);
+				},
 				evt() {
 					TouchEvent.add('.lightbox-close', () => {
 						TouchEvent.remove('.lightbox-close');
+						root.setState({ buy: false });
 						root.tr.out();
+					});
+
+					TouchEvent.add('.lightbox-see', () => {
+						window.open(root.data['see-more'][0].url);
+					});
+
+					TouchEvent.add('.lightbox-buy', () => {
+						root.setState({ buy: true });
+						this.upper();
 					});
 				},
 				tran() {
@@ -150,6 +189,7 @@ export default class lightbox extends React.Component {
 				evt() {
 					TouchEvent.add('.lightbox-bg', () => {
 						TouchEvent.remove('.lightbox-bg');
+						root.setState({ buy: false });
 						root.tr.out();
 					});
 				},
@@ -172,8 +212,28 @@ export default class lightbox extends React.Component {
 	}
 
 	append_list() {
-		if (this.data.list) {
-			return this.data.list.map((i, index) => <li key={index}>{i}</li>);
+		if (this.data.content.list) {
+			return this.data.content.list.map((i, index) => <li key={index}>{ReactHtmlParser(i)}</li>);
+		}
+	}
+
+	distory() {
+		this.setState({ buy: false });
+	}
+
+	append_desktop_buy() {
+		if (this.state.buy && this.data['buy-now']) {
+			if (window.innerWidth > 731) return <Buy low={this.lower.bind(this)} distory={this.distory.bind(this)} data={this.data['buy-now']} pxy={$('.lightbox-buy').offset()} />;
+		}
+	}
+
+	lower() {
+		this.tr.window.lower();
+	}
+
+	append_mobile_buy() {
+		if (this.state.buy && this.data['buy-now']) {
+			if (window.innerWidth <= 731) return <Buy low={this.lower.bind(this)} distory={this.distory.bind(this)} data={this.data['buy-now']} pxy={$('.lightbox-buy').offset()} />;
 		}
 	}
 
@@ -193,17 +253,17 @@ export default class lightbox extends React.Component {
 							</div>
 							<div className='box'>
 								<div className='title'>
-									<span ref='title'>{this.data.title}</span>
+									<div ref='title'>{ReactHtmlParser(this.data.content.title)}</div>
 								</div>
 								<div className='sub'>
-									<span>{this.data.subTitle}</span>
+									<span>{ReactHtmlParser(this.data.content.subTitle)}</span>
 								</div>
 								<div className='list'>
 									<ul>{this.append_list()}</ul>
 								</div>
 								<div className='buttons'>
 									<div className='lightbox-see'>
-										See More
+										{this.data['see-more'][0].name || 'See More'}
 										<div></div>
 									</div>
 									<div className='lightbox-buy'>
@@ -213,8 +273,10 @@ export default class lightbox extends React.Component {
 								</div>
 							</div>
 						</div>
+						{this.append_desktop_buy()}
 					</div>
 				</div>
+				{this.append_mobile_buy()}
 			</div>
 		);
 	}
