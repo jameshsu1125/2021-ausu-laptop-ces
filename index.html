@@ -56,8 +56,8 @@
 			</div>
 
 			<!--
-				tips : Monitors clickable arrow buttons with lightbox infomation
-						tips-xxx => It a key for JSON. ( xxx = non-repeating key name )
+				tips :  The clickable red Arrow of button on Monitors with lightbox infomation
+						tips-xxx => className for key of JSON. (non-repeating class name for every item)
 						img => lightbox image url
 						title => lightbox first row title
 						subTitle => lightbox second row sub-title
@@ -263,12 +263,14 @@
 			</div>
 
 			<!--
-				more :  The contents of scroll-up
-						rot-xxx => It a key for JSON. ( rot-xxx = non-repeating key name )
+				more :  The contents of scroll-up action.
+						rog-xxx => className for key of JSON. (non-repeating class name for every item)
 						img => lightbox image url
 						title => lightbox first row title
 						subTitle => lightbox second row sub-title
 						list => lightbox ul > li items. (keep <p> tag stay.)
+						see-more => button url
+						buy-now => button label and url (max length 6)
 			 -->
 			<div class="more">
 				<div class="rog-0">
@@ -427,9 +429,7 @@
 			</div>
 
 			<!--
-				menu : at left-bottom items
-						Name => display innerText
-						url => window.open( your innerText )
+				menu : The Buttons at left-bottom curner.
 			 -->
 			<div class="menu">
 				<a href="#PRESS KIT">PRESS KIT</a>
@@ -437,7 +437,7 @@
 			</div>
 
 			<!--
-				enter : an animation for hacking in.
+				enter : An hacking animation for begining.
 			 -->
 			<div class="enter">Access ROG product lab</div>
 		</div>
