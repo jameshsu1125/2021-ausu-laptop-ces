@@ -1,9 +1,10 @@
 [![dev by JamesHsu](https://img.shields.io/badge/Dev%20by-Jameshsu1125-green)](https://github.com/jameshsu1125/) [![made in Taiwan](https://img.shields.io/badge/Made%20in-Taiwan-orange)](https://github.com/jameshsu1125/) [![Design by realclear](https://img.shields.io/badge/Design%20by-瑞采數位科技-yellow)](http://realclear.com.tw/)
 
 ### Demo
+
 https://jameshsu1125.github.io/ASUS-CES-2021/
 
-## Deploy package ./dist 
+## Deploy package ./dist
 
 ```
 dist
@@ -18,24 +19,26 @@ dist
 
 ## localization Usage [index.html](https://github.com/jameshsu1125/ASUS-CES-2021/blob/main/dist/index.html)
 
-### (1)download [package](https://github.com/jameshsu1125/ASUS-CES-2021/archive/main.zip)
+### (1) download [package](https://github.com/jameshsu1125/ASUS-CES-2021/archive/main.zip)
 
-### (2)edit dist/index.html
+### (2) edit dist/index.html
 
 ```html
+<!-- deploy css file to server and change url -->
+<link rel="stylesheet" href="./css/index.css" />
+
 <div class="main">
 	<div class="index">
-		<!-- 
-				tips : Monitors clickable arrow buttons with lightbox infomation
-						tips-xxx => It a key for JSON. ( xxx = non-repeating key name )
-						img => lightbox image url
-						title => lightbox first row title
-						subTitle => lightbox second row sub-title
-						list => lightbox ul > li items. (keep <p> tag stay.)
-						see-more => button url
-						buy-now => button label and url (max length 6)
-					
-			 -->
+		<!--
+		tips :  The clickable red Arrow of button on Monitors with lightbox infomation
+				tips-xxx => className for key of JSON. (non-repeating class name for every item)
+				img => lightbox image url
+				title => lightbox first row title
+				subTitle => lightbox second row sub-title
+				list => lightbox ul > li items. (keep <p> tag stay.)
+				see-more => button url
+				buy-now => button label and url (max length 6)
+		-->
 		<div class="tips-g14">
 			<div class="content">
 				<div class="img">./img/lightbox/img0.jpg</div>
@@ -61,9 +64,9 @@ dist
 			</div>
 		</div>
 	</div>
-
+	<!-- deploy js file to server and change url -->
 	<script src="./js/index.min.js"></script>
 </div>
 ```
 
-### (3)update files to server
+### (3) update files to server
