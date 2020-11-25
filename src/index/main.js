@@ -46,8 +46,10 @@ export default class index extends React.Component {
 	resize() {
 		if (this.refs.content.get_width_fit()) this.setState({ scrolling: true });
 
+		// resize height
 		if (this.refs.content.get_height_fit()) this.refs.main.style['overflow-y'] = 'hidden';
 		else this.refs.main.style['overflow-y'] = 'auto';
+
 		this.setState({ extra: false });
 		Events.resize();
 	}
