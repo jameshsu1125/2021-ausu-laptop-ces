@@ -17,6 +17,12 @@ export default class content extends React.Component {
 		return w != 0;
 	}
 
+	get_height_fit() {
+		let t = $(this.refs.main),
+			h = t.height() || parseInt($(this.refs.main).css('padding-bottom'));
+		return h - 50 < window.innerHeight;
+	}
+
 	append_background() {
 		if (this.state.background) return <Background data={this.props.data.background} />;
 	}

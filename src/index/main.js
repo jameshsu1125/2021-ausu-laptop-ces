@@ -28,6 +28,7 @@ export default class index extends React.Component {
 	}
 
 	componentDidMount() {
+		$('.index').css('display', 'block');
 		Events.init(this.refs.main, this.refs.content.refs.main, this.addExtra.bind(this), this.get_extra.bind(this));
 		this.resize();
 		$(window).resize(() => this.resize());
@@ -44,6 +45,9 @@ export default class index extends React.Component {
 
 	resize() {
 		if (this.refs.content.get_width_fit()) this.setState({ scrolling: true });
+
+		if (this.refs.content.get_height_fit()) this.refs.main.style['overflow-y'] = 'hidden';
+		else this.refs.main.style['overflow-y'] = 'auto';
 		this.setState({ extra: false });
 		Events.resize();
 	}

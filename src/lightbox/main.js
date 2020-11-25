@@ -14,6 +14,7 @@ export default class lightbox extends React.Component {
 	constructor(props) {
 		super(props);
 		const root = this;
+
 		this.data = this.props.data['tips-' + this.props.index];
 
 		this.state = { buy: false };
@@ -35,17 +36,29 @@ export default class lightbox extends React.Component {
 			},
 			img: {
 				init() {
+					let img_url = typeof root.data.content.img == 'string' ? root.data.content.img : root.data.content.img[0].img;
+
 					this.c = $(root.refs.img);
 					this.c.css({
-						background: `rgba(0, 0, 0, 0) url(${root.data.content.img}) no-repeat scroll center center / cover`,
+						background: `rgba(0, 0, 0, 0) url(${img_url}) no-repeat scroll center center / cover`,
 					});
+
+					if (typeof root.data.content.img != 'string') {
+						this.classname = `img_${new Date().getTime()}`;
+						this.c.attr('id', this.classname);
+						this.c.css('cursor', 'pointer');
+						TouchEvent.add('#' + this.classname, () => {
+							if (root.data.content.img[0].url.split('#').length > 1) window.location.href = root.data.content.img[0].url;
+							else window.open(root.data.content.img[0].url);
+						});
+					}
 				},
 			},
 			window: {
 				s: 1,
 				o: 0,
 				top: 500,
-				time: 500,
+				time: 0,
 				init() {
 					this.c = $(root.refs.window);
 					this.reszie();
@@ -67,7 +80,7 @@ export default class lightbox extends React.Component {
 				},
 				out() {
 					$(this).animate(
-						{ o: 0, top: 500 },
+						{ o: 0, top: 0 },
 						{
 							duration: this.time,
 							step: () => this.tran(),

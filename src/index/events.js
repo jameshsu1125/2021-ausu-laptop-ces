@@ -9,9 +9,10 @@ let press = false,
 let x, y, mx, my, dx, dy;
 
 let container, background;
-let content_x = 0;
+let content_x;
 
 let extra_dy_force = 0,
+	extra_dy_force_max = /^((?!chrome|android).)*safari/i.test(navigator.userAgent) ? 300 : 800,
 	call_extra_fn,
 	get_extra_ref,
 	extra_reset_timeout,
@@ -38,14 +39,23 @@ let isPressExtra = (e) => {
 
 module.exports = {
 	init(main, content, fn1, fn2) {
-		this.evt();
 		container = $(main);
 		background = $(content);
 		call_extra_fn = fn1;
 		get_extra_ref = fn2;
+
+		let w = background.width() || parseInt(background.css('padding-right')),
+			content_x = (window.innerWidth - w) / 2;
+
+		if (content_x < 0) {
+			background.delay(500).animate({ left: content_x + 'px' }, 1000, 'swing', () => this.evt());
+		}
+		this.down({ target: content, clientX: 0, clientY: 0, targetTouches: [{ clientX: 0, clientY: 0 }] });
+		press = false;
 	},
 	down(e) {
 		press = true;
+
 		x = mx = e.clientX || e.targetTouches[0].clientX;
 		y = my = e.clientY || e.targetTouches[0].clientY;
 
@@ -220,10 +230,11 @@ module.exports = {
 			extra_reset_timeout = setTimeout(() => {
 				extra_dy_force = 0;
 				extra_content_pushed = false;
-			}, 200);
+			}, 30);
 
 			// force max to turn on
-			if (extra_dy_force > 200) {
+			//console.log(extra_dy_force, extra_dy_force_max);
+			if (extra_dy_force > extra_dy_force_max) {
 				if (extra_content_pushed) return;
 				extra_content_pushed = true;
 				call_extra_fn();

@@ -9,7 +9,8 @@ export default class content extends React.Component {
 	}
 
 	componentDidMount() {
-		this.refs.img.style.background = `rgba(0, 0, 0, 0) url('${this.props.data.content.img}') no-repeat scroll center center / cover`;
+		this.img_init();
+		//this.refs.img.style.background = `rgba(0, 0, 0, 0) url('${this.props.data.content.img}') no-repeat scroll center center / cover`;
 		TouchEvent.add('.extra-see', () => {
 			window.open(this.props.data['see-more'][0].url);
 		});
@@ -22,6 +23,25 @@ export default class content extends React.Component {
 
 	append_list() {
 		return this.props.data.content.list.map((i, index) => <li key={index}>{ReactHtmlParser(i)}</li>);
+	}
+
+	img_init() {
+		let img_url = typeof this.props.data.content.img == 'string' ? this.props.data.content.img : this.props.data.content.img[0].img;
+
+		this.c = $(this.refs.img);
+		this.c.css({
+			background: `rgba(0, 0, 0, 0) url(${img_url}) no-repeat scroll center center / cover`,
+		});
+
+		if (typeof this.props.data.content.img != 'string') {
+			this.classname = `img_${new Date().getTime()}`;
+			this.c.attr('id', this.classname);
+			this.c.css('cursor', 'pointer');
+			TouchEvent.add('#' + this.classname, () => {
+				if (this.props.data.content.img[0].url.split('#').length > 1) window.location.href = this.props.data.content.img[0].url;
+				else window.open(this.props.data.content.img[0].url);
+			});
+		}
 	}
 
 	distory() {

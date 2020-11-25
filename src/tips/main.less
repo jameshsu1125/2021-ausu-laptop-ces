@@ -1,9 +1,10 @@
 @color: #f50504;
 @top: 33.9%, 55%, 26%, 34%, 26%, 70%, 42%, 78%;
 @left: 7.5%, 21%, 33%, 49%, 57%, 79%, 87%, 90.6%;
-@offset_x: -580%, -530%, -510%, -470%, -510%, -1010%, -850%, -650%;
-@offset_w: 770%, 720%, 630%, 660%, 620%, 1120%, 960%, 770%;
-@offset_h: 640%, 870%, 690%, 550%, 1030%, 920%, 810%, 730%;
+@offset_x: -556%, -454%, -498%, -450%, -484%, -1010%, -850%, -650%;
+@offset_w: 738%, 593%, 590%, 580%, 850%, 1060%, 960%, 770%;
+@offset_h: 555%, 768%, 600%, 492%, 1050%, 920%, 812%, 790%;
+@offset_y: 51%, 56%, 0%, 0%, 0%, 0%, 0%, -60%;
 
 @names: g14, g15, strixscar, strixg, ga35, flow13, se15, xg;
 
@@ -13,7 +14,6 @@
 	.tips-@{name} {
 		top: extract(@top, @l);
 		left: extract(@left, @l);
-		//content: @namel;
 
 		& > div:nth-child(2) {
 			position: absolute;
@@ -34,6 +34,7 @@
 			width: extract((@offset_w), @l);
 			height: extract((@offset_h), @l);
 			left: extract((@offset_x), @l);
+			top: extract((@offset_y), @l);
 			cursor: pointer;
 			//background-color: rgba(255, 255, 0, 0.5); //debug
 		}
