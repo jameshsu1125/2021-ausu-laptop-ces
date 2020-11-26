@@ -16,6 +16,7 @@ export default class menu extends React.Component {
 			init() {
 				this.c = $(root.refs.ctx);
 				this.btn = $(root.refs.close);
+				this.ham = $(root.refs.ham);
 			},
 			isRun() {
 				return window.innerWidth <= 731;
@@ -27,6 +28,7 @@ export default class menu extends React.Component {
 			},
 			open() {
 				this.c.css('display', 'flex');
+				this.ham.css('opacity', 0);
 				$(this).animate(
 					{ o: 1 },
 					{
@@ -38,6 +40,7 @@ export default class menu extends React.Component {
 				);
 			},
 			close() {
+				this.ham.css('opacity', 1);
 				$(this).animate(
 					{ o: 0 },
 					{
@@ -59,6 +62,7 @@ export default class menu extends React.Component {
 			reset() {
 				this.is = true;
 				this.c.removeAttr('style');
+				this.ham.css('opacity', 1);
 			},
 		};
 	}
@@ -70,8 +74,9 @@ export default class menu extends React.Component {
 			this.tr.switch();
 		});
 
-		TouchEvent.add('.menu-close', () => {
+		TouchEvent.add('.menu-close-container', () => {
 			this.tr.switch();
+			console.log('a');
 		});
 
 		this.resize();
@@ -90,10 +95,10 @@ export default class menu extends React.Component {
 					<div ref='bg'></div>
 					<div></div>
 					<div>{this.props.data[i].name}</div>
-					<div className={i}></div>
+					<div className={`menu_${i}`}></div>
 				</div>
 			);
-			TouchEvent.add(`.${i}`, () => {
+			TouchEvent.add(`.menu_${i}`, () => {
 				if (this.props.data[i].url.split('#').length > 1) window.location.href = this.props.data[i].url;
 				else window.open(this.props.data[i].url);
 			});
@@ -106,8 +111,12 @@ export default class menu extends React.Component {
 			<div className='menu'>
 				<div ref='ctx' className='context'>
 					{this.append()}
-					<div ref='close' className='menu-close'>
-						<div></div>
+					<div className='menu-close'>
+						<div class='menu-close-container'>
+							<div class='leftright'></div>
+							<div class='rightleft'></div>
+							<label class='close'>close</label>
+						</div>
 					</div>
 				</div>
 				<div ref='ham' className='ham'></div>

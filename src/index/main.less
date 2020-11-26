@@ -16,7 +16,7 @@ body {
 	width: 100%;
 	height: 100%;
 	overflow-x: hidden;
-	overflow-y: auto;
+	overflow-y: hidden;
 
 	&::-webkit-scrollbar {
 		width: 10px;
@@ -41,23 +41,24 @@ body {
 	.content {
 		position: absolute;
 		top: 0;
-		width: 100%;
-		height: 0;
+		width: 0%;
+		height: 100%;
 		left: 0px;
+		padding-right: image-width(@img) / image-height(@img) * 100vh;
 
-		padding-bottom: image-height(@img) / image-width(@img) * 100vw;
-		padding-right: 0;
+		//padding-bottom: image-height(@img) / image-width(@img) * 100vw;
+		//padding-right: 0;
 	}
 }
 
 @media only screen and (max-width: 1300px) {
 	.main {
 		.content {
-			width: 0;
-			height: 100%;
-			background-size: auto 100%;
-			padding-right: image-width(@img) / image-height(@img) * 100vh;
-			padding-bottom: 0;
+			//width: 100%;
+			//height: 100%;
+			//background-size: auto 100%;
+			//padding-right: image-width(@img) / image-height(@img) * 100vh;
+			//padding-bottom: 0;
 		}
 	}
 }

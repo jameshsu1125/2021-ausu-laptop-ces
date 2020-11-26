@@ -7,6 +7,7 @@ import Scrolling from './scrolling';
 import Menu from './../menu/main';
 import Extra from './../extra/main';
 import Events from './events';
+import Youtube from './../youtube/main';
 
 import { TouchEvent, Landscape } from 'lesca';
 
@@ -19,19 +20,17 @@ export default class index extends React.Component {
 			scrolling: false,
 			enter: this.props.data.enter,
 			lightbox: false,
-			content: true,
+			content: false,
 			extra: false,
-			menu: this.props.data.menu,
+			menu: false,
 			more: this.props.data.more,
+			youtube: false,
 		};
 		TouchEvent.init();
 	}
 
 	componentDidMount() {
 		$('.index').css('display', 'block');
-		Events.init(this.refs.main, this.refs.content.refs.main, this.addExtra.bind(this), this.get_extra.bind(this));
-		this.resize();
-		$(window).resize(() => this.resize());
 	}
 
 	get_extra() {
@@ -44,11 +43,8 @@ export default class index extends React.Component {
 	}
 
 	resize() {
+		if (!this.refs.content) return;
 		if (this.refs.content.get_width_fit()) this.setState({ scrolling: true });
-
-		// resize height
-		if (this.refs.content.get_height_fit()) this.refs.main.style['overflow-y'] = 'hidden';
-		else this.refs.main.style['overflow-y'] = 'auto';
 
 		this.setState({ extra: false });
 		Events.resize();
@@ -70,14 +66,22 @@ export default class index extends React.Component {
 		let p = {};
 		p[key] = false;
 		this.setState(p);
+		if (key == 'lightbox') Events.isFrezz(true);
 	}
 
 	enter_end() {
-		this.setState({ enter: false });
+		this.setState({ enter: false, content: true, menu: this.props.data.menu });
+		Events.init(this.refs.main, this.refs.content.refs.main, this.addExtra.bind(this), this.get_extra.bind(this));
+
+		this.resize();
+		$(window).resize(() => this.resize());
 	}
 
 	append_lightbox() {
-		if (this.state.lightbox != false) return <Lightbox data={this.props.data.tips} index={this.state.lightbox} distory={this.distory.bind(this)} />;
+		if (this.state.lightbox != false) {
+			Events.isFrezz(false);
+			return <Lightbox data={this.props.data.tips} index={this.state.lightbox} distory={this.distory.bind(this)} add_youtube={this.add_youtube.bind(this)} />;
+		}
 	}
 
 	append_enter() {
@@ -93,7 +97,15 @@ export default class index extends React.Component {
 	}
 
 	append_extra() {
-		if (this.state.extra && this.state.more) return <Extra ref='extra' data={this.props.data.more} distory={this.distory.bind(this)} />;
+		if (this.state.extra && this.state.more) return <Extra ref='extra' data={this.props.data.more} distory={this.distory.bind(this)} add_youtube={this.add_youtube.bind(this)} />;
+	}
+
+	add_youtube(url) {
+		this.setState({ youtube: url });
+	}
+
+	append_youtube() {
+		if (this.state.youtube) return <Youtube data={this.state.youtube} distory={this.distory.bind(this)} />;
 	}
 
 	render() {
@@ -105,6 +117,7 @@ export default class index extends React.Component {
 				{this.append_menu()}
 				{this.append_lightbox()}
 				{this.append_extra()}
+				{this.append_youtube()}
 				<Landscape dw={731} />
 			</div>
 		);

@@ -47,8 +47,10 @@ export default class lightbox extends React.Component {
 						this.classname = `img_${new Date().getTime()}`;
 						this.c.attr('id', this.classname);
 						this.c.css('cursor', 'pointer');
+
 						TouchEvent.add('#' + this.classname, () => {
-							if (root.data.content.img[0].url.split('#').length > 1) window.location.href = root.data.content.img[0].url;
+							if (root.data.content.img[0].url.indexOf('youtu') >= 0) root.props.add_youtube(root.data.content.img[0].url);
+							else if (root.data.content.img[0].url.split('#').length > 1) window.location.href = root.data.content.img[0].url;
 							else window.open(root.data.content.img[0].url);
 						});
 					}
@@ -151,7 +153,7 @@ export default class lightbox extends React.Component {
 				},
 				reszie() {
 					let s,
-						w = 1700,
+						w = 1500,
 						h = 1200;
 					s = window.innerWidth / w;
 
@@ -186,20 +188,18 @@ export default class lightbox extends React.Component {
 					);
 				},
 				out() {
-					$(this)
-						.delay(500)
-						.animate(
-							{ o: 0 },
-							{
-								duration: this.time,
-								step: () => this.tran(),
-								complete: () => {
-									this.tran();
-									root.props.distory('lightbox');
-								},
-								easing: 'easeOutQuart',
-							}
-						);
+					$(this).animate(
+						{ o: 0 },
+						{
+							duration: this.time,
+							step: () => this.tran(),
+							complete: () => {
+								this.tran();
+								root.props.distory('lightbox');
+							},
+							easing: 'easeOutQuart',
+						}
+					);
 				},
 				evt() {
 					TouchEvent.add('.lightbox-bg', () => {

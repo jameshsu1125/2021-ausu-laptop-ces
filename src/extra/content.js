@@ -34,11 +34,13 @@ export default class content extends React.Component {
 		});
 
 		if (typeof this.props.data.content.img != 'string') {
-			this.classname = `img_${new Date().getTime()}`;
+			this.classname = `img_extra_${this.props.index}`;
 			this.c.attr('id', this.classname);
 			this.c.css('cursor', 'pointer');
+
 			TouchEvent.add('#' + this.classname, () => {
-				if (this.props.data.content.img[0].url.split('#').length > 1) window.location.href = this.props.data.content.img[0].url;
+				if (this.props.data.content.img[0].url.indexOf('youtu') >= 0) this.props.add_youtube(this.props.data.content.img[0].url);
+				else if (this.props.data.content.img[0].url.split('#').length > 1) window.location.href = this.props.data.content.img[0].url;
 				else window.open(this.props.data.content.img[0].url);
 			});
 		}

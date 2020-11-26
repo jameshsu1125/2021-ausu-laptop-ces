@@ -1,6 +1,7 @@
 import React from 'react';
 import Background from './../background/main';
 import Tips from './../tips/main';
+import Links from './../links/main';
 import Cursor from './cursor';
 import { UserAgent } from 'lesca';
 
@@ -13,8 +14,10 @@ export default class content extends React.Component {
 	}
 
 	get_width_fit() {
-		let w = parseInt($(this.refs.main).css('padding-right'));
-		return w != 0;
+		let main_w = $(this.refs.main).width() || parseInt($(this.refs.main).css('padding-right')),
+			main_r = main_w / $(this.refs.main).height(),
+			window_r = window.innerWidth / window.innerHeight;
+		return main_r > window_r;
 	}
 
 	get_height_fit() {
@@ -43,11 +46,16 @@ export default class content extends React.Component {
 		if (this.state.cursor) return <Cursor ref='cursor' />;
 	}
 
+	append_links() {
+		if (this.props.data.links) return <Links data={this.props.data.links} show_cursor={this.show_cursor.bind(this)} hide_cursor={this.hide_cursor.bind(this)} />;
+	}
+
 	render() {
 		return (
 			<div ref='main' className='content'>
 				{this.append_background()}
 				{this.append_tips()}
+				{this.append_links()}
 				{this.append_cursor()}
 			</div>
 		);
