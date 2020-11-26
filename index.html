@@ -54,11 +54,24 @@
 				<div class="animate_screen_7"></div>
 				<div class="animate_screen_8"></div>
 			</div>
-
 			<!--
 				tips :  The clickable red Arrow of button on Monitors with lightbox infomation
 						tips-xxx => className for key of JSON. (don't change the classname)
-						img => lightbox image url
+						img => lightbox image url 
+								(1)  ## img without clickable link
+									<div class="img">./img/1.png</div>
+								(2)  ## img without clickable link
+									<div class="img"> 
+										<img src='./img/1/png' />
+									</div>
+								(3) ## img with clickable link
+									<div class="img">
+										<a href="https://www.asus.com"><img src="./img/lightbox/img0.jpg" /></a>
+									</div>
+								(4) ## img with innerDOM youtube video
+									<div class="img">
+										<a href="https://youtu.be/XSGBVzeBUbk"><img src="./img/lightbox/img0.jpg" /></a>
+									</div>
 						title => lightbox first row title
 						subTitle => lightbox second row sub-title
 						list => lightbox ul > li items. (keep <p> tag stay.)
@@ -70,7 +83,7 @@
 				<div class="tips-g14">
 					<div class="content">
 						<div class="img">
-							<a href="#"><img src="./img/lightbox/img1.jpg" /></a>
+							<a href="https://youtu.be/XSGBVzeBUbk"><img src="./img/lightbox/img1.jpg" /></a>
 						</div>
 						<div class="title">ROG Zephyrus G14</div>
 						<div class="subTitle">#MakeYourMove</div>
@@ -96,7 +109,7 @@
 				<div class="tips-g15">
 					<div class="content">
 						<div class="img">
-							<a href="#"><img src="./img/lightbox/img0.jpg" /></a>
+							<img src="./img/lightbox/img0.jpg" />
 						</div>
 						<div class="title">ROG Zephyrus G15</div>
 						<div class="subTitle">Game for Anything</div>
@@ -123,7 +136,7 @@
 				<div class="tips-strixscar">
 					<div class="content">
 						<div class="img">
-							<a href="#"><img src="./img/lightbox/img0.jpg" /></a>
+							<a href="https://www.youtube.com/watch?v=pbCw1FD22Bo"><img src="./img/lightbox/img0.jpg" /></a>
 						</div>
 						<div class="title">ROG STRIX SCAR</div>
 						<div class="subTitle">Beat the Best. Be the Best.</div>
@@ -149,7 +162,7 @@
 				<div class="tips-strixg">
 					<div class="content">
 						<div class="img">
-							<a href="#"><img src="./img/lightbox/img0.jpg" /></a>
+							<a href="https://www.asus.com"><img src="./img/lightbox/img0.jpg" /></a>
 						</div>
 						<div class="title">ROG STRIX G</div>
 						<div class="subTitle">Raise your Game. Play with Style.</div>
@@ -292,7 +305,7 @@
 				<div class="rog-0">
 					<div class="content">
 						<div class="img">
-							<a href="#"><img src="./img/lightbox/img1.jpg" /></a>
+							<a href="https://youtu.be/XSGBVzeBUbk"><img src="./img/lightbox/img1.jpg" /></a>
 						</div>
 						<div class="title">ROG Zephyrus G14</div>
 						<div class="subTitle">#MakeYourMove</div>
