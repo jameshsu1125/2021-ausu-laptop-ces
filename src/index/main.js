@@ -70,11 +70,16 @@ export default class index extends React.Component {
 	}
 
 	enter_end() {
-		this.setState({ enter: false, content: true, menu: this.props.data.menu });
-		Events.init(this.refs.main, this.refs.content.refs.main, this.addExtra.bind(this), this.get_extra.bind(this));
+		this.setState({ enter: false, menu: this.props.data.menu }, () => {
+			Events.init(this.refs.main, this.refs.content.refs.main, this.addExtra.bind(this), this.get_extra.bind(this));
 
-		this.resize();
-		$(window).resize(() => this.resize());
+			this.resize();
+			$(window).resize(() => this.resize());
+		});
+	}
+
+	enter_ready() {
+		this.setState({ content: true });
 	}
 
 	append_lightbox() {
@@ -85,7 +90,7 @@ export default class index extends React.Component {
 	}
 
 	append_enter() {
-		if (this.state.enter) return <Enter data={this.props.data.enter} distory={this.enter_end.bind(this)} />;
+		if (this.state.enter) return <Enter ready={this.enter_ready.bind(this)} data={this.props.data.enter} distory={this.enter_end.bind(this)} />;
 	}
 
 	append_scrolling() {

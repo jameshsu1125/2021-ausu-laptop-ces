@@ -4,6 +4,7 @@ import Tips from './../tips/main';
 import Links from './../links/main';
 import Cursor from './cursor';
 import { UserAgent } from 'lesca';
+import { Client } from './../config';
 
 import $ from 'jquery';
 
@@ -11,6 +12,19 @@ export default class content extends React.Component {
 	constructor(props) {
 		super(props);
 		this.state = { background: this.props.data.background, cursor: UserAgent.get() == 'desktop' };
+	}
+
+	componentDidMount() {
+		this.resize = () => {
+			let imgw = Client.widht,
+				imgh = Client.height,
+				vh = window.innerHeight,
+				rh = vh / imgh,
+				vw = imgw * rh;
+			$(this.refs.main).css('padding-right', vw + 'px');
+		};
+		this.resize();
+		window.addEventListener('resize', this.resize);
 	}
 
 	get_width_fit() {

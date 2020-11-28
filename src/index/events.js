@@ -180,7 +180,7 @@ module.exports = {
 		if (window.innerWidth > cw) px = (window.innerWidth - cw) * 0.5;
 
 		background.css({
-			left: px + 'px',
+			left: Math.round(px) + 'px',
 		});
 	},
 	resize() {

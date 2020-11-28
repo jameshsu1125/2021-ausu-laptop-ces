@@ -1,10 +1,11 @@
 @color: #f50504;
-@top: 33.9%, 55%, 26%, 34%, 26%, 70%, 42%, 78%;
-@left: 7.5%, 21%, 33%, 49%, 57%, 79%, 87%, 90.6%;
-@offset_x: -556%, -454%, -498%, -450%, -484%, -1010%, -850%, -650%;
-@offset_w: 738%, 593%, 590%, 580%, 850%, 1060%, 960%, 770%;
-@offset_h: 555%, 768%, 600%, 492%, 1050%, 920%, 812%, 790%;
-@offset_y: 51%, 56%, 0%, 0%, 0%, 0%, 0%, -60%;
+@top: 33.9%, 56%, 23.4%, 33%, 23.3%, 71.3%, 41.4%, 80.8%;
+@left: 9.4%, 22%, 33%, 49%, 60%, 77%, 85.2%, 89.3%;
+
+@offset_x: -506, -396, -408, -410, -713.3%, -920%, -850, -640%;
+@offset_y: -9, 78, 17%, 44%, 40%, 100%, 40%, -80%;
+@offset_w: 668, 543, 590, 540, 850, 1060, 960, 690%;
+@offset_h: 555, 768, 640, 472, 1160, 920, 852%, 790;
 
 @names: g14, g15, strixscar, strixg, ga35, flow13, se15, xg;
 
@@ -31,10 +32,10 @@
 
 		& > div:nth-child(1) {
 			position: absolute;
-			width: extract((@offset_w), @l);
-			height: extract((@offset_h), @l);
-			left: extract((@offset_x), @l);
-			top: extract((@offset_y), @l);
+			width: extract((@offset_w), @l) * 1%;
+			height: extract((@offset_h), @l) * 1%;
+			left: extract((@offset_x), @l) * 1%;
+			top: extract((@offset_y), @l) * 1%;
 			cursor: pointer;
 			//background-color: rgba(255, 255, 0, 0.5); //debug
 		}

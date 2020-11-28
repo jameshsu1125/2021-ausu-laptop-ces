@@ -13,6 +13,7 @@ export default class menu extends React.Component {
 			o: 0,
 			is: true,
 			time: 200,
+			delay: true,
 			init() {
 				this.c = $(root.refs.ctx);
 				this.btn = $(root.refs.close);
@@ -22,13 +23,19 @@ export default class menu extends React.Component {
 				return window.innerWidth <= 731;
 			},
 			switch() {
+				if (!this.delay) return;
+				this.delay = false;
 				if (this.is) this.open();
 				else this.close();
 				this.is = this.is ? false : true;
+
+				setTimeout(() => {
+					this.delay = true;
+				}, 500);
 			},
 			open() {
 				this.c.css('display', 'flex');
-				this.ham.css('opacity', 0);
+				this.ham.css('display', 'none');
 				$(this).animate(
 					{ o: 1 },
 					{
@@ -40,7 +47,6 @@ export default class menu extends React.Component {
 				);
 			},
 			close() {
-				this.ham.css('opacity', 1);
 				$(this).animate(
 					{ o: 0 },
 					{
@@ -49,6 +55,7 @@ export default class menu extends React.Component {
 						complete: () => {
 							this.tran();
 							this.c.removeAttr('style');
+							this.ham.css('display', 'block');
 						},
 						easing: 'swing',
 					}
@@ -62,7 +69,7 @@ export default class menu extends React.Component {
 			reset() {
 				this.is = true;
 				this.c.removeAttr('style');
-				this.ham.css('opacity', 1);
+				this.ham.removeAttr('style');
 			},
 		};
 	}
@@ -74,9 +81,8 @@ export default class menu extends React.Component {
 			this.tr.switch();
 		});
 
-		TouchEvent.add('.menu-close-container', () => {
+		TouchEvent.add('.menu-close', () => {
 			this.tr.switch();
-			console.log('a');
 		});
 
 		this.resize();

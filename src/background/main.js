@@ -37,7 +37,7 @@ export default class background extends React.Component {
 		if (this.state.animate_screen_7) return <Screen_07 />;
 	}
 	append_screen_08() {
-		if (this.state.animate_screen_08) return <Screen_08 />;
+		if (this.state.animate_screen_8) return <Screen_08 />;
 	}
 
 	render() {

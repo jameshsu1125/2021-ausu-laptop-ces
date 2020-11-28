@@ -6,11 +6,6 @@ import Link from './link';
 export default class main extends React.Component {
 	constructor(props) {
 		super(props);
-		console.log(this.props.data);
-	}
-
-	componentDidMount() {
-		//script
 	}
 
 	append() {
