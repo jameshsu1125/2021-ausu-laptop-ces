@@ -59,8 +59,8 @@ export default class lightbox extends React.Component {
 			window: {
 				s: 1,
 				o: 0,
-				top: 500,
-				time: 0,
+				top: 0,
+				time: 500,
 				init() {
 					this.c = $(root.refs.window);
 					this.reszie();
@@ -88,9 +88,8 @@ export default class lightbox extends React.Component {
 							step: () => this.tran(),
 							complete: () => {
 								this.tran();
-								this.evt();
 							},
-							easing: 'easeInBack',
+							easing: 'easeOutQuart',
 						}
 					);
 				},
@@ -148,7 +147,7 @@ export default class lightbox extends React.Component {
 						'-o-transform': `scale(${this.s})`,
 						'-ms-transform': `scale(${this.s})`,
 						opacity: this.o,
-						'margin-top': Math.round(this.top) + 'px',
+						//'margin-top': Math.round(this.top) + 'px',
 					});
 				},
 				reszie() {
