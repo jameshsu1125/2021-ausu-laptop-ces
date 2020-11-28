@@ -131,7 +131,8 @@ export default class lightbox extends React.Component {
 					});
 
 					TouchEvent.add('.lightbox-see', () => {
-						window.open(root.data['see-more'][0].url);
+						if (root.data['see-more'][0].url.indexOf('#') >= 0) window.location.href = root.data['see-more'][0].url;
+						else window.open(root.data['see-more'][0].url);
 					});
 
 					TouchEvent.add('.lightbox-buy', () => {
@@ -147,7 +148,7 @@ export default class lightbox extends React.Component {
 						'-o-transform': `scale(${this.s})`,
 						'-ms-transform': `scale(${this.s})`,
 						opacity: this.o,
-						//'margin-top': Math.round(this.top) + 'px',
+						'margin-top': Math.round(this.top) + 'px',
 					});
 				},
 				reszie() {
@@ -219,6 +220,7 @@ export default class lightbox extends React.Component {
 	componentWillUnmount() {
 		TouchEvent.remove('.lightbox-bg');
 		TouchEvent.remove('.lightbox-close');
+		TouchEvent.remove('.lightbox-see');
 	}
 
 	componentDidMount() {

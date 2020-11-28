@@ -11,8 +11,10 @@ export default class content extends React.Component {
 	componentDidMount() {
 		this.img_init();
 		//this.refs.img.style.background = `rgba(0, 0, 0, 0) url('${this.props.data.content.img}') no-repeat scroll center center / cover`;
-		TouchEvent.add('.extra-see', () => {
-			window.open(this.props.data['see-more'][0].url);
+		TouchEvent.add('.extra-see' + this.props.index, () => {
+			let u = this.props.data['see-more'][0].url;
+			if (u.indexOf('#') >= 0) window.location.href = u;
+			else window.open(u);
 		});
 
 		TouchEvent.add('.extra-buy_' + this.props.index, () => {
@@ -73,7 +75,7 @@ export default class content extends React.Component {
 							<ul>{this.append_list()}</ul>
 						</div>
 						<div className='buttons'>
-							<div className='extra-see'>
+							<div className={'extra-see' + this.props.index}>
 								{this.props.data['see-more'][0].name || 'See More'}
 								<div></div>
 							</div>
