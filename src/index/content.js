@@ -16,8 +16,8 @@ export default class content extends React.Component {
 
 	componentDidMount() {
 		this.resize = () => {
-			let imgw = Client.widht,
-				imgh = Client.height,
+			let imgw = Client.desktop.widht,
+				imgh = Client.desktop.height,
 				vh = window.innerHeight,
 				rh = vh / imgh,
 				vw = imgw * rh;

@@ -9,13 +9,13 @@ export default class enter extends React.Component {
 	constructor(props) {
 		super(props);
 		this.state = { player: false, loading: false };
-		this.video_url = UserAgent.get() === 'mobile' ? require('./video/20201127_CES_Intro_Video_Test_1Mbps.mp4') : require('./video/20201127_CES_Intro_Video_Test_10Mbps.mp4');
+		this.video_url = UserAgent.get() === 'mobile' ? require('./video/20201130_CES_Intro_Video_Mobile_Test.mp4') : require('./video/20201127_CES_Intro_Video_Test_10Mbps.mp4');
 	}
 
 	componentDidMount() {
 		this.resize = () => {
-			let imgw = Client.widht,
-				imgh = Client.height,
+			let imgw = Client[UserAgent.get()].widht,
+				imgh = Client[UserAgent.get()].height,
 				vh = window.innerHeight,
 				rh = vh / imgh,
 				vw = imgw * rh;
