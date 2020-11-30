@@ -3,7 +3,7 @@ const $ = require('jquery');
 
 let press = false,
 	click_target = 'none',
-	page_end = true,
+	//page_end = true,
 	barPress = false,
 	is_scroll_background = true;
 
@@ -218,31 +218,30 @@ module.exports = {
 			document.addEventListener('mousemove', (e) => this.move(e));
 			document.addEventListener('mouseup', (e) => this.up(e));
 		}
-		$(window).scroll(function () {
-			//if ($(window).scrollTop() + $(window).height() == $(document).height()) page_end = true;
-			//else page_end = false;
-			page_end = true;
-		});
+		// $(window).scroll(function () {
+		// 	if ($(window).scrollTop() + $(window).height() == $(document).height()) page_end = true;
+		// 	else page_end = false;
+		// });
 		require('mouse-wheel')((dx, dy, dz, e) => this.wheel(dx, dy, dz, e));
 	},
 	wheel(dx, dy, dz, e) {
 		// Extra content event handler
 
-		if (page_end && dy > 0) {
+		if (/*page_end && */ dy > 0) {
 			extra_dy_force += dy;
 
 			// reset force
 			clearTimeout(extra_reset_timeout);
 			extra_reset_timeout = setTimeout(() => {
 				extra_dy_force = 0;
-				extra_content_pushed = false;
+				//extra_content_pushed = false;
 			}, 30);
 
 			// force max to turn on
 			//console.log(extra_dy_force, extra_dy_force_max);
 			if (extra_dy_force > extra_dy_force_max) {
-				if (extra_content_pushed) return;
-				extra_content_pushed = true;
+				//if (extra_content_pushed) return;
+				//extra_content_pushed = true;
 				call_extra_fn();
 			}
 		}
