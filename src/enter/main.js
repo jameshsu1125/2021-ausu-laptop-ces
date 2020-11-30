@@ -70,7 +70,7 @@ export default class enter extends React.Component {
 					onend={this.onend.bind(this)}
 					width={this.w}
 					height={this.h}
-					url={{ mp4: require('./video/20201127_CES_Intro_Video_Test_1Mbps.mp4') }}
+					url={{ mp4: require('./video/20201127_CES_Intro_Video_Test_10Mbps.mp4') }}
 					onupdate={this.update.bind(this)}
 				/>
 			);
