@@ -52,7 +52,7 @@ module.exports = {
 		get_extra_ref = fn2;
 
 		let w = background.width() || parseInt(background.css('padding-right'));
-		if (UserAgent.get() === 'mobile') content_x = window.innerWidth - w + w * 0.1;
+		if (UserAgent.get() === 'mobile') content_x = window.innerWidth - w + w * 0.14;
 		else content_x = (window.innerWidth - w) * 0.5;
 
 		this.move_background();

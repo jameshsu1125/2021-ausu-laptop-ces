@@ -35,6 +35,12 @@ export default class enter extends React.Component {
 			this.resize();
 			window.addEventListener('resize', this.resize);
 		});
+		// ? skip video for debug
+		if (skip_enter) {
+			setTimeout(() => {
+				this.props.distory();
+			}, 500);
+		}
 	}
 
 	componentWillUnmount() {
@@ -48,12 +54,6 @@ export default class enter extends React.Component {
 
 	ready() {
 		this.props.ready();
-		// ? skip video for debug
-		if (skip_enter) {
-			setTimeout(() => {
-				this.props.distory();
-			}, 500);
-		}
 	}
 
 	update(e, t, s) {

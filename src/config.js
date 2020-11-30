@@ -1,5 +1,5 @@
 module.exports = {
-	skip_enter: false,
+	skip_enter: true,
 	Client: {
 		desktop: {
 			widht: 2560,
