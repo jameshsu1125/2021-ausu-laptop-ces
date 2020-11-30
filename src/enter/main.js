@@ -4,11 +4,12 @@ import './fonts/Xolonium/stylesheet.css';
 import Player from 'lesca-react-video-playsinline';
 import { skip_enter, Client } from './../config';
 import $ from 'jquery';
-import { Loading } from 'lesca';
+import { Loading, UserAgent } from 'lesca';
 export default class enter extends React.Component {
 	constructor(props) {
 		super(props);
-		this.state = { player: false, loading: true };
+		this.state = { player: false, loading: false };
+		this.video_url = UserAgent.get() === 'mobile' ? require('./video/20201127_CES_Intro_Video_Test_1Mbps.mp4') : require('./video/20201127_CES_Intro_Video_Test_10Mbps.mp4');
 	}
 
 	componentDidMount() {
@@ -26,6 +27,7 @@ export default class enter extends React.Component {
 				left: x + 'px',
 				'padding-right': vw + 'px',
 			});
+
 			if (this.refs.player) this.refs.player.setSize(this.w, this.h);
 		};
 		this.resize();
@@ -70,7 +72,7 @@ export default class enter extends React.Component {
 					onend={this.onend.bind(this)}
 					width={this.w}
 					height={this.h}
-					url={{ mp4: require('./video/20201127_CES_Intro_Video_Test_10Mbps.mp4') }}
+					url={{ mp4: this.video_url }}
 					onupdate={this.update.bind(this)}
 				/>
 			);

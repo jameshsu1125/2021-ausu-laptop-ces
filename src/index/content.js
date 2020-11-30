@@ -41,7 +41,7 @@ export default class content extends React.Component {
 	}
 
 	append_background() {
-		if (this.state.background) return <Background data={this.props.data.background} />;
+		if (this.state.background) return <Background ref='background' data={this.props.data.background} />;
 	}
 
 	append_tips() {

@@ -9,10 +9,45 @@ import Screen_06 from './screen_06';
 import Screen_07 from './screen_07';
 import Screen_08 from './screen_08';
 
+import $ from 'jquery';
+
 export default class background extends React.Component {
 	constructor(props) {
 		super(props);
 		this.state = this.props.data;
+		const root = this;
+		this.tr = {
+			o: 0,
+			time: 500,
+			init() {
+				this.c = $(root.refs.main);
+				this.tran();
+			},
+			in() {
+				$(this).animate(
+					{ o: 1 },
+					{
+						duration: this.time,
+						step: () => this.tran(),
+						complete: () => this.tran(),
+						easing: 'easeOutQuart',
+					}
+				);
+			},
+			tran() {
+				this.c.css({
+					opacity: this.o,
+				});
+			},
+		};
+	}
+
+	in() {
+		this.tr.in();
+	}
+
+	componentDidMount() {
+		this.tr.init();
 	}
 
 	append_screen_01() {

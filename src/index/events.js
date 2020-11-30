@@ -161,7 +161,7 @@ module.exports = {
 
 			if (y > 0) y = 0;
 			else if (y < totol * -1) y = totol * -1;
-			container.css('margin-top', y + 'px');
+			container.css('margin-top', Math.round(y) + 'px');
 
 			//use y set v to bar
 			let p = (y / totol) * -1;

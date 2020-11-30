@@ -70,6 +70,7 @@ export default class index extends React.Component {
 	}
 
 	enter_end() {
+		this.refs.content.refs.background.in();
 		this.setState({ enter: false, menu: this.props.data.menu }, () => {
 			Events.init(this.refs.main, this.refs.content.refs.main, this.addExtra.bind(this), this.get_extra.bind(this));
 
