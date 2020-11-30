@@ -219,8 +219,9 @@ module.exports = {
 			document.addEventListener('mouseup', (e) => this.up(e));
 		}
 		$(window).scroll(function () {
-			if ($(window).scrollTop() + $(window).height() == $(document).height()) page_end = true;
-			else page_end = false;
+			//if ($(window).scrollTop() + $(window).height() == $(document).height()) page_end = true;
+			//else page_end = false;
+			page_end = true;
 		});
 		require('mouse-wheel')((dx, dy, dz, e) => this.wheel(dx, dy, dz, e));
 	},
