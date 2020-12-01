@@ -7,7 +7,7 @@ $ [sudo] npm i webpack webpack-cli webpack-dev-server node-pre-gyp -g
 $ npm i
 ```
 
-## Test project
+## test project
 
 ```sh
 $ npm start
