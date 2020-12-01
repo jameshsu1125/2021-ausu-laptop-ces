@@ -2,6 +2,8 @@ import React from 'react';
 import Buy from './buy';
 import ReactHtmlParser from 'react-html-parser';
 
+import $ from 'jquery';
+
 export default class content extends React.Component {
 	constructor(props) {
 		super(props);
@@ -54,7 +56,7 @@ export default class content extends React.Component {
 
 	append_buy() {
 		if (this.state.buy && this.props.data['buy-now'].length > 0)
-			return <Buy index={this.props.index} isLast={this.props.index == this.props.data['buy-now'].length} distory={this.distory.bind(this)} data={this.props.data['buy-now']} />;
+			return <Buy index={this.props.index} isLast={this.props.index + 1 == this.props.len} distory={this.distory.bind(this)} data={this.props.data['buy-now']} />;
 	}
 
 	render() {

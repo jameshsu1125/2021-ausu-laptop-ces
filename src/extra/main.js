@@ -171,7 +171,7 @@ export default class extra extends React.Component {
 
 	append_contents() {
 		if (this.state.content) {
-			return this.state.content.map((i, index) => <Content data={i} index={index} key={index} add_youtube={this.props.add_youtube} add_buy={this.addBuyNow.bind(this)} />);
+			return this.state.content.map((i, index) => <Content data={i} len={this.state.content.length} index={index} key={index} add_youtube={this.props.add_youtube} add_buy={this.addBuyNow.bind(this)} />);
 		}
 	}
 
