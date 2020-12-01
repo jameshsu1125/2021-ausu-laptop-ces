@@ -11,6 +11,7 @@ module.exports = {
 		},
 	},
 	Require(url) {
-		return location.hostname.indexOf('asus') < 0 ? url : 'https://dlcdnwebimgs.asus.com/files/media/6570DD19-B43C-4496-9A24-53CBFB320D9B/' + url;
+		let file_station_url = 'https://dlcdnwebimgs.asus.com/files/media/6570DD19-B43C-4496-9A24-53CBFB320D9B/';
+		return location.hostname.indexOf('asus') < 0 ? url : file_station_url + url;
 	},
 };
