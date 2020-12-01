@@ -98,7 +98,7 @@ The file path generator use require method that need to change relative path to 
 
 ```javascript
 let relative_path = require('./img/background.jpg'),
-	absolute_path = require('./config.js').Require(relative_path);
+    absolute_path = require('./config.js').Require(relative_path);
 ```
 
 ## css background-image url
