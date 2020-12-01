@@ -3,7 +3,7 @@
 @mediumblu: #1e272d;
 .main {
 	.menu {
-		position: fixed;
+		position: absolute;
 		left: 0;
 		bottom: 0;
 		width: 320px;
@@ -163,7 +163,7 @@
 				& > div:nth-child(3) {
 					text-indent: 20px;
 					font-family: 'Xolonium', monospace, Helvetica, sans-serif;
-					font-size: 1.4rem;
+					font-size: 20px;
 				}
 
 				& > div:nth-child(4) {
@@ -187,8 +187,8 @@
 @media only screen and (max-width: 731px) {
 	.main {
 		.menu {
-			position: fixed;
-			bottom: 40px;
+			position: absolute;
+
 			width: 100%;
 			height: auto;
 			padding: 0% 5%;
@@ -206,6 +206,7 @@
 				opacity: 0;
 				display: none;
 				padding: 10px 10px 10px 10px;
+				bottom: 40px;
 
 				.menu-close {
 					display: block;
@@ -218,7 +219,7 @@
 					background-color: #000;
 
 					& > div:nth-child(3) {
-						font-size: 2.4rem;
+						font-size: 2.4 * 18px;
 						font-weight: bolder;
 						text-indent: 50px;
 					}

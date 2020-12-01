@@ -31,6 +31,13 @@ export default class index extends React.Component {
 
 	componentDidMount() {
 		$('.index').css('display', 'block');
+		this.resize = () => {
+			$(this.refs.main).css({
+				height: window.innerHeight - 120 + 'px',
+			});
+		};
+		this.resize();
+		$(window).resize(() => this.resize());
 	}
 
 	get_extra() {

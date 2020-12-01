@@ -18,7 +18,7 @@ export default class content extends React.Component {
 		this.resize = () => {
 			let imgw = Client.desktop.widht,
 				imgh = Client.desktop.height,
-				vh = window.innerHeight,
+				vh = window.innerHeight - 120,
 				rh = vh / imgh,
 				vw = imgw * rh;
 			$(this.refs.main).css('padding-right', vw + 'px');

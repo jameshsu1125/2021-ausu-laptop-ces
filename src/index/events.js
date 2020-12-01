@@ -28,12 +28,14 @@ let bar_y, container_y;
 
 let isPressExtra = (e) => {
 		let parent = e.target.parentElement;
-		while (parent.className != 'main') {
-			if (parent) {
-				if (parent.className == 'extra-container') {
-					return true;
+		if (parent) {
+			while (parent.className != 'main') {
+				if (parent) {
+					if (parent.className == 'extra-container') {
+						return true;
+					}
+					parent = parent.parentElement;
 				}
-				parent = parent.parentElement;
 			}
 		}
 		return false;
@@ -51,7 +53,9 @@ module.exports = {
 		call_extra_fn = fn1;
 		get_extra_ref = fn2;
 
-		let w = background.width() || parseInt(background.css('padding-right'));
+		let w = background.width();
+		if (w <= 0) w = parseInt(background.css('padding-right'));
+
 		if (UserAgent.get() === 'mobile') content_x = window.innerWidth - w + w * 0.14;
 		else content_x = (window.innerWidth - w) * 0.5;
 
@@ -170,9 +174,11 @@ module.exports = {
 	},
 	move_background(e) {
 		let px = content_x + dx,
-			cw = background.width() || parseInt(background.css('padding-right')),
-			max = 0,
-			min = window.innerWidth - cw;
+			cw = background.width(),
+			max = 0;
+
+		if (cw <= 0) cw = parseInt(background.css('padding-right'));
+		let min = window.innerWidth - cw;
 
 		if (px > max) px = 0;
 		else if (px < min) px = min;

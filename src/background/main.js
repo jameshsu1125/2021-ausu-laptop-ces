@@ -18,21 +18,23 @@ export default class background extends React.Component {
 		const root = this;
 		this.tr = {
 			o: 0,
-			time: 500,
+			time: 1,
 			init() {
 				this.c = $(root.refs.main);
 				this.tran();
 			},
 			in() {
-				$(this).animate(
-					{ o: 1 },
-					{
-						duration: this.time,
-						step: () => this.tran(),
-						complete: () => this.tran(),
-						easing: 'easeOutQuart',
-					}
-				);
+				// $(this).animate(
+				// 	{ o: 1 },
+				// 	{
+				// 		duration: this.time,
+				// 		step: () => this.tran(),
+				// 		complete: () => this.tran(),
+				// 		easing: 'easeOutQuart',
+				// 	}
+				// );
+				this.o = 1;
+				this.tran();
 			},
 			tran() {
 				this.c.css({

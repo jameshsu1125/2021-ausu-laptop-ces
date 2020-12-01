@@ -16,6 +16,7 @@ export default class lightbox extends React.Component {
 		const root = this;
 
 		this.data = this.props.data['tips-' + this.props.index];
+		console.log(this.data);
 
 		this.state = { buy: false };
 
@@ -96,7 +97,7 @@ export default class lightbox extends React.Component {
 				upper() {
 					if (window.innerWidth <= 731) return;
 					$(this).animate(
-						{ top: -142 },
+						{ top: -175 },
 						{
 							duration: 300,
 							step: () => this.tran(),
