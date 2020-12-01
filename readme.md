@@ -21,7 +21,7 @@ $ npm start
 $ npm run op
 ```
 
-## Deploy
+## deploy on asus modularization server
 
 ```
 dist
@@ -34,7 +34,7 @@ dist
  ┗ index.html     // Copy <div class='index'>...</div> into html editor
 ```
 
-## DOM to json
+## dom to json
 
 index dom convert to json pass to react
 
