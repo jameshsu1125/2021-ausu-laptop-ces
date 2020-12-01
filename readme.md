@@ -1,72 +1,106 @@
-[![dev by JamesHsu](https://img.shields.io/badge/Dev%20by-Jameshsu1125-green)](https://github.com/jameshsu1125/) [![made in Taiwan](https://img.shields.io/badge/Made%20in-Taiwan-orange)](https://github.com/jameshsu1125/) [![Design by realclear](https://img.shields.io/badge/Design%20by-瑞采數位科技-yellow)](http://realclear.com.tw/)
+[![dev by JamesHsu](https://img.shields.io/badge/Dev%20by-Jameshsu1125-green)](https://github.com/jameshsu1125/) [![made in Taiwan](https://img.shields.io/badge/Made%20in-Taiwan-orange)](https://github.com/jameshsu1125/) [![Design by realclear](https://img.shields.io/badge/Design%20by-瑞采數位科技-yellow)](http://realclear.com.tw/) [![dev by JamesHsu](https://img.shields.io/badge/Dev%20by-Jameshsu1125-green)](https://github.com/jameshsu1125/) [![made in Taiwan](https://img.shields.io/badge/Made%20in-Taiwan-orange)](https://github.com/jameshsu1125/)
 
-### Demo
+## pre-install
 
-https://jameshsu1125.github.io/ASUS-CES-2021/
+```sh
+$ [sudo] npm i webpack webpack-cli webpack-dev-server node-pre-gyp -g
+$ npm i
+```
 
-## Deploy package ./dist
+## Test project
+
+```sh
+$ npm start
+```
+
+#### test project on http://localhost:8080
+
+## output to /dist
+
+```sh
+$ npm run op
+```
+
+## Deploy
 
 ```
 dist
- ┣ css                             // CDN / Local server
+ ┣ css            // upload to dlcdnwebimgs
  ┃ ┗ style.css
- ┣ img                             // Local server
+ ┣ img            // upload to dlcdnwebimgs
  ┃ ┗      .
- ┣ js                              // CDN server
+ ┣ js             // upload to dlcdnwebimgs
  ┃ ┗ index.min.js
- ┗ index.html                      // Local server
+ ┗ index.html     // Copy <div class='index'>...</div> into html editor
 ```
 
-## localization Usage [index.html](https://github.com/jameshsu1125/ASUS-CES-2021/blob/main/dist/index.html)
+## DOM to json
 
-### (1) download [package](https://github.com/jameshsu1125/ASUS-CES-2021/archive/main.zip)
-
-### (2) edit dist/index.html
+index dom convert to json pass to react
 
 ```html
-<!-- deploy css file to server and change url -->
-<link rel="stylesheet" href="./css/index.css" />
-
-<div class="main">
-	<div class="index">
-		<!--
-		tips :  The clickable red Arrow of button on Monitors with lightbox infomation
-				tips-xxx => className for key of JSON. (non-repeating class name for every item)
-				img => lightbox image url
-				title => lightbox first row title
-				subTitle => lightbox second row sub-title
-				list => lightbox ul > li items. (keep <p> tag stay.)
-				see-more => button url
-				buy-now => button label and url (max length 6)
-		-->
-		<div class="tips-g14">
-			<div class="content">
-				<div class="img">./img/lightbox/img0.jpg</div>
-				<div class="title">ROG Zephyrus g15 g16 g15 <sub>a</sub><sup>b</sup></div>
-				<div class="subTitle">Power Up. Do More.</div>
-				<div class="list">
-					<p>Up to NVIDIA® GeForce RTX™ 3090 GPU</p>
-					<p>Up to 16-core AMD® Ryzen™ R9-3950X CPU</p>
-					<p>Humanized eSports-friendly design</p>
-					<p>Multi air chamber boost cooling</p>
-				</div>
-			</div>
-			<div class="see-more">
-				<a href="#See More">See More</a>
-			</div>
-			<div class="buy-now">
-				<a href="#liverpool">www.liverpool.com</a>
-				<a href="#momoshop">momoshop</a>
-				<a href="#pchome">pchome</a>
-				<a href="#Costco">Costco</a>
-				<a href="#pchome">pchome</a>
-				<a href="#Costco">Costco</a>
-			</div>
-		</div>
+<!-- 
+   (1) <div class="title">Lorem Ipsum is simply</div>   // => { title:"Lorem Ipsum is simply" }
+   (2) <div class="img">                                // => { img:'./img/1/png' }
+         <img src='./img/1/png' />
+      </div>
+   (3) <div class="img_link">  // => { img_link:[ { url:'https://www.asus.com', img:'./update/img0.jpg' } ]}
+         <a href="https://www.asus.com">
+            <img src="./update/img0.jpg" />
+         </a>
+      </div>
+   (4) <div class='list'>  // => { list:[ 'Lorem Ipsum...', ..... ] }
+         <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
+         <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
+         <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
+         <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
+      </div>
+   (5) <div class="buy-now"> // => { "buy-now": [ { name:'www.liverpool.com', url:'#liverpool' } ], .... }
+         <a href="#liverpool">www.liverpool.com</a>
+         <a href="#momoshop">momoshop</a>
+         <a href="#pchome">pchome</a>
+         <a href="#Costco">Costco</a>
+         <a href="#pchome">pchome</a>
+         <a href="#Costco">Costco</a>
+      </div>
+-->
+<div class="index" style="display: none">
+	<div class="title">Lorem Ipsum is simply</div>
+	<div class="img">
+		<img src="./img/1/png" />
 	</div>
-	<!-- deploy js file to server and change url -->
-	<script src="./js/index.min.js"></script>
+	<div class="img_link">
+		<a href="https://www.asus.com">
+			<img src="./update/img0.jpg" />
+		</a>
+	</div>
+	<div class="list">
+		<p>Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
+		<p>Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
+		<p>Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
+		<p>Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
+	</div>
+	<div class="buy-now">
+		<a href="#liverpool">www.liverpool.com</a>
+		<a href="#momoshop">momoshop</a>
+		<a href="#pchome">pchome</a>
+		<a href="#Costco">Costco</a>
+		<a href="#pchome">pchome</a>
+		<a href="#Costco">Costco</a>
+	</div>
 </div>
+<script src="./js/index.min.js"></script>
 ```
 
-### (3) update files to server
+## require in jsx
+
+The file path generator use require method that need to change relative path to absolute path.
+
+```javascript
+let relative_path = require('./img/background.jpg'),
+	absolute_path = require('./config.js').Require(relative_path);
+```
+
+## css background-image url
+
+Change url use vscode editor [find] => [replace] after out put css file.
