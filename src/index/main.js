@@ -31,13 +31,7 @@ export default class index extends React.Component {
 
 	componentDidMount() {
 		$('.index').css('display', 'block');
-		this.resize = () => {
-			$(this.refs.main).css({
-				height: window.innerHeight - 120 + 'px',
-			});
-		};
 		this.resize();
-		$(window).resize(() => this.resize());
 	}
 
 	get_extra() {
@@ -50,6 +44,9 @@ export default class index extends React.Component {
 	}
 
 	resize() {
+		$(this.refs.main).css({
+			height: window.innerHeight - 120 + 'px',
+		});
 		if (!this.refs.content) return;
 		if (this.refs.content.get_width_fit()) this.setState({ scrolling: true });
 
@@ -78,6 +75,8 @@ export default class index extends React.Component {
 
 	enter_end() {
 		this.refs.content.refs.background.in();
+		this.refs.content.refs.tips.in();
+
 		this.setState({ enter: false, menu: this.props.data.menu }, () => {
 			Events.init(this.refs.main, this.refs.content.refs.main, this.addExtra.bind(this), this.get_extra.bind(this));
 

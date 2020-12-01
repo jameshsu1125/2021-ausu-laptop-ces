@@ -20,10 +20,6 @@ body a {
 	overflow-y: hidden;
 	left: 0;
 }
-.main sup,
-.main sub {
-	margin-top: 0px;
-}
 .main .content {
 	position: absolute;
 	top: 0px;
@@ -121,6 +117,7 @@ body a {
 	width: 100%;
 	height: 100%;
 	pointer-events: none;
+	opacity: 0;
 	display: inline;
 }
 .main .tips .tips-g14 {
@@ -719,6 +716,9 @@ body a {
 	-ms-flex-align: center;
 	align-items: center;
 }
+.main .lightbox .context .window .body .box sup {
+	top: 0px !important;
+}
 .main .lightbox .context .window .body .box > div {
 	width: 100%;
 	float: left;
@@ -837,6 +837,7 @@ body a {
 	color: #fff;
 }
 .main .lightbox .context .window .body .box .list ul {
+	list-style: disc !important;
 	font-family: Arial, Helvetica, sans-serif;
 	-webkit-padding-start: 20px;
 	padding-inline-start: 20px;
@@ -966,6 +967,7 @@ body a {
 		padding-inline-start: 40px;
 		-webkit-margin-after: 18px;
 		margin-block-end: 18px;
+		font-family: Arial, Helvetica, sans-serif;
 	}
 	.main .lightbox .context .window .body .box .list ul li {
 		font-size: 20px;
@@ -1552,6 +1554,9 @@ body a {
 	box-sizing: border-box;
 	text-align: left;
 }
+.main .extra .context .window .extra-body .extra-container .row .box .ctx sup {
+	top: 0px !important;
+}
 .main .extra .context .window .extra-body .extra-container .row .box .ctx .buttons {
 	float: left;
 	height: 56px;
@@ -1664,6 +1669,7 @@ body a {
 	color: #fff;
 }
 .main .extra .context .window .extra-body .extra-container .row .box .ctx .list ul {
+	list-style: disc !important;
 	-webkit-padding-start: 20px;
 	padding-inline-start: 20px;
 	-webkit-margin-before: 0;

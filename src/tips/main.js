@@ -15,7 +15,15 @@ export default class tips extends React.Component {
 		return op;
 	}
 
+	in() {
+		this.refs.main.style.opacity = 1;
+	}
+
 	render() {
-		return <div className='tips'>{this.append_tip()}</div>;
+		return (
+			<div ref='main' className='tips'>
+				{this.append_tip()}
+			</div>
+		);
 	}
 }

@@ -28,13 +28,17 @@ let bar_y, container_y;
 
 let isPressExtra = (e) => {
 		let parent = e.target.parentElement;
+
 		if (parent) {
-			while (parent.className != 'main') {
-				if (parent) {
-					if (parent.className == 'extra-container') {
-						return true;
+			if (parent.className) {
+				while (parent.className != 'main') {
+					if (parent) {
+						if (parent.className === 'extra-container') {
+							return true;
+						}
+						if (parent.className === '') return false;
+						parent = parent.parentElement;
 					}
-					parent = parent.parentElement;
 				}
 			}
 		}

@@ -45,7 +45,8 @@ export default class content extends React.Component {
 	}
 
 	append_tips() {
-		if (this.props.data.tips) return <Tips call_lightbox={this.props.call_lightbox} data={this.props.data.tips} show_cursor={this.show_cursor.bind(this)} hide_cursor={this.hide_cursor.bind(this)} />;
+		if (this.props.data.tips)
+			return <Tips ref='tips' call_lightbox={this.props.call_lightbox} data={this.props.data.tips} show_cursor={this.show_cursor.bind(this)} hide_cursor={this.hide_cursor.bind(this)} />;
 	}
 
 	show_cursor() {
