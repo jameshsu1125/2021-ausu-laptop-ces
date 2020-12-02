@@ -45,7 +45,7 @@ export default class index extends React.Component {
 
 	resize() {
 		$(this.refs.main).css({
-			height: window.innerHeight - 120 + 'px',
+			height: window.innerHeight - 125 + 'px',
 		});
 		if (!this.refs.content) return;
 		if (this.refs.content.get_width_fit()) this.setState({ scrolling: true });

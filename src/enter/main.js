@@ -19,11 +19,11 @@ export default class enter extends React.Component {
 		this.resize = () => {
 			let imgw = Client[UserAgent.get()].widht,
 				imgh = Client[UserAgent.get()].height,
-				vh = window.innerHeight - 120,
+				vh = window.innerHeight - 125,
 				rh = vh / imgh,
 				vw = imgw * rh;
 			this.w = parseInt($(this.refs.main).css('padding-right'));
-			this.h = window.innerHeight - 120;
+			this.h = window.innerHeight - 125;
 			let x = (window.innerWidth - this.w) * 0.5;
 
 			$(this.refs.main).css({
