@@ -16,7 +16,6 @@ export default class lightbox extends React.Component {
 		const root = this;
 
 		this.data = this.props.data['tips-' + this.props.index];
-		console.log(this.data);
 
 		this.state = { buy: false };
 
@@ -161,6 +160,12 @@ export default class lightbox extends React.Component {
 					if (window.innerWidth <= 731) {
 						if (window.innerHeight > 1000) s = 1;
 						else s = window.innerHeight / h;
+					}
+
+					let sh = 723;
+					if (window.innerHeight - 125 < sh) {
+						let ss = (window.innerHeight - 125) / sh;
+						s = Math.min(s, ss);
 					}
 
 					this.s = s;

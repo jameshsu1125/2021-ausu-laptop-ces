@@ -102,6 +102,12 @@ export default class extra extends React.Component {
 						else s = window.innerHeight / h;
 					}
 
+					let sh = 723;
+					if (window.innerHeight - 125 < sh) {
+						let ss = (window.innerHeight - 125) / sh;
+						s = Math.min(s, ss);
+					}
+
 					this.s = s;
 					this.tran();
 				},
