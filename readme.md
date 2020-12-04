@@ -90,7 +90,7 @@ index dom convert to json pass to react
 	</div>
 </div>
 <script>
-// The Dom will re-append by Asus server. It have to load after html document loaded.
+// The Dom will re-append by server-side. It have to load after html document loaded.
  document.addEventListener('DOMContentLoaded', function () {
 	var s = document.createElement('script');
 	s.type = 'text/javascript';
