@@ -11,7 +11,10 @@ export default class enter extends React.Component {
 		super(props);
 		this.state = { player: false, loading: false };
 
-		this.video_url = UserAgent.get() === 'mobile' ? require('./video/20201130_CES_Intro_Video_Mobile_Test.mp4') : require('./video/20201127_CES_Intro_Video_Test_1Mbps.mp4');
+		this.video_url =
+			UserAgent.get() === 'mobile'
+				? require('./video/20201130_CES_Intro_Video_Mobile_Test.mp4')
+				: require('./video/20201127_CES_Intro_Video_Test_1Mbps.mp4');
 		this.video_url = Require(this.video_url);
 	}
 
@@ -19,11 +22,11 @@ export default class enter extends React.Component {
 		this.resize = () => {
 			let imgw = Client[UserAgent.get()].widht,
 				imgh = Client[UserAgent.get()].height,
-				vh = window.innerHeight - 125,
+				vh = window.innerHeight - require('./../config').asus_ui_height,
 				rh = vh / imgh,
 				vw = imgw * rh;
 			this.w = parseInt($(this.refs.main).css('padding-right'));
-			this.h = window.innerHeight - 125;
+			this.h = window.innerHeight - require('./../config').asus_ui_height;
 			let x = (window.innerWidth - this.w) * 0.5;
 
 			$(this.refs.main).css({

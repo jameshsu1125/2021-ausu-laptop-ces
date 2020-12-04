@@ -45,7 +45,7 @@ export default class index extends React.Component {
 
 	resize() {
 		$(this.refs.main).css({
-			height: window.innerHeight - 125 + 'px',
+			height: window.innerHeight - require('./../config').asus_ui_height + 'px',
 		});
 		if (!this.refs.content) return;
 		if (this.refs.content.get_width_fit()) this.setState({ scrolling: true });
@@ -62,7 +62,9 @@ export default class index extends React.Component {
 
 	append_content() {
 		if (this.state.content) {
-			return <Content ref='content' data={this.props.data} call_lightbox={this.call_lightbox.bind(this)} />;
+			return (
+				<Content ref='content' data={this.props.data} call_lightbox={this.call_lightbox.bind(this)} />
+			);
 		}
 	}
 
@@ -78,7 +80,12 @@ export default class index extends React.Component {
 		this.refs.content.refs.tips.in();
 
 		this.setState({ enter: false, menu: this.props.data.menu }, () => {
-			Events.init(this.refs.main, this.refs.content.refs.main, this.addExtra.bind(this), this.get_extra.bind(this));
+			Events.init(
+				this.refs.main,
+				this.refs.content.refs.main,
+				this.addExtra.bind(this),
+				this.get_extra.bind(this)
+			);
 
 			this.resize();
 			$(window).resize(() => this.resize());
@@ -92,12 +99,26 @@ export default class index extends React.Component {
 	append_lightbox() {
 		if (this.state.lightbox != false) {
 			Events.isFrezz(false);
-			return <Lightbox data={this.props.data.tips} index={this.state.lightbox} distory={this.distory.bind(this)} add_youtube={this.add_youtube.bind(this)} />;
+			return (
+				<Lightbox
+					data={this.props.data.tips}
+					index={this.state.lightbox}
+					distory={this.distory.bind(this)}
+					add_youtube={this.add_youtube.bind(this)}
+				/>
+			);
 		}
 	}
 
 	append_enter() {
-		if (this.state.enter) return <Enter ready={this.enter_ready.bind(this)} data={this.props.data.enter} distory={this.enter_end.bind(this)} />;
+		if (this.state.enter)
+			return (
+				<Enter
+					ready={this.enter_ready.bind(this)}
+					data={this.props.data.enter}
+					distory={this.enter_end.bind(this)}
+				/>
+			);
 	}
 
 	append_scrolling() {
@@ -109,7 +130,15 @@ export default class index extends React.Component {
 	}
 
 	append_extra() {
-		if (this.state.extra && this.state.more) return <Extra ref='extra' data={this.props.data.more} distory={this.distory.bind(this)} add_youtube={this.add_youtube.bind(this)} />;
+		if (this.state.extra && this.state.more)
+			return (
+				<Extra
+					ref='extra'
+					data={this.props.data.more}
+					distory={this.distory.bind(this)}
+					add_youtube={this.add_youtube.bind(this)}
+				/>
+			);
 	}
 
 	add_youtube(url) {
@@ -117,7 +146,8 @@ export default class index extends React.Component {
 	}
 
 	append_youtube() {
-		if (this.state.youtube) return <Youtube data={this.state.youtube} distory={this.distory.bind(this)} />;
+		if (this.state.youtube)
+			return <Youtube data={this.state.youtube} distory={this.distory.bind(this)} />;
 	}
 
 	render() {
