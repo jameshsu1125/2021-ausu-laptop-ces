@@ -704,7 +704,7 @@ body a {
 	-webkit-box-sizing: border-box;
 	box-sizing: border-box;
 	display: grid;
-	grid-template-columns: 50% 50%;
+	grid-template-columns: 45% 55%;
 }
 .main .lightbox .context .window .body .box {
 	position: relative;
@@ -909,7 +909,7 @@ body a {
 	-webkit-text-fill-color: transparent;
 }
 .main .lightbox .context .window .body .box .img {
-	width: 594px;
+	width: 540px;
 	height: 340px;
 	border: solid 1px #738088;
 }
