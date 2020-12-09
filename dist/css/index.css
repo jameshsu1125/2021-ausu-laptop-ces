@@ -27,6 +27,10 @@ body a {
 	height: 100%;
 	left: 0px;
 }
+.main ol li,
+.main ul li {
+	list-style: disc !important;
+}
 .page-content {
 	margin: 0px auto;
 }
@@ -55,7 +59,6 @@ body a {
 	position: absolute;
 	background-size: 100%;
 	pointer-events: none;
-	display: none;
 }
 @media only screen and (max-width: 1300px) {
 	.main .background {
@@ -70,13 +73,27 @@ body a {
 	height: 49.3%;
 	top: 1.4%;
 	left: 0%;
+	display: none;
 }
 .background .screen_02 {
-	background-image: url(https://dlcdnwebimgs.asus.com/files/media/6570DD19-B43C-4496-9A24-53CBFB320D9B/img/background/img/Screen_02_Export_00000.png);
-	width: 14%;
-	height: 25.5%;
-	top: 17.2%;
-	left: 25.4%;
+	position: relative;
+	width: 9.8%;
+	height: 18.2%;
+	top: 20.9%;
+	left: 27.5%;
+}
+.background .screen_02 > div {
+	position: absolute;
+	background-repeat: no-repeat;
+	top: 0;
+}
+.background .screen_02 > div:nth-child(2) {
+	width: 100%;
+	height: 100%;
+	background-image: url(https://dlcdnwebimgs.asus.com/files/media/6570DD19-B43C-4496-9A24-53CBFB320D9B/img/background/img/02.png);
+	background-size: 100% 14400%;
+	background-position: 0 0;
+	display: none;
 }
 .background .screen_03 {
 	background-image: url(https://dlcdnwebimgs.asus.com/files/media/6570DD19-B43C-4496-9A24-53CBFB320D9B/img/background/img/Screen_03_Export_00000.png);
@@ -84,6 +101,7 @@ body a {
 	height: 25.5%;
 	top: 25.3%;
 	left: 41%;
+	display: none;
 }
 .background .screen_04 {
 	background-image: url(https://dlcdnwebimgs.asus.com/files/media/6570DD19-B43C-4496-9A24-53CBFB320D9B/img/background/img/Screen_04_Export_00000.png);
@@ -91,6 +109,7 @@ body a {
 	height: 25.6%;
 	top: 51.9%;
 	left: 13.9%;
+	display: none;
 }
 .background .screen_05 {
 	background-image: url(https://dlcdnwebimgs.asus.com/files/media/6570DD19-B43C-4496-9A24-53CBFB320D9B/img/background/img/Screen_05_Export_00000.png);
@@ -98,6 +117,7 @@ body a {
 	height: 33.6%;
 	top: 64.8%;
 	left: 61.5%;
+	display: none;
 }
 .background .screen_06 {
 	background-image: url(https://dlcdnwebimgs.asus.com/files/media/6570DD19-B43C-4496-9A24-53CBFB320D9B/img/background/img/Screen_06_07_Export_00000.png);
@@ -105,6 +125,7 @@ body a {
 	height: 33.4%;
 	top: 33.3%;
 	left: 72%;
+	display: none;
 }
 .background .screen_07 {
 	background-image: url(https://dlcdnwebimgs.asus.com/files/media/6570DD19-B43C-4496-9A24-53CBFB320D9B/img/background/img/Screen_08_Export_00000.png);
@@ -112,6 +133,7 @@ body a {
 	height: 36.1%;
 	top: -0.1%;
 	left: 57.7%;
+	display: none;
 }
 .background .screen_08 {
 	background-image: url(https://dlcdnwebimgs.asus.com/files/media/6570DD19-B43C-4496-9A24-53CBFB320D9B/img/background/img/Screen_10_Export_00000.png);
@@ -119,6 +141,7 @@ body a {
 	height: 4.8%;
 	top: 49.3%;
 	left: 35.1%;
+	display: none;
 }
 .main .tips {
 	position: absolute;
@@ -130,7 +153,7 @@ body a {
 }
 .main .tips .tips-g14 {
 	top: 33.9%;
-	left: 7.6%;
+	left: 10.7%;
 }
 .main .tips .tips-g14 > div:nth-child(2) {
 	position: absolute;
@@ -155,7 +178,7 @@ body a {
 }
 .main .tips .tips-g15 {
 	top: 56%;
-	left: 21.1%;
+	left: 23.3%;
 }
 .main .tips .tips-g15 > div:nth-child(2) {
 	position: absolute;
@@ -173,14 +196,14 @@ body a {
 .main .tips .tips-g15 > div:nth-child(1) {
 	position: absolute;
 	width: 593%;
-	height: 768%;
+	height: 808%;
 	left: -466%;
-	top: 78%;
+	top: 47%;
 	cursor: pointer;
 }
 .main .tips .tips-strixscar {
 	top: 23.4%;
-	left: 32.2%;
+	left: 33.9%;
 }
 .main .tips .tips-strixscar > div:nth-child(2) {
 	position: absolute;
@@ -222,15 +245,15 @@ body a {
 }
 .main .tips .tips-strixg > div:nth-child(1) {
 	position: absolute;
-	width: 600%;
+	width: 540%;
 	height: 492%;
-	left: -450%;
+	left: -397%;
 	top: 44%;
 	cursor: pointer;
 }
 .main .tips .tips-ga35 {
 	top: 23.3%;
-	left: 60.7%;
+	left: 59.9%;
 }
 .main .tips .tips-ga35 > div:nth-child(2) {
 	position: absolute;
@@ -247,15 +270,15 @@ body a {
 }
 .main .tips .tips-ga35 > div:nth-child(1) {
 	position: absolute;
-	width: 850%;
+	width: 800%;
 	height: 1160%;
-	left: -776.5%;
+	left: -716.5%;
 	top: 40%;
 	cursor: pointer;
 }
 .main .tips .tips-flow13 {
 	top: 71.3%;
-	left: 78.5%;
+	left: 76.2%;
 }
 .main .tips .tips-flow13 > div:nth-child(2) {
 	position: absolute;
@@ -272,15 +295,15 @@ body a {
 }
 .main .tips .tips-flow13 > div:nth-child(1) {
 	position: absolute;
-	width: 1060%;
-	height: 920%;
-	left: -978%;
-	top: 100%;
+	width: 980%;
+	height: 1010%;
+	left: -928%;
+	top: -10%;
 	cursor: pointer;
 }
 .main .tips .tips-se15 {
 	top: 41.4%;
-	left: 86.7%;
+	left: 84.4%;
 }
 .main .tips .tips-se15 > div:nth-child(2) {
 	position: absolute;
@@ -305,7 +328,7 @@ body a {
 }
 .main .tips .tips-xg {
 	top: 80.8%;
-	left: 90.9%;
+	left: 88.1%;
 }
 .main .tips .tips-xg > div:nth-child(2) {
 	position: absolute;
@@ -350,7 +373,7 @@ body a {
 	width: 1.3%;
 	height: 10.1%;
 	top: 68.2%;
-	left: 15.6%;
+	left: 16.7%;
 }
 .main .links > div:nth-child(2) {
 	width: 6.6%;
@@ -2091,5 +2114,3 @@ body a {
 		height: 63vw;
 	}
 }
-
-/*# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoiLi9jc3MvaW5kZXguY3NzIiwic291cmNlcyI6W10sIm1hcHBpbmdzIjoiOzs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7OyIsInNvdXJjZVJvb3QiOiIifQ==*/

@@ -18,10 +18,12 @@ export default class content extends React.Component {
 		this.resize = () => {
 			let imgw = Client.desktop.widht,
 				imgh = Client.desktop.height,
-				vh = window.innerHeight - 120,
+				vh = window.innerHeight - require('./../config').asus_ui_height,
 				rh = vh / imgh,
 				vw = imgw * rh;
-			$(this.refs.main).css('padding-right', vw + 'px');
+
+			let pv = (vw / window.innerWidth) * 100;
+			$(this.refs.main).css('padding-right', pv + '%');
 		};
 		this.resize();
 		window.addEventListener('resize', this.resize);

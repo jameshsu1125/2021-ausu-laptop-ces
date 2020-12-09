@@ -14,7 +14,13 @@ import $ from 'jquery';
 export default class background extends React.Component {
 	constructor(props) {
 		super(props);
-		this.state = this.props.data;
+
+		let p = { ...this.props.data };
+		for (var i in p) {
+			p[i] = false;
+		}
+		this.state = p;
+
 		const root = this;
 		this.tr = {
 			o: 0,
@@ -24,15 +30,6 @@ export default class background extends React.Component {
 				this.tran();
 			},
 			in() {
-				// $(this).animate(
-				// 	{ o: 1 },
-				// 	{
-				// 		duration: this.time,
-				// 		step: () => this.tran(),
-				// 		complete: () => this.tran(),
-				// 		easing: 'easeOutQuart',
-				// 	}
-				// );
 				this.o = 1;
 				this.tran();
 			},
@@ -46,6 +43,7 @@ export default class background extends React.Component {
 
 	in() {
 		this.tr.in();
+		this.setState(this.props.data);
 	}
 
 	componentDidMount() {
