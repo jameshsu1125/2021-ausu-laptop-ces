@@ -94,18 +94,6 @@ index dom convert to json pass to react
  document.addEventListener('DOMContentLoaded', function () {
 	var s = document.createElement('script');
 	s.type = 'text/javascript';
-	if (s.readyState) {
-		s.onreadystatechange = function () {
-			if (s.readyState == 'loaded' || s.readyState == 'complete') {
-				s.onreadystatechange = null;
-				//script loaded
-			}
-		};
-	} else {
-		s.onload = function () {
-			//script loaded
-		};
-	}
 	s.src = 'https://dlcdnwebimgs.asus.com/files/media/xxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx/js/index.min.js';
 	document.getElementsByTagName('head')[0].appendChild(s);
 });
