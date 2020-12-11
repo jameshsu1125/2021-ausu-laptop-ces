@@ -1,3 +1,6 @@
+@import './../config.less';
+@path: 'tips';
+
 @color: #f50504;
 @top: 33.9, 56, 23.4, 33, 23.3, 71.3, 41.4, 80.8;
 @left: 10.7, 23.3, 33.9, 48.9, 59.9, 76.2, 84.4, 88.1;
@@ -22,12 +25,17 @@
 			height: 100%;
 			border: solid 1px @color;
 			border-radius: 3px;
-			background-image: url('./img/arr.png');
 			background-repeat: no-repeat;
 			background-position: center;
 			background-size: 75%;
 			color: @color;
 			pointer-events: none;
+
+			@img: '/img/arr.png';
+			background-image: url('.@{img}');
+			& when (@cdn = true) {
+				background-image: url('@{cdn_url}@{path}@{img}');
+			}
 		}
 
 		& > div:nth-child(1) {
@@ -37,7 +45,11 @@
 			left: extract((@offset_x), @l) * 1%;
 			top: extract((@offset_y), @l) * 1%;
 			cursor: pointer;
-			//background-color: rgba(255, 255, 0, 0.5); //debug
+			//! .debug;
+		}
+
+		.debug {
+			background-color: rgba(255, 255, 0, 0.5);
 		}
 	}
 	.loop(@n,(@l+1));

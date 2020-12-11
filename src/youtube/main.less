@@ -1,3 +1,6 @@
+@import './../config.less';
+@path: 'youtube';
+
 .main {
 	.youtube {
 		position: absolute;
@@ -49,11 +52,17 @@
 				position: absolute;
 				width: 100%;
 				height: 100%;
-				background-image: url('./../menu/img/close.svg');
+
 				background-repeat: no-repeat;
 				background-size: 80%;
 				background-position: center;
 				pointer-events: none;
+
+				@img: '/../menu/img/close.svg';
+				background-image: url('.@{img}');
+				& when (@cdn = true) {
+					background-image: url('@{cdn_url}@{path}@{img}');
+				}
 			}
 		}
 	}

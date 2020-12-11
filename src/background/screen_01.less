@@ -1,11 +1,15 @@
+@import './../config.less';
+@path: 'background';
+
 .background {
 	.screen_01 {
-		@img: './img/Screen_01_Export_00000.png';
-		background-image: url(@img);
 		width: 25.4%;
 		height: 49.3%;
 		top: 1.4%;
 		left: 0%;
 		display: none;
+
+		@img: '/img/Screen_01_Export_00000.png';
+		background-image: url('.@{img}');
 	}
 }

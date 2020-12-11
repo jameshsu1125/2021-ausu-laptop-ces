@@ -1,3 +1,6 @@
+@import './../config.less';
+@path: 'menu';
+
 @softorange: #b91212;
 @tomatored: #f25c66;
 @mediumblu: #1e272d;
@@ -14,10 +17,16 @@
 
 		.ham {
 			position: absolute;
-			@img: './img/ham.png';
-			background-image: url(@img);
-			width: image-width(@img) * @hamScale;
-			height: image-height(@img) * @hamScale;
+
+			@img: '/img/ham.png';
+			width: image-width('.@{img}') * @hamScale;
+			height: image-height('.@{img}') * @hamScale;
+
+			background-image: url('.@{img}');
+			& when (@cdn = true) {
+				background-image: url('@{cdn_url}@{path}@{img}');
+			}
+
 			background-size: 100%;
 			bottom: 40px;
 			left: 40px;
@@ -79,7 +88,7 @@
 						background-color: @softorange;
 						border-radius: 2px;
 						transform: rotate(45deg);
-						//transition: all 0.3s ease-in;
+						//? transition: all 0.3s ease-in;
 						pointer-events: none;
 					}
 
@@ -91,7 +100,7 @@
 						background-color: @softorange;
 						border-radius: 2px;
 						transform: rotate(-45deg);
-						//transition: all 0.3s ease-in;
+						//? transition: all 0.3s ease-in;
 						pointer-events: none;
 					}
 
@@ -100,7 +109,7 @@
 						font-family: Helvetica, Arial, sans-serif;
 						font-size: 0.6em;
 						text-transform: uppercase;
-						//transition: all 0.3s ease-in;
+						//? transition: all 0.3s ease-in;
 						opacity: 1;
 						pointer-events: none;
 					}

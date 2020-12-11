@@ -1,3 +1,6 @@
+@import './../config.less';
+@path: 'background';
+
 .background {
 	.screen_02 {
 		position: relative;
@@ -13,19 +16,20 @@
 		}
 
 		& > div:nth-child(1) {
-			//width: 100%;
-			//height: 100%;
-			//background-image: url('./img/Screen_02_Export_00000.png');
-			//background-size: 100%;
 		}
 
 		& > div:nth-child(2) {
 			width: 100%;
 			height: 100%;
-			background-image: url(./img/02.png);
 			background-size: 100% 100% * 144;
 			background-position: 0 0;
 			display: none;
+
+			@img: '/img/02.png';
+			background-image: url('.@{img}');
+			& when (@cdn = true) {
+				background-image: url('@{cdn_url}@{path}@{img}');
+			}
 		}
 	}
 }

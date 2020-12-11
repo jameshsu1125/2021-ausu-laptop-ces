@@ -90,26 +90,30 @@ index dom convert to json pass to react
 	</div>
 </div>
 <script>
-// The Dom will re-append by server-side. It have to load after html document loaded.
- document.addEventListener('DOMContentLoaded', function () {
-	var s = document.createElement('script');
-	s.type = 'text/javascript';
-	s.src = 'https://dlcdnwebimgs.asus.com/files/media/xxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx/js/index.min.js';
-	document.getElementsByTagName('head')[0].appendChild(s);
-});
-
+	// The Dom will re-append by server-side. It have to load after html document loaded.
+	document.addEventListener('DOMContentLoaded', function () {
+		var s = document.createElement('script');
+		s.type = 'text/javascript';
+		s.src = 'https://dlcdnwebimgs.asus.com/files/media/xxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx/js/index.min.js';
+		document.getElementsByTagName('head')[0].appendChild(s);
+	});
 </script>
 ```
 
 ## require in jsx
 
-The file path generator use require method that need to change relative path to absolute path.
+The file path generator use require method that need to change relative path to absolute path. The path variable in 'src/config.js';
 
 ```javascript
 let relative_path = require('./img/background.jpg'),
-    absolute_path = require('./config.js').Require(relative_path);
+	absolute_path = require('./config.js').Require(relative_path);
 ```
 
 ## css background-image url
 
-Change url use vscode editor [find] => [replace] after out put css file.
+It can turn on server-base url by variable that name @cdn in 'src/config.less' ;
+
+```less
+@cdn: true; //todo: is turn cdn url? [true] => insert @cdn_url, [false] => use relative path
+@cdn_url: 'https://dlcdnwebimgs.asus.com/files/media/6570DD19-B43C-4496-9A24-53CBFB320D9B/img/';
+```
