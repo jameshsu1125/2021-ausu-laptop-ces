@@ -20,8 +20,9 @@
 			height: 100%;
 			transition: 0.2s;
 			transform: scale(0);
-
-			background-image: url('.@{img}');
+			& when not (@cdn = true) {
+				background-image: url('.@{img}');
+			}
 			& when (@cdn = true) {
 				background-image: url('@{cdn_url}@{type}@{path}@{img}');
 			}

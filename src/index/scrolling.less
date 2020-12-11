@@ -20,7 +20,9 @@
 			margin: image-height('.@{img}') * @r * -0.5 image-width('.@{img}') * @r * -0.5;
 			left: 0px;
 
-			background-image: url('.@{img}');
+			& when not (@cdn = true) {
+				background-image: url('.@{img}');
+			}
 			& when (@cdn = true) {
 				background-image: url('@{cdn_url}@{type}@{path}@{img}');
 			}

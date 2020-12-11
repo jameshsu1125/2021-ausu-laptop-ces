@@ -11,6 +11,8 @@
 		display: none;
 
 		@img: '/img/Screen_05_Export_00000.png';
-		background-image: url('.@{img}');
+		& when not (@cdn = true) {
+			background-image: url('.@{img}');
+		}
 	}
 }

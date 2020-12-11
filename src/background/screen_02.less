@@ -27,7 +27,9 @@
 			display: none;
 
 			@img: '/img/02.png';
-			background-image: url('.@{img}');
+			& when not (@cdn = true) {
+				background-image: url('.@{img}');
+			}
 			& when (@cdn = true) {
 				background-image: url('@{cdn_url}@{type}@{path}@{img}');
 			}

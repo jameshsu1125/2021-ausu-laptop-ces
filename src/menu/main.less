@@ -23,7 +23,9 @@
 			width: image-width('.@{img}') * @hamScale;
 			height: image-height('.@{img}') * @hamScale;
 
-			background-image: url('.@{img}');
+			& when not (@cdn = true) {
+				background-image: url('.@{img}');
+			}
 			& when (@cdn = true) {
 				background-image: url('@{cdn_url}@{type}@{path}@{img}');
 			}
@@ -163,7 +165,13 @@
 				}
 
 				& > div:nth-child(2) {
-					mask-image: url('./../lightbox/img/arrow.svg');
+					@img: '/../lightbox/img/arrow.svg';
+					& when not (@cdn = true) {
+						mask-image: url('.@{img}');
+					}
+					& when (@cdn = true) {
+						background-image: url('@{cdn_url}@{type}@{path}@{img}');
+					}
 					mask-position: right 20px center;
 					mask-repeat: no-repeat;
 					mask-size: 30px auto;

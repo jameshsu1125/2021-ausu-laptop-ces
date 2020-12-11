@@ -60,7 +60,9 @@
 				pointer-events: none;
 
 				@img: '/../menu/img/close.svg';
-				background-image: url('.@{img}');
+				& when not (@cdn = true) {
+					background-image: url('.@{img}');
+				}
 				& when (@cdn = true) {
 					background-image: url('@{cdn_url}@{type}@{path}@{img}');
 				}

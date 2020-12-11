@@ -33,7 +33,9 @@
 			pointer-events: none;
 
 			@img: '/img/arr.png';
-			background-image: url('.@{img}');
+			& when not (@cdn = true) {
+				background-image: url('.@{img}');
+			}
 			& when (@cdn = true) {
 				background-image: url('@{cdn_url}@{type}@{path}@{img}');
 			}

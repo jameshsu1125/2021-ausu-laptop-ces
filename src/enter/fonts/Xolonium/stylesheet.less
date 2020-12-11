@@ -10,11 +10,13 @@
 @font-face {
 	font-family: 'Xolonium';
 
-	src: url('.@{woff2}') format('woff2'), url('.@{woff}') format('woff'), url('.@{ttf}') format('truetype'), url('.@{svg}') format('svg');
-
 	& when (@cdn = true) {
 		src: url('@{cdn_url}@{type}@{path}@{woff2}') format('woff2'), url('@{cdn_url}@{type}@{path}@{woff}') format('woff'), url('@{cdn_url}@{type}@{path}@{ttf}') format('truetype'),
 			url('@{cdn_url}@{type}@{path}@{svg}') format('svg');
+	}
+
+	& when not (@cdn = true) {
+		src: url('.@{woff2}') format('woff2'), url('.@{woff}') format('woff'), url('.@{ttf}') format('truetype'), url('.@{svg}') format('svg');
 	}
 
 	font-weight: normal;

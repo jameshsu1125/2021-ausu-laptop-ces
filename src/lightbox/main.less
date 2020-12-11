@@ -109,7 +109,9 @@
 									background-color: #fff;
 
 									@img: '/img/arrow.svg';
-									mask-image: url('.@{img}');
+									& when not (@cdn = true) {
+										mask-image: url('.@{img}');
+									}
 									& when (@cdn = true) {
 										mask-image: url('@{cdn_url}@{type}@{path}@{img}');
 									}
@@ -141,7 +143,9 @@
 									background-color: #fff;
 
 									@img: '/img/cart.svg';
-									mask-image: url('.@{img}');
+									& when not (@cdn = true) {
+										mask-image: url('.@{img}');
+									}
 									& when (@cdn = true) {
 										mask-image: url('@{cdn_url}@{type}@{path}@{img}');
 									}
@@ -195,7 +199,9 @@
 							-webkit-text-fill-color: transparent;
 
 							@img: '/../lightbox/img/text-clip.jpg';
-							background-image: url('.@{img}');
+							& when not (@cdn = true) {
+								background-image: url('.@{img}');
+							}
 							& when (@cdn = true) {
 								background-image: url('@{cdn_url}@{type}@{path}@{img}');
 							}
@@ -248,7 +254,9 @@
 					text-indent: 58px;
 
 					@img: '/img/window_ico.jpg';
-					background-image: url('.@{img}');
+					& when not (@cdn = true) {
+						background-image: url('.@{img}');
+					}
 					& when (@cdn = true) {
 						background-image: url('@{cdn_url}@{type}@{path}@{img}');
 					}
@@ -264,7 +272,9 @@
 						cursor: pointer;
 
 						@img: '/img/window_close.png';
-						background-image: url('.@{img}');
+						& when not (@cdn = true) {
+							background-image: url('.@{img}');
+						}
 						& when (@cdn = true) {
 							background-image: url('@{cdn_url}@{type}@{path}@{img}');
 						}
