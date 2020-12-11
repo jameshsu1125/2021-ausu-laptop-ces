@@ -1,5 +1,6 @@
 @import './../config.less';
 @path: 'background';
+@type: 'img/';
 
 .main {
 	.background {
@@ -14,7 +15,7 @@
 		@img: '/img/20201207_CES_KV_Main.jpg';
 		background-image: url('.@{img}');
 		& when (@cdn = true) {
-			background-image: url('@{cdn_url}@{path}@{img}');
+			background-image: url('@{cdn_url}@{type}@{path}@{img}');
 		}
 
 		& > div {

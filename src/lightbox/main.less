@@ -1,5 +1,6 @@
 @import './../config.less';
 @path: 'lightbox';
+@type: 'img/';
 
 @border-color: #738088;
 
@@ -110,7 +111,7 @@
 									@img: '/img/arrow.svg';
 									mask-image: url('.@{img}');
 									& when (@cdn = true) {
-										mask-image: url('@{cdn_url}@{path}@{img}');
+										mask-image: url('@{cdn_url}@{type}@{path}@{img}');
 									}
 								}
 
@@ -142,7 +143,7 @@
 									@img: '/img/cart.svg';
 									mask-image: url('.@{img}');
 									& when (@cdn = true) {
-										mask-image: url('@{cdn_url}@{path}@{img}');
+										mask-image: url('@{cdn_url}@{type}@{path}@{img}');
 									}
 								}
 
@@ -196,7 +197,7 @@
 							@img: '/../lightbox/img/text-clip.jpg';
 							background-image: url('.@{img}');
 							& when (@cdn = true) {
-								background-image: url('@{cdn_url}@{path}@{img}');
+								background-image: url('@{cdn_url}@{type}@{path}@{img}');
 							}
 						}
 
@@ -249,7 +250,7 @@
 					@img: '/img/window_ico.jpg';
 					background-image: url('.@{img}');
 					& when (@cdn = true) {
-						background-image: url('@{cdn_url}@{path}@{img}');
+						background-image: url('@{cdn_url}@{type}@{path}@{img}');
 					}
 
 					.lightbox-close {
@@ -265,7 +266,7 @@
 						@img: '/img/window_close.png';
 						background-image: url('.@{img}');
 						& when (@cdn = true) {
-							background-image: url('@{cdn_url}@{path}@{img}');
+							background-image: url('@{cdn_url}@{type}@{path}@{img}');
 						}
 
 						&:hover {

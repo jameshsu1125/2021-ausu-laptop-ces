@@ -1,5 +1,6 @@
 @import './../config.less';
 @path: 'index';
+@type: 'img/';
 
 @img: '/img/cursor.png';
 .content {
@@ -22,7 +23,7 @@
 
 			background-image: url('.@{img}');
 			& when (@cdn = true) {
-				background-image: url('@{cdn_url}@{path}@{img}');
+				background-image: url('@{cdn_url}@{type}@{path}@{img}');
 			}
 		}
 

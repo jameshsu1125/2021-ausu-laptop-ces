@@ -1,5 +1,6 @@
 @import './../config.less';
 @path: 'youtube';
+@type: 'img/';
 
 .main {
 	.youtube {
@@ -61,7 +62,7 @@
 				@img: '/../menu/img/close.svg';
 				background-image: url('.@{img}');
 				& when (@cdn = true) {
-					background-image: url('@{cdn_url}@{path}@{img}');
+					background-image: url('@{cdn_url}@{type}@{path}@{img}');
 				}
 			}
 		}

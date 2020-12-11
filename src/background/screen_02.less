@@ -1,5 +1,6 @@
 @import './../config.less';
 @path: 'background';
+@type: 'img/';
 
 .background {
 	.screen_02 {
@@ -28,7 +29,7 @@
 			@img: '/img/02.png';
 			background-image: url('.@{img}');
 			& when (@cdn = true) {
-				background-image: url('@{cdn_url}@{path}@{img}');
+				background-image: url('@{cdn_url}@{type}@{path}@{img}');
 			}
 		}
 	}

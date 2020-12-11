@@ -1,8 +1,8 @@
 @import './../config.less';
 @path: 'index';
+@type: 'img/';
 
 @img: '/img/panto.svg';
-
 .main {
 	.scrolling {
 		position: fixed;
@@ -13,7 +13,7 @@
 		@r: 0.2;
 		.ico {
 			position: absolute;
-			background-image: url(@img);
+
 			width: image-width('.@{img}') * @r;
 			height: image-height('.@{img}') * @r;
 			background-size: 100%;
@@ -22,7 +22,7 @@
 
 			background-image: url('.@{img}');
 			& when (@cdn = true) {
-				background-image: url('@{cdn_url}@{path}@{img}');
+				background-image: url('@{cdn_url}@{type}@{path}@{img}');
 			}
 		}
 	}

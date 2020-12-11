@@ -1,5 +1,6 @@
 @import './../config.less';
 @path: 'extra';
+@type: 'img/';
 
 @border-color: #484848;
 
@@ -160,7 +161,7 @@
 												@img: '/../lightbox/img/arrow.svg';
 												mask-image: url('.@{img}');
 												& when (@cdn = true) {
-													mask-image: url('@{cdn_url}@{path}@{img}');
+													mask-image: url('@{cdn_url}@{type}@{path}@{img}');
 												}
 											}
 
@@ -192,7 +193,7 @@
 												@img: '/../lightbox/img/cart.svg';
 												mask-image: url('.@{img}');
 												& when (@cdn = true) {
-													mask-image: url('@{cdn_url}@{path}@{img}');
+													mask-image: url('@{cdn_url}@{type}@{path}@{img}');
 												}
 											}
 
@@ -246,7 +247,7 @@
 										@img: '/../lightbox/img/text-clip.jpg';
 										background-image: url('.@{img}');
 										& when (@cdn = true) {
-											background-image: url('@{cdn_url}@{path}@{img}');
+											background-image: url('@{cdn_url}@{type}@{path}@{img}');
 										}
 									}
 
@@ -303,7 +304,7 @@
 					@img: '/../lightbox/img/window_ico.jpg';
 					background-image: url('.@{img}');
 					& when (@cdn = true) {
-						background-image: url('@{cdn_url}@{path}@{img}');
+						background-image: url('@{cdn_url}@{type}@{path}@{img}');
 					}
 
 					.extra-close {
@@ -319,7 +320,7 @@
 						@img: '/../lightbox/img/window_close.png';
 						background-image: url('.@{img}');
 						& when (@cdn = true) {
-							background-image: url('@{cdn_url}@{path}@{img}');
+							background-image: url('@{cdn_url}@{type}@{path}@{img}');
 						}
 
 						&:hover {

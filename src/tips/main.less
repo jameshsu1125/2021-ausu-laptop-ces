@@ -1,5 +1,6 @@
 @import './../config.less';
 @path: 'tips';
+@type: 'img/';
 
 @color: #f50504;
 @top: 33.9, 56, 23.4, 33, 23.3, 71.3, 41.4, 80.8;
@@ -34,7 +35,7 @@
 			@img: '/img/arr.png';
 			background-image: url('.@{img}');
 			& when (@cdn = true) {
-				background-image: url('@{cdn_url}@{path}@{img}');
+				background-image: url('@{cdn_url}@{type}@{path}@{img}');
 			}
 		}
 

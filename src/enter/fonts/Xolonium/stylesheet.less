@@ -1,0 +1,23 @@
+@import './../../../config.less';
+@path: 'enter/fonts/Xolonium';
+@type: 'font/';
+
+@woff2: '/Xolonium.woff2';
+@woff: '/Xolonium.woff';
+@ttf: '/Xolonium.ttf';
+@svg: '/Xolonium.svg#Xolonium';
+
+@font-face {
+	font-family: 'Xolonium';
+
+	src: url('.@{woff2}') format('woff2'), url('.@{woff}') format('woff'), url('.@{ttf}') format('truetype'), url('.@{svg}') format('svg');
+
+	& when (@cdn = true) {
+		src: url('@{cdn_url}@{type}@{path}@{woff2}') format('woff2'), url('.@{cdn_url}@{type}@{path}@{woff}') format('woff'), url('@{cdn_url}@{type}@{path}@{ttf}') format('truetype'),
+			url('@{cdn_url}@{type}@{path}@{svg}') format('svg');
+	}
+
+	font-weight: normal;
+	font-style: normal;
+	font-display: swap;
+}

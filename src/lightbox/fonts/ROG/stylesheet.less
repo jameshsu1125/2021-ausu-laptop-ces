@@ -1,0 +1,26 @@
+@import './../../../config.less';
+@path: 'lightbox/fonts/ROG';
+@type: 'font/';
+
+@eot: '/ROGFontsv15-Regular.eot';
+@eot2: '/ROGFontsv15-Regular.eot?#iefix';
+@woff2: '/ROGFontsv15-Regular.woff2';
+@woff: '/ROGFontsv15-Regular.woff';
+@ttf: '/ROGFontsv15-Regular.ttf';
+@svg: '/ROGFontsv15-Regular.svg#ROGFontsv1.5-Regular';
+
+@font-face {
+	font-family: 'ROG Fonts';
+	src: url('.@{eot}');
+	src: url('.@{eot2}') format('embedded-opentype'), url('.@{woff2}') format('woff2'), url('.@{woff}') format('woff'), url('.@{ttf}') format('truetype'), url('.@{svg}') format('svg');
+
+	& when (@cdn = true) {
+		src: url('@{cdn_url}@{type}@{path}@{eot}');
+		src: url('.@{cdn_url}@{type}@{path}@{eot2}') format('embedded-opentype'), url('@{cdn_url}@{type}@{path}@{woff2}') format('woff2'), url('.@{cdn_url}@{type}@{path}@{woff}') format('woff'),
+			url('@{cdn_url}@{type}@{path}@{ttf}') format('truetype'), url('@{cdn_url}@{type}@{path}@{svg}') format('svg');
+	}
+
+	font-weight: normal;
+	font-style: normal;
+	font-display: swap;
+}

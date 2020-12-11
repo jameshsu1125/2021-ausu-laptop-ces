@@ -1,6 +1,6 @@
 import React from 'react';
 import './main.less';
-import './fonts/Xolonium/stylesheet.css';
+import './fonts/Xolonium/stylesheet.less';
 import Player from 'lesca-react-video-playsinline';
 import { skip_enter, Client, Require } from './../config';
 import $ from 'jquery';
