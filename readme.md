@@ -36,7 +36,7 @@ dist
 
 ## dom to json
 
-index dom convert to json pass to react
+convert dom to json and pass into react
 
 ```html
 <!-- 
@@ -90,7 +90,7 @@ index dom convert to json pass to react
 	</div>
 </div>
 <script>
-	// The Dom will re-append by server-side. It have to load after html document loaded.
+	// The dom will re-append by server-side. It have to load after html document loaded.
 	document.addEventListener('DOMContentLoaded', function () {
 		var s = document.createElement('script');
 		s.type = 'text/javascript';
@@ -106,7 +106,7 @@ The file path generator use require method that need to change relative path to 
 
 ```javascript
 let relative_path = require('./img/background.jpg'),
-	absolute_path = require('./config.js').Require(relative_path);
+    absolute_path = require('./config.js').Require(relative_path);
 ```
 
 ## css background-image url
