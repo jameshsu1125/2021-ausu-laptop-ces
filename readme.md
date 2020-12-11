@@ -36,7 +36,7 @@ dist
 
 ## dom to json
 
-index dom convert to json pass to react
+index dom convert to json pass into react
 
 ```html
 <!-- 
