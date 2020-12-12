@@ -59,7 +59,7 @@ module.exports = (env) => {
 				}),
 			],
 		},
-		devtool: 'cheap-inline-module-source-map',
+		devtool: p == 'production' ? false : 'cheap-inline-module-source-map',
 		devServer: {
 			contentBase: './dist',
 			hot: true,
