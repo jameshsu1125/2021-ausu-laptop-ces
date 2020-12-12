@@ -21,7 +21,7 @@ export default class screen_02 extends React.Component {
 			},
 			in() {
 				this.c.css('display', 'block');
-				this.loop();
+				//this.loop();
 			},
 			loop() {
 				this.index = 0;
