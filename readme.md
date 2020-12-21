@@ -36,34 +36,10 @@ dist
 
 ## dom to json
 
-convert dom to json and pass into react
+convert dom to json and pass into react. 
+- [read more](https://github.com/jameshsu1125/lesca-dom2json)
 
 ```html
-<!-- 
-   (1) <div class="title">Lorem Ipsum is simply</div>   // => { title:"Lorem Ipsum is simply" }
-   (2) <div class="img">                                // => { img:'./img/1/png' }
-         <img src='./img/1/png' />
-      </div>
-   (3) <div class="img_link">  // => { img_link:[ { url:'https://www.asus.com', img:'./update/img0.jpg' } ]}
-         <a href="https://www.asus.com">
-            <img src="./update/img0.jpg" />
-         </a>
-      </div>
-   (4) <div class='list'>  // => { list:[ 'Lorem Ipsum...', ..... ] }
-         <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
-         <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
-         <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
-         <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
-      </div>
-   (5) <div class="buy-now"> // => { "buy-now": [ { name:'www.liverpool.com', url:'#liverpool' } ], .... }
-         <a href="#liverpool">www.liverpool.com</a>
-         <a href="#momoshop">momoshop</a>
-         <a href="#pchome">pchome</a>
-         <a href="#Costco">Costco</a>
-         <a href="#pchome">pchome</a>
-         <a href="#Costco">Costco</a>
-      </div>
--->
 <div class="index" style="display: none">
 	<div class="title">Lorem Ipsum is simply</div>
 	<div class="img">
