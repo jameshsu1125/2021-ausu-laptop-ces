@@ -14,9 +14,8 @@
 			position: absolute;
 			background-repeat: no-repeat;
 			top: 0;
-		}
-
-		& > div:nth-child(1) {
+			width: 100%;
+			height: 100%;
 		}
 
 		@keyframes bg2 {
@@ -28,6 +27,16 @@
 			}
 		}
 
+		& > div:nth-child(1) {
+			background-size: 100%;
+			background-image: url('./img//Screen_02_Export_00000.png');
+		}
+
+		.play {
+			animation: bg2 144s/24 steps(143) infinite;
+			display: block !important;
+		}
+
 		& > div:nth-child(2) {
 			width: 100%;
 			height: 100%;
@@ -35,7 +44,6 @@
 			background-position-y: 0;
 			background-position-x: 0;
 			display: none;
-			animation: bg2 144s/24 steps(143) infinite;
 
 			@img: '/img/02.png';
 			& when not (@cdn = true) {

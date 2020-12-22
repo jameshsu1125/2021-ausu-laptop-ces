@@ -9,7 +9,8 @@ import Extra from './../extra/main';
 import Events from './events';
 import Youtube from './../youtube/main';
 
-import { TouchEvent, Landscape } from 'lesca';
+import { TouchEvent } from 'lesca';
+import Landscape from 'lesca/lib/Landscape';
 
 import $ from 'jquery';
 
@@ -18,7 +19,7 @@ export default class index extends React.Component {
 		super(props);
 		this.state = {
 			scrolling: false,
-			enter: this.props.data.enter,
+			enter: 'aa',
 			lightbox: false,
 			content: false,
 			extra: false,

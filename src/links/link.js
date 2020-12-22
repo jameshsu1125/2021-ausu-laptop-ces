@@ -1,5 +1,7 @@
 import React from 'react';
 
+import { Howl, Howler } from 'howler';
+
 export default class link extends React.Component {
 	constructor(props) {
 		super(props);
@@ -10,7 +12,19 @@ export default class link extends React.Component {
 
 	componentDidMount() {
 		TouchEvent.add('.' + this.className, (e) => {
-			window.open(this.props.data.url);
+			let mp3 = this.props.data.url.indexOf('.mp3') >= 0;
+			if (mp3) this.playMp3();
+			else if (this.props.data.url.indexOf('#') >= 0) window.location.href = this.props.data.url;
+			else window.open(this.props.data.url);
+		});
+	}
+
+	playMp3() {
+		new Howl({
+			src: [this.props.data.url],
+			autoplay: true,
+			loop: false,
+			volume: 1,
 		});
 	}
 

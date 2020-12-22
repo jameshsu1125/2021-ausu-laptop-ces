@@ -4,15 +4,53 @@
 
 .background {
 	.screen_08 {
-		width: 7%;
+		width: 6.3%;
 		height: 4.8%;
 		top: 49.3%;
-		left: 35.1%;
-		display: none;
+		left: 36.3%;
 
-		@img: '/img/Screen_10_Export_00000.png';
-		& when not (@cdn = true) {
-			background-image: url('.@{img}');
+		& > div {
+			position: absolute;
+			background-repeat: no-repeat;
+			top: 0;
+			width: 100%;
+			height: 100%;
+		}
+
+		@keyframes bg8 {
+			0% {
+				background-position-y: 0%;
+			}
+			100% {
+				background-position-y: 100%;
+			}
+		}
+
+		& > div:nth-child(1) {
+			background-size: 100%;
+			background-image: url('./img//Screen_10_Export_00000.png');
+		}
+
+		.play {
+			animation: bg8 144s/24 steps(143) infinite;
+			display: block !important;
+		}
+
+		& > div:nth-child(2) {
+			width: 100%;
+			height: 100%;
+			background-size: 100% 100% * 144;
+			background-position-y: 0;
+			background-position-x: 0;
+			display: none;
+
+			@img: '/img/08.png';
+			& when not (@cdn = true) {
+				background-image: url('.@{img}');
+			}
+			& when (@cdn = true) {
+				background-image: url('@{cdn_url}@{type}@{path}@{img}');
+			}
 		}
 	}
 }

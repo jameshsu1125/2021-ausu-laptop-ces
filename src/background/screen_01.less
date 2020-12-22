@@ -4,13 +4,60 @@
 
 .background {
 	.screen_01 {
-		width: 25.4%;
-		height: 49.3%;
-		top: 1.4%;
-		left: 0%;
-		display: none;
+		width: 22.5%;
+		height: 41%;
+		top: 5.6%;
+		left: 2.54%;
 
-		@img: '/img/Screen_01_Export_00000.png';
-		background-image: url('.@{img}');
+		& > div {
+			position: absolute;
+			background-repeat: no-repeat;
+			top: 0;
+			width: 100%;
+			height: 100%;
+		}
+
+		@keyframes bg1X {
+			from {
+				background-position-x: 0%;
+			}
+			to {
+				background-position-x: 100%;
+			}
+		}
+
+		@keyframes bg1Y {
+			from {
+				background-position-y: 0%;
+			}
+			to {
+				background-position-y: 100%;
+			}
+		}
+
+		& > div:nth-child(1) {
+			background-size: 100%;
+			background-image: url('./img//Screen_01_Export_00000.png');
+		}
+
+		.play {
+			animation: bg1Y 72s/24 steps(71) infinite, bg1X 72s/24 * 2 steps(1) infinite;
+			display: block !important;
+		}
+
+		& > div:nth-child(2) {
+			background-size: 100% * 2 100% * 72;
+			background-position-y: 0;
+			background-position-x: 0;
+			display: none;
+
+			@img: '/img/01.png';
+			& when not (@cdn = true) {
+				background-image: url('.@{img}');
+			}
+			& when (@cdn = true) {
+				background-image: url('@{cdn_url}@{type}@{path}@{img}');
+			}
+		}
 	}
 }
