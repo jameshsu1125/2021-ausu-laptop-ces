@@ -17,6 +17,15 @@ export default class content extends React.Component {
 			let u = this.props.data['see-more'][0].url;
 			if (u.indexOf('#') >= 0) window.location.href = u;
 			else window.open(u);
+
+			let layer = this.props.data['see-more'][0].dataLayer;
+			if (layer) {
+				try {
+					layer = eval(`[${layer}]`)[0] || false;
+				} catch (e) {}
+				window.dataLayer = window.dataLayer || [];
+				window.dataLayer.push(layer);
+			}
 		});
 
 		TouchEvent.add('.extra-buy_' + this.props.index, () => {
@@ -46,6 +55,15 @@ export default class content extends React.Component {
 				if (this.props.data.content.img[0].url.indexOf('youtu') >= 0) this.props.add_youtube(this.props.data.content.img[0].url);
 				else if (this.props.data.content.img[0].url.split('#').length > 1) window.location.href = this.props.data.content.img[0].url;
 				else window.open(this.props.data.content.img[0].url);
+
+				let layer = this.props.data.content.img[0].dataLayer;
+				if (layer) {
+					try {
+						layer = eval(`[${layer}]`)[0] || false;
+					} catch (e) {}
+					window.dataLayer = window.dataLayer || [];
+					window.dataLayer.push(layer);
+				}
 			});
 		}
 	}

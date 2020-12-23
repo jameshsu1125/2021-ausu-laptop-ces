@@ -1,4 +1,3 @@
-import TouchEvent from 'lesca/lib/LESCA/Event/TouchEvent';
 import React from 'react';
 
 export default class tip extends React.Component {

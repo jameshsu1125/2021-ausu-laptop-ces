@@ -52,6 +52,15 @@ export default class lightbox extends React.Component {
 							if (root.data.content.img[0].url.indexOf('youtu') >= 0) root.props.add_youtube(root.data.content.img[0].url);
 							else if (root.data.content.img[0].url.split('#').length > 1) window.location.href = root.data.content.img[0].url;
 							else window.open(root.data.content.img[0].url);
+
+							let layer = root.data.content.img[0].dataLayer;
+							if (layer) {
+								try {
+									layer = eval(`[${layer}]`)[0] || false;
+								} catch (e) {}
+								window.dataLayer = window.dataLayer || [];
+								window.dataLayer.push(layer);
+							}
 						});
 					}
 				},
@@ -133,6 +142,15 @@ export default class lightbox extends React.Component {
 					TouchEvent.add('.lightbox-see', () => {
 						if (root.data['see-more'][0].url.indexOf('#') >= 0) window.location.href = root.data['see-more'][0].url;
 						else window.open(root.data['see-more'][0].url);
+
+						let layer = root.data['see-more'][0].dataLayer;
+						if (layer) {
+							try {
+								layer = eval(`[${layer}]`)[0] || false;
+							} catch (e) {}
+							window.dataLayer = window.dataLayer || [];
+							window.dataLayer.push(layer);
+						}
 					});
 
 					TouchEvent.add('.lightbox-buy', () => {

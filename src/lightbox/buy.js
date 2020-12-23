@@ -7,6 +7,7 @@ export default class buy extends React.Component {
 	constructor(props) {
 		super(props);
 		const root = this;
+
 		this.tr = {
 			o: 0,
 			time: 500,
@@ -55,6 +56,15 @@ export default class buy extends React.Component {
 			TouchEvent.add('.' + this.props.data[i].name, () => {
 				if (this.props.data[i].url.split('#').length > 1) window.location.href = this.props.data[i].url;
 				else window.open(this.props.data[i].url);
+
+				let layer = this.props.data[i].dataLayer;
+				if (layer) {
+					try {
+						layer = eval(`[${layer}]`)[0] || false;
+					} catch (e) {}
+					window.dataLayer = window.dataLayer || [];
+					window.dataLayer.push(layer);
+				}
 			});
 		}
 
@@ -89,6 +99,7 @@ export default class buy extends React.Component {
 	}
 
 	append() {
+		if (typeof this.props.data === 'string') return;
 		return this.props.data.map((i, index) => (
 			<div key={index} className='buy-box'>
 				<div className={i.name}>{i.name}</div>

@@ -8,6 +8,12 @@ export default class link extends React.Component {
 		const root = this;
 		//script
 		this.className = `link_${this.props.index}`;
+
+		if (this.props.data.dataLayer) {
+			try {
+				this.dataLayer = eval(`[${this.props.data.dataLayer}]`)[0] || false;
+			} catch (e) {}
+		}
 	}
 
 	componentDidMount() {
@@ -16,6 +22,9 @@ export default class link extends React.Component {
 			if (mp3) this.playMp3();
 			else if (this.props.data.url.indexOf('#') >= 0) window.location.href = this.props.data.url;
 			else window.open(this.props.data.url);
+
+			window.dataLayer = window.dataLayer || [];
+			window.dataLayer.push(this.dataLayer);
 		});
 	}
 

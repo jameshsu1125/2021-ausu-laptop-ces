@@ -203,6 +203,7 @@ module.exports = {
 	click_evt(e) {
 		if (Math.abs(x - mx) < 10 && Math.abs(y - my) < 10) {
 			let key = e.target.id + '_id';
+
 			if (TouchEvent.db[key]) {
 				TouchEvent.db[key](e);
 				return;
