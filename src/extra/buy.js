@@ -14,7 +14,9 @@ export default class buy extends React.Component {
 			time: 500,
 			init() {
 				this.c = $(root.refs.main);
-				if (root.props.isLast) this.c.css('top', '-=310px');
+				if (root.props.isLast) {
+					this.c.css('top', `-=${this.c.height() + 90}px`);
+				}
 				this.tran();
 				this.in();
 			},

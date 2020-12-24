@@ -30,13 +30,19 @@ export default class enter extends React.Component {
 				left: x + 'px',
 				'padding-right': vw + 'px',
 			});
-
 			if (this.refs.player) this.refs.player.setSize(this.w, this.h);
 		};
+
 		this.resize();
 		this.setState({ player: true }, () => {
 			this.resize();
 			window.addEventListener('resize', this.resize);
+			this.k = setInterval(() => {
+				this.resize();
+			}, 10);
+			setTimeout(() => {
+				clearInterval(this.k);
+			}, 1000);
 		});
 		// ? skip video for debug
 		if (skip_enter) {

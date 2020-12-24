@@ -69,7 +69,7 @@ export default class lightbox extends React.Component {
 				s: 1,
 				o: 0,
 				top: 0,
-				time: 500,
+				time: 1000,
 				init() {
 					this.c = $(root.refs.window);
 					this.reszie();
@@ -85,7 +85,7 @@ export default class lightbox extends React.Component {
 								this.tran();
 								this.evt();
 							},
-							easing: 'easeOutBack',
+							easing: 'easeOutQuart',
 						}
 					);
 				},
@@ -93,7 +93,7 @@ export default class lightbox extends React.Component {
 					$(this).animate(
 						{ o: 0, top: 0 },
 						{
-							duration: this.time,
+							duration: this.time / 2,
 							step: () => this.tran(),
 							complete: () => {
 								this.tran();
