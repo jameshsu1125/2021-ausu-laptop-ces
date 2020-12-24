@@ -32,19 +32,19 @@
 		}
 
 		.play {
-			animation: bg3 144s/24 steps(143) infinite;
+			animation: bg3 85s/15 steps(84) infinite;
 			display: block !important;
 		}
 
 		& > div:nth-child(2) {
 			width: 100%;
 			height: 100%;
-			background-size: 100% 100% * 144;
+			background-size: 100% 100% * 85;
 			background-position-y: 0;
 			background-position-x: 0;
 			display: none;
 
-			@img: '/img/03.png';
+			@img: '/img/03s.png';
 			& when not (@cdn = true) {
 				background-image: url('.@{img}');
 			}
