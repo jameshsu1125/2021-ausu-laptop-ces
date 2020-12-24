@@ -24,10 +24,14 @@ export default class screen_05 extends React.Component {
 	componentDidMount() {
 		this.tr.init();
 		$(this.refs.main).waitForImages({
-			finished: () => this.tr.in(),
+			finished: () => this.props.ready(),
 			each: (e) => {},
 			waitForAll: true,
 		});
+	}
+
+	in() {
+		this.tr.in();
 	}
 
 	render() {

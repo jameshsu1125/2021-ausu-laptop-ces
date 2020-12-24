@@ -28,7 +28,13 @@
 
 		& > div:nth-child(1) {
 			background-size: 100%;
-			background-image: url('./img//Screen_03_Export_00000.png');
+			@img: '/img/Screen_03_Export_00000.png';
+			& when not (@cdn = true) {
+				background-image: url('.@{img}');
+			}
+			& when (@cdn = true) {
+				background-image: url('@{cdn_url}@{type}@{path}@{img}');
+			}
 		}
 
 		.play {

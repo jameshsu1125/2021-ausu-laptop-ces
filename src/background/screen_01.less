@@ -26,32 +26,32 @@
 			}
 		}
 
-		@keyframes bg1Y {
-			from {
+		@keyframes bg1 {
+			0% {
 				background-position-y: 0%;
 			}
-			to {
+			100% {
 				background-position-y: 100%;
 			}
 		}
 
 		& > div:nth-child(1) {
 			background-size: 100%;
-			background-image: url('./img//Screen_01_Export_00000.png');
+			background-image: url('./img/Screen_01_Export_00000.png');
 		}
 
 		.play {
-			animation: bg1Y 72s/24 steps(71) infinite, bg1X 72s/24 * 2 steps(1) infinite;
+			animation: bg1 85s/15 steps(84) infinite;
 			display: block !important;
 		}
 
 		& > div:nth-child(2) {
-			background-size: 100% * 2 100% * 72;
+			background-size: 100% 100% * 85;
 			background-position-y: 0;
 			background-position-x: 0;
 			display: none;
 
-			@img: '/img/01.png';
+			@img: '/img/01s.png';
 			& when not (@cdn = true) {
 				background-image: url('.@{img}');
 			}

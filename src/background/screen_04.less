@@ -35,23 +35,29 @@
 
 		& > div:nth-child(1) {
 			background-size: 100%;
-			background-image: url('./img//Screen_04_Export_00000.png');
+			@img: '/img/Screen_04_Export_00000.png';
+			& when not (@cdn = true) {
+				background-image: url('.@{img}');
+			}
+			& when (@cdn = true) {
+				background-image: url('@{cdn_url}@{type}@{path}@{img}');
+			}
 		}
 
 		.play {
-			animation: bg4 143s/24 steps(142) infinite;
+			animation: bg4 86s/15 steps(85) infinite;
 			display: block !important;
 		}
 
 		& > div:nth-child(2) {
 			width: 100%;
 			height: 100%;
-			background-size: 100% 100% * 143;
+			background-size: 100% 100% * 86;
 			background-position-y: 0;
 			background-position-x: 0;
 			display: none;
 
-			@img: '/img/04.png';
+			@img: '/img/04s.png';
 			& when not (@cdn = true) {
 				background-image: url('.@{img}');
 			}

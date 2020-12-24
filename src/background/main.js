@@ -14,10 +14,11 @@ import $ from 'jquery';
 export default class background extends React.Component {
 	constructor(props) {
 		super(props);
-
+		this.max = 0;
 		let p = { ...this.props.data };
 		for (var i in p) {
 			p[i] = false;
+			this.max++;
 		}
 		this.state = p;
 
@@ -39,6 +40,8 @@ export default class background extends React.Component {
 				});
 			},
 		};
+
+		this.index = 0;
 	}
 
 	in() {
@@ -58,26 +61,35 @@ export default class background extends React.Component {
 		if (this.refs.mp3) this.refs.mp3.playAudio();
 	}
 
+	onReady() {
+		this.index++;
+		if (this.index >= this.max - 1) {
+			for (var i = 0; i < this.index; i++) {
+				if (this.refs['s' + i]) this.refs['s' + i].in();
+			}
+		}
+	}
+
 	append_screen_01() {
-		if (this.state.animate_screen_1) return <Screen_01 />;
+		if (this.state.animate_screen_1) return <Screen_01 ref='s1' ready={this.onReady.bind(this)} />;
 	}
 	append_screen_02() {
-		if (this.state.animate_screen_2) return <Screen_02 />;
+		if (this.state.animate_screen_2) return <Screen_02 ref='s2' ready={this.onReady.bind(this)} />;
 	}
 	append_screen_03() {
-		if (this.state.animate_screen_3) return <Screen_03 />;
+		if (this.state.animate_screen_3) return <Screen_03 ref='s3' ready={this.onReady.bind(this)} />;
 	}
 	append_screen_04() {
-		if (this.state.animate_screen_4) return <Screen_04 />;
+		if (this.state.animate_screen_4) return <Screen_04 ref='s4' ready={this.onReady.bind(this)} />;
 	}
 	append_screen_05() {
-		if (this.state.animate_screen_5) return <Screen_05 />;
+		if (this.state.animate_screen_5) return <Screen_05 ref='s5' ready={this.onReady.bind(this)} />;
 	}
 	append_screen_06() {
-		if (this.state.animate_screen_6) return <Screen_06 />;
+		if (this.state.animate_screen_6) return <Screen_06 ref='s6' ready={this.onReady.bind(this)} />;
 	}
 	append_screen_07() {
-		if (this.state.animate_screen_7) return <Screen_07 />;
+		if (this.state.animate_screen_7) return <Screen_07 ref='s7' ready={this.onReady.bind(this)} />;
 	}
 	append_screen_08() {
 		if (this.state.animate_screen_8) return <Screen_08 ref='mp3' />;
