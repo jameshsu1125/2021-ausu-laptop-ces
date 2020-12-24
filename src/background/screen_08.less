@@ -32,19 +32,41 @@
 		}
 
 		.play {
-			animation: bg8 144s/24 steps(143) infinite;
+			animation: bg8 24s/24 steps(24) infinite;
 			display: block !important;
 		}
 
 		& > div:nth-child(2) {
 			width: 100%;
 			height: 100%;
-			background-size: 100% 100% * 144;
+			background-size: 100% 100% * 25;
 			background-position-y: 0;
 			background-position-x: 0;
 			display: none;
 
-			@img: '/img/08.png';
+			@img: '/img/09.png';
+			& when not (@cdn = true) {
+				background-image: url('.@{img}');
+			}
+			& when (@cdn = true) {
+				background-image: url('@{cdn_url}@{type}@{path}@{img}');
+			}
+		}
+
+		.play2 {
+			animation: bg8 119s/24 steps(118) infinite;
+			display: block !important;
+		}
+
+		& > div:nth-child(3) {
+			width: 100%;
+			height: 100%;
+			background-size: 100% 100% * 119;
+			background-position-y: 0;
+			background-position-x: 0;
+			display: none;
+
+			@img: '/img/10.png';
 			& when not (@cdn = true) {
 				background-image: url('.@{img}');
 			}

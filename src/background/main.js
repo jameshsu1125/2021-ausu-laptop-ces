@@ -50,6 +50,14 @@ export default class background extends React.Component {
 		this.tr.init();
 	}
 
+	stopAudio() {
+		if (this.refs.mp3) this.refs.mp3.stopAudio();
+	}
+
+	playAudio() {
+		if (this.refs.mp3) this.refs.mp3.playAudio();
+	}
+
 	append_screen_01() {
 		if (this.state.animate_screen_1) return <Screen_01 />;
 	}
@@ -72,7 +80,7 @@ export default class background extends React.Component {
 		if (this.state.animate_screen_7) return <Screen_07 />;
 	}
 	append_screen_08() {
-		if (this.state.animate_screen_8) return <Screen_08 />;
+		if (this.state.animate_screen_8) return <Screen_08 ref='mp3' />;
 	}
 
 	render() {

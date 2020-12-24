@@ -13,12 +13,29 @@ export default class screen_08 extends React.Component {
 			init() {
 				this.c = $(root.refs.c);
 				this.i = $(root.refs.i);
+				this.i2 = $(root.refs.i2);
 			},
 			in() {
 				this.c.css('display', 'none');
 				this.i.addClass('play');
 			},
+			playAudio() {
+				this.i.removeClass('play');
+				this.i2.addClass('play2');
+			},
+			stopAudio() {
+				this.i.addClass('play');
+				this.i2.removeClass('play2');
+			},
 		};
+	}
+
+	playAudio() {
+		this.tr.playAudio();
+	}
+
+	stopAudio() {
+		this.tr.stopAudio();
 	}
 
 	componentDidMount() {
@@ -32,9 +49,10 @@ export default class screen_08 extends React.Component {
 
 	render() {
 		return (
-			<div className='screen_08'>
+			<div ref='main' className='screen_08'>
 				<div ref='c'></div>
 				<div ref='i'></div>
+				<div ref='i2'></div>
 			</div>
 		);
 	}

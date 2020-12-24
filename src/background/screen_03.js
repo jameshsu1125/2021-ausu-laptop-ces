@@ -31,7 +31,7 @@ export default class screen_03 extends React.Component {
 	}
 	render() {
 		return (
-			<div className='screen_03'>
+			<div ref='main' className='screen_03'>
 				<div ref='c'></div>
 				<div ref='i'></div>
 			</div>

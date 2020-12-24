@@ -1,6 +1,7 @@
 import React from 'react';
 import './main.less';
 import './fonts/Xolonium/stylesheet.less';
+import './fonts/TradeGothicLT/stylesheet.less';
 import Player from 'lesca-react-video-playsinline';
 import { skip_enter, Client, Require } from './../config';
 import $ from 'jquery';
@@ -11,7 +12,7 @@ export default class enter extends React.Component {
 		super(props);
 		this.state = { player: false, loading: false };
 
-		this.video_url = UserAgent.get() === 'mobile' ? require('./video/20201130_CES_Intro_Video_Mobile_Test.mp4') : require('./video/20201207_Intro_Video_Test_6Mbps.mp4');
+		this.video_url = UserAgent.get() === 'mobile' ? require('./video/20201224_Intro_Video_Mobile.mp4') : require('./video/20201224_Intro_Video.mp4');
 		this.video_url = Require(this.video_url);
 	}
 

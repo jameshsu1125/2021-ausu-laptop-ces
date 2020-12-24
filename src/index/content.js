@@ -51,6 +51,14 @@ export default class content extends React.Component {
 			return <Tips ref='tips' call_lightbox={this.props.call_lightbox} data={this.props.data.tips} show_cursor={this.show_cursor.bind(this)} hide_cursor={this.hide_cursor.bind(this)} />;
 	}
 
+	playAudio() {
+		if (this.refs.background) this.refs.background.playAudio();
+	}
+
+	stopAudio() {
+		if (this.refs.background) this.refs.background.stopAudio();
+	}
+
 	show_cursor() {
 		if (this.refs.cursor) this.refs.cursor.on();
 	}
@@ -64,7 +72,16 @@ export default class content extends React.Component {
 	}
 
 	append_links() {
-		if (this.props.data.links) return <Links data={this.props.data.links} show_cursor={this.show_cursor.bind(this)} hide_cursor={this.hide_cursor.bind(this)} />;
+		if (this.props.data.links)
+			return (
+				<Links
+					data={this.props.data.links}
+					show_cursor={this.show_cursor.bind(this)}
+					hide_cursor={this.hide_cursor.bind(this)}
+					playAudio={this.playAudio.bind(this)}
+					stopAudio={this.stopAudio.bind(this)}
+				/>
+			);
 	}
 
 	render() {

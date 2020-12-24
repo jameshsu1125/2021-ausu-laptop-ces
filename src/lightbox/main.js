@@ -1,7 +1,6 @@
 import React from 'react';
 import './main.less';
 import './fonts/ROG/stylesheet.less';
-import './../enter/fonts/Xolonium/stylesheet.less';
 
 import $ from 'jquery';
 require('jquery-easing');
