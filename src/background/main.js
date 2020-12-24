@@ -64,7 +64,7 @@ export default class background extends React.Component {
 	onReady() {
 		this.index++;
 		if (this.index >= this.max - 1) {
-			for (var i = 0; i < this.index; i++) {
+			for (var i = 0; i <= this.index; i++) {
 				if (this.refs['s' + i]) this.refs['s' + i].in();
 			}
 		}

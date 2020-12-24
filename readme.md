@@ -36,7 +36,8 @@ dist
 
 ## dom to json
 
-convert dom to json and pass into react. 
+convert dom to json and pass into react.
+
 - [read more](https://github.com/jameshsu1125/lesca-dom2json)
 
 ```html
@@ -82,7 +83,7 @@ The file path generator use require method that need to change relative path to 
 
 ```javascript
 let relative_path = require('./img/background.jpg'),
-    absolute_path = require('./config.js').Require(relative_path);
+	absolute_path = require('./config.js').Require(relative_path);
 ```
 
 ## css background-image url
@@ -92,4 +93,12 @@ It can turn on server-base url by variable that name @cdn in 'src/config.less' ;
 ```less
 @cdn: true; //todo: is turn cdn url? [true] => insert @cdn_url, [false] => use relative path
 @cdn_url: 'https://dlcdnwebimgs.asus.com/files/media/6570DD19-B43C-4496-9A24-53CBFB320D9B/img/';
+```
+
+## dataLayer of gtag
+
+The gtag code can push on <a> tag. You can just set attribute as "dataLayer". push data convert to string.
+
+```html
+<a href="#PRESS KIT" dataLayer="{'event':'data_layer_event','event_category_DL':'buttons','event_action_DL':'clicked','event_label_DL':'PRESS KIT','event_value_DL':'0'}">PRESS KIT</a>
 ```
