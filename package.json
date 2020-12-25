@@ -62,7 +62,7 @@
 		"jquery.waitforimages": "^2.4.0",
 		"lesca": "^0.1.51",
 		"lesca-dom2json": "^1.0.5",
-		"lesca-react-video-playsinline": "^0.1.12",
+		"lesca-react-video-playsinline": "^0.1.14",
 		"mouse-wheel": "^1.2.0"
 	}
 }
