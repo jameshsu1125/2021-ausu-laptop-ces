@@ -4,7 +4,7 @@ import './fonts/Xolonium/stylesheet.less';
 import './fonts/TradeGothicLT/stylesheet.less';
 import Player from 'lesca-react-video-playsinline';
 import { skip_enter, Client, Require } from './../config';
-import $ from 'jquery';
+import $, { timers } from 'jquery';
 import { Loading, UserAgent } from 'lesca';
 
 export default class enter extends React.Component {
@@ -14,6 +14,8 @@ export default class enter extends React.Component {
 
 		this.video_url = UserAgent.get() === 'mobile' ? require('./video/20201224_Intro_Video_Mobile.mp4') : require('./video/20201224_Intro_Video.mp4');
 		this.video_url = Require(this.video_url);
+
+		this.video_delay_play_time = 1500;
 	}
 
 	componentDidMount() {
@@ -64,6 +66,10 @@ export default class enter extends React.Component {
 
 	ready() {
 		this.props.ready();
+		setTimeout(() => {
+			this.refs.player.show();
+			this.refs.player.play();
+		}, this.video_delay_play_time);
 	}
 
 	update(e, t, s) {
@@ -78,12 +84,13 @@ export default class enter extends React.Component {
 					ref='player'
 					ready={this.ready.bind(this)}
 					loop={false}
-					autoplay={true}
+					autoplay={false}
 					onend={this.onend.bind(this)}
 					width={this.w}
 					height={this.h}
 					url={{ mp4: this.video_url }}
 					onupdate={this.update.bind(this)}
+					hide={true}
 				/>
 			);
 	}

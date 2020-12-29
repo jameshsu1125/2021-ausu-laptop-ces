@@ -31,27 +31,22 @@ export default class link extends React.Component {
 	}
 
 	playMp3() {
-		if (this.is) {
-			this.is = false;
-			this.sound.stop();
-			this.props.stopAudio();
-		} else {
-			this.is = true;
-			if (this.sound) {
-				this.sound.play();
+		if (this.is) return;
+		this.is = true;
+
+		new Howl({
+			src: [this.props.data.url],
+			autoplay: true,
+			loop: false,
+			volume: 1,
+			onload: () => {
 				this.props.playAudio();
-			} else {
-				this.sound = new Howl({
-					src: [this.props.data.url],
-					autoplay: true,
-					loop: true,
-					volume: 1,
-					onload: () => {
-						this.props.playAudio();
-					},
-				});
-			}
-		}
+			},
+			onend: () => {
+				this.is = false;
+				this.props.stopAudio();
+			},
+		});
 	}
 
 	mouseover() {
