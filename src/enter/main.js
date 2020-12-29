@@ -4,8 +4,8 @@ import './fonts/Xolonium/stylesheet.less';
 import './fonts/TradeGothicLT/stylesheet.less';
 import Player from 'lesca-react-video-playsinline';
 import { skip_enter, Client, Require } from './../config';
-import $, { timers } from 'jquery';
-import { Loading, UserAgent } from 'lesca';
+import $ from 'jquery';
+import { Loading, UserAgent, Hash } from 'lesca';
 
 export default class enter extends React.Component {
 	constructor(props) {
@@ -15,7 +15,7 @@ export default class enter extends React.Component {
 		this.video_url = UserAgent.get() === 'mobile' ? require('./video/20201224_Intro_Video_Mobile.mp4') : require('./video/20201224_Intro_Video.mp4');
 		this.video_url = Require(this.video_url);
 
-		this.video_delay_play_time = 1500;
+		this.video_delay_play_time = parseInt(Hash.get('time')) || 1800;
 	}
 
 	componentDidMount() {
