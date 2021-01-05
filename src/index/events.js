@@ -136,7 +136,8 @@ module.exports = {
 		}
 	},
 	move_extra_by_bar(e) {
-		if (UserAgent.get() === 'desktop') return;
+		if (UserAgent.get(false) === 'desktop') return;
+
 		const refs = get_extra_ref();
 		if (refs) {
 			let bar = refs.bar,
@@ -146,8 +147,10 @@ module.exports = {
 			// set bar py
 			let y = bar_y + dy * 1.4,
 				totol = $(body).outerHeight() - $(bar).height() - 10;
+
 			if (y < 0) y = 0;
 			else if (y > totol) y = totol;
+
 			$(bar).css('margin-top', y + 'px');
 
 			// use y set v to percent
@@ -156,7 +159,7 @@ module.exports = {
 		}
 	},
 	move_extra_by_body(e) {
-		if (UserAgent.get() === 'desktop') return;
+		if (UserAgent.get(false) === 'desktop') return;
 		const refs = get_extra_ref();
 		if (refs) {
 			let bar = refs.bar,

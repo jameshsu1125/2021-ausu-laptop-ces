@@ -19,7 +19,7 @@ export default class extra extends React.Component {
 			data.push(this.props.data[i]);
 		}
 
-		this.state = { content: data, bar: UserAgent.get() == 'desktop' ? false : true, buy: false };
+		this.state = { content: data, bar: UserAgent.get(false) == 'desktop' ? false : true, buy: false };
 
 		const root = this;
 		this.tr = {
@@ -163,7 +163,7 @@ export default class extra extends React.Component {
 
 	componentDidMount() {
 		this.tr.init().in();
-		if (UserAgent.get() == 'desktop') {
+		if (UserAgent.get(false) == 'desktop') {
 			TouchEvent.preventDefault = false;
 			$(this.refs.body).css({
 				'overflow-y': 'scroll',

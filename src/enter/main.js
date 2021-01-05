@@ -70,9 +70,11 @@ export default class enter extends React.Component {
 	ready() {
 		this.props.ready();
 		setTimeout(() => {
-			this.refs.player.goto(0);
-			this.refs.player.show();
-			this.refs.player.play();
+			if (this.refs.player) {
+				this.refs.player.goto(0);
+				this.refs.player.show();
+				this.refs.player.play();
+			}
 		}, this.video_delay_play_time);
 	}
 
