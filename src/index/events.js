@@ -219,7 +219,7 @@ module.exports = {
 	evt() {
 		TouchEvent.get = this.down;
 
-		if (UserAgent.get() === 'mobile') {
+		if (UserAgent.get(false) === 'mobile') {
 			document.addEventListener('touchmove', (e) => this.move(e), {
 				passive: false,
 				capture: false,
