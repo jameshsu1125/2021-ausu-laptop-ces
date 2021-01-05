@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { Howl, Howler } from 'howler';
+import { Howl } from 'howler';
 
 export default class link extends React.Component {
 	constructor(props) {
