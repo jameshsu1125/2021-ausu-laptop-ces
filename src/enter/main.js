@@ -5,7 +5,10 @@ import './fonts/TradeGothicLT/stylesheet.less';
 import Player from 'lesca-react-video-playsinline';
 import { skip_enter, Client, Require } from './../config';
 import $ from 'jquery';
-import { Loading, UserAgent, Hash } from 'lesca';
+import Loading from 'lesca-react-loading';
+import UserAgent from 'lesca-user-agent';
+
+import { Hash } from 'lesca';
 
 export default class enter extends React.Component {
 	constructor(props) {
