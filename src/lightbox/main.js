@@ -23,7 +23,7 @@ export default class lightbox extends React.Component {
 				this.bg.init();
 				this.window.init();
 				this.img.init();
-				if (root.data['buy-now'].split('↵').join('').split('\n').join('').split(' ').join('').split('	').join('') == '') root.refs.buy.style.display = 'none';
+				if (typeof root.data['buy-now'] === 'string') root.refs.buy.style.display = 'none';
 				return this;
 			},
 			in() {

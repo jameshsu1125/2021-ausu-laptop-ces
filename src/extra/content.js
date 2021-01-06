@@ -12,8 +12,7 @@ export default class content extends React.Component {
 
 	componentDidMount() {
 		this.img_init();
-		if (this.props.data['buy-now'].split('↵').join('').split('\n').join('').split(' ').join('').split('	').join('') == '') this.refs.buy.style.display = 'none';
-		//this.refs.img.style.background = `rgba(0, 0, 0, 0) url('${this.props.data.content.img}') no-repeat scroll center center / cover`;
+		if (typeof this.props.data['buy-now'] === 'string') this.refs.buy.style.display = 'none';
 		TouchEvent.add('.extra-see' + this.props.index, () => {
 			let u = this.props.data['see-more'][0].url;
 			if (u.indexOf('#') >= 0) window.location.href = u;

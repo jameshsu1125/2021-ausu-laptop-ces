@@ -7,9 +7,6 @@ export default class buy extends React.Component {
 	constructor(props) {
 		super(props);
 		const root = this;
-
-		console.log(this.props.data);
-
 		this.tr = {
 			o: 0,
 			time: 500,
