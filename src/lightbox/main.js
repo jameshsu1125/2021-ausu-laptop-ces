@@ -23,6 +23,7 @@ export default class lightbox extends React.Component {
 				this.bg.init();
 				this.window.init();
 				this.img.init();
+				if (root.data['buy-now'].split('↵').join('').split('\n').join('').split(' ').join('').split('	').join('') == '') root.refs.buy.style.display = 'none';
 				return this;
 			},
 			in() {
@@ -305,7 +306,7 @@ export default class lightbox extends React.Component {
 										{this.data['see-more'][0].name || 'See More'}
 										<div></div>
 									</div>
-									<div className='lightbox-buy'>
+									<div ref='buy' className='lightbox-buy'>
 										Buy Now
 										<div></div>
 									</div>
