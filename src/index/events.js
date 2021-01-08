@@ -5,7 +5,8 @@ let press = false,
 	click_target = 'none',
 	//page_end = true,
 	barPress = false,
-	is_scroll_background = true;
+	is_scroll_background = true,
+	isInit = false;
 
 let x,
 	y,
@@ -51,12 +52,11 @@ let isPressExtra = (e) => {
 
 module.exports = {
 	addEvent() {
-		this.isInit = false;
 		this.evt();
 	},
 	init(main, content, fn1, fn2) {
-		this.isInit = true;
-		this.evt();
+		isInit = true;
+
 		container = $(main);
 		background = $(content);
 		call_extra_fn = fn1;
@@ -71,7 +71,8 @@ module.exports = {
 		this.move_background();
 	},
 	down(e) {
-		if (!this.isInit) return;
+		if (!isInit) return;
+
 		press = true;
 
 		x = mx = e.clientX || e.targetTouches[0].clientX;
@@ -95,7 +96,7 @@ module.exports = {
 		}
 	},
 	move(e) {
-		if (!this.isInit) return;
+		if (!isInit) return;
 		if (e.cancelable) if (!e.defaultPrevented) e.preventDefault();
 		if (!press) return;
 		if (!is_scroll_background) return;
@@ -207,7 +208,7 @@ module.exports = {
 		this.move_background();
 	},
 	up(e) {
-		if (!this.isInit) return;
+		if (!isInit) return;
 		press = false;
 		this.click_evt(e);
 	},
