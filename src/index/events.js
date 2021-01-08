@@ -50,7 +50,12 @@ let isPressExtra = (e) => {
 	};
 
 module.exports = {
+	addEvent() {
+		this.isInit = false;
+		this.evt();
+	},
 	init(main, content, fn1, fn2) {
+		this.isInit = true;
 		this.evt();
 		container = $(main);
 		background = $(content);
@@ -66,6 +71,7 @@ module.exports = {
 		this.move_background();
 	},
 	down(e) {
+		if (!this.isInit) return;
 		press = true;
 
 		x = mx = e.clientX || e.targetTouches[0].clientX;
@@ -89,6 +95,7 @@ module.exports = {
 		}
 	},
 	move(e) {
+		if (!this.isInit) return;
 		if (e.cancelable) if (!e.defaultPrevented) e.preventDefault();
 		if (!press) return;
 		if (!is_scroll_background) return;
@@ -200,6 +207,7 @@ module.exports = {
 		this.move_background();
 	},
 	up(e) {
+		if (!this.isInit) return;
 		press = false;
 		this.click_evt(e);
 	},

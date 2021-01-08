@@ -33,6 +33,7 @@ export default class index extends React.Component {
 	componentDidMount() {
 		$('.index').css('display', 'block');
 		this.resize();
+		Events.addEvent();
 	}
 
 	get_extra() {
