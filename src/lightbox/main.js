@@ -15,7 +15,7 @@ export default class lightbox extends React.Component {
 		const root = this;
 
 		this.data = this.props.data['tips-' + this.props.index];
-
+		console.log(this.data);
 		this.state = { buy: false };
 
 		this.tr = {
@@ -165,6 +165,15 @@ export default class lightbox extends React.Component {
 					TouchEvent.add('.lightbox-buy', () => {
 						root.setState({ buy: true });
 						this.upper();
+
+						let layer = root.data['buy-now-button'][0].dataLayer;
+						if (layer) {
+							try {
+								layer = eval(`[${layer}]`)[0] || false;
+							} catch (e) {}
+							window.dataLayer = window.dataLayer || [];
+							window.dataLayer.push(layer);
+						}
 					});
 				},
 				tran() {

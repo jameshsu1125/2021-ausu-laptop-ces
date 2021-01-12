@@ -31,6 +31,15 @@ export default class content extends React.Component {
 		TouchEvent.add('.extra-buy_' + this.props.index, () => {
 			if (window.innerWidth > 731) this.setState({ buy: true });
 			else this.props.add_buy(this.props.index);
+
+			let layer = this.props.data['buy-now-button'][0].dataLayer;
+			if (layer) {
+				try {
+					layer = eval(`[${layer}]`)[0] || false;
+				} catch (e) {}
+				window.dataLayer = window.dataLayer || [];
+				window.dataLayer.push(layer);
+			}
 		});
 	}
 

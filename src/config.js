@@ -1,5 +1,5 @@
 module.exports = {
-	skip_enter: false,
+	skip_enter: window.location.hostname == 'localhost',
 	Client: {
 		desktop: {
 			widht: 2640,
