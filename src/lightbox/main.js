@@ -29,6 +29,15 @@ export default class lightbox extends React.Component {
 			in() {
 				this.bg.in();
 				this.window.in();
+
+				let layer = root.data['lightbox-button'][0].dataLayer;
+				if (layer) {
+					try {
+						layer = eval(`[${layer}]`)[0] || false;
+					} catch (e) {}
+					window.dataLayer = window.dataLayer || [];
+					window.dataLayer.push(layer);
+				}
 			},
 			out() {
 				this.bg.out();
