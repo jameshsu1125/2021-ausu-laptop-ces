@@ -18,13 +18,15 @@ export default class content extends React.Component {
 			if (u.indexOf('#') >= 0) window.location.href = u;
 			else window.open(u);
 
-			let layer = this.props.data['see-more'][0].dataLayer;
-			if (layer) {
-				try {
-					layer = eval(`[${layer}]`)[0] || false;
-				} catch (e) {}
-				window.dataLayer = window.dataLayer || [];
-				window.dataLayer.push(layer);
+			if (this.props.data['see-more']) {
+				let layer = this.props.data['see-more'][0].dataLayer;
+				if (layer) {
+					try {
+						layer = eval(`[${layer}]`)[0] || false;
+					} catch (e) {}
+					window.dataLayer = window.dataLayer || [];
+					window.dataLayer.push(layer);
+				}
 			}
 		});
 
@@ -32,13 +34,15 @@ export default class content extends React.Component {
 			if (window.innerWidth > 731) this.setState({ buy: true });
 			else this.props.add_buy(this.props.index);
 
-			let layer = this.props.data['buy-now-button'][0].dataLayer;
-			if (layer) {
-				try {
-					layer = eval(`[${layer}]`)[0] || false;
-				} catch (e) {}
-				window.dataLayer = window.dataLayer || [];
-				window.dataLayer.push(layer);
+			if (this.props.data['buy-now-button']) {
+				let layer = this.props.data['buy-now-button'][0].dataLayer;
+				if (layer) {
+					try {
+						layer = eval(`[${layer}]`)[0] || false;
+					} catch (e) {}
+					window.dataLayer = window.dataLayer || [];
+					window.dataLayer.push(layer);
+				}
 			}
 		});
 	}
@@ -65,13 +69,15 @@ export default class content extends React.Component {
 				else if (this.props.data.content.img[0].url.split('#').length > 1) window.location.href = this.props.data.content.img[0].url;
 				else window.open(this.props.data.content.img[0].url);
 
-				let layer = this.props.data.content.img[0].dataLayer;
-				if (layer) {
-					try {
-						layer = eval(`[${layer}]`)[0] || false;
-					} catch (e) {}
-					window.dataLayer = window.dataLayer || [];
-					window.dataLayer.push(layer);
+				if (this.props.data.content.img) {
+					let layer = this.props.data.content.img[0].dataLayer;
+					if (layer) {
+						try {
+							layer = eval(`[${layer}]`)[0] || false;
+						} catch (e) {}
+						window.dataLayer = window.dataLayer || [];
+						window.dataLayer.push(layer);
+					}
 				}
 			});
 		}

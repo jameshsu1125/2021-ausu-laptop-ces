@@ -15,7 +15,7 @@ export default class lightbox extends React.Component {
 		const root = this;
 
 		this.data = this.props.data['tips-' + this.props.index];
-		console.log(this.data);
+
 		this.state = { buy: false };
 
 		this.tr = {
@@ -30,13 +30,15 @@ export default class lightbox extends React.Component {
 				this.bg.in();
 				this.window.in();
 
-				let layer = root.data['lightbox-button'][0].dataLayer;
-				if (layer) {
-					try {
-						layer = eval(`[${layer}]`)[0] || false;
-					} catch (e) {}
-					window.dataLayer = window.dataLayer || [];
-					window.dataLayer.push(layer);
+				if (root.data['lightbox-button']) {
+					let layer = root.data['lightbox-button'][0].dataLayer;
+					if (layer) {
+						try {
+							layer = eval(`[${layer}]`)[0] || false;
+						} catch (e) {}
+						window.dataLayer = window.dataLayer || [];
+						window.dataLayer.push(layer);
+					}
 				}
 			},
 			out() {
@@ -62,13 +64,15 @@ export default class lightbox extends React.Component {
 							else if (root.data.content.img[0].url.split('#').length > 1) window.location.href = root.data.content.img[0].url;
 							else window.open(root.data.content.img[0].url);
 
-							let layer = root.data.content.img[0].dataLayer;
-							if (layer) {
-								try {
-									layer = eval(`[${layer}]`)[0] || false;
-								} catch (e) {}
-								window.dataLayer = window.dataLayer || [];
-								window.dataLayer.push(layer);
+							if (root.data.content.img) {
+								let layer = root.data.content.img[0].dataLayer;
+								if (layer) {
+									try {
+										layer = eval(`[${layer}]`)[0] || false;
+									} catch (e) {}
+									window.dataLayer = window.dataLayer || [];
+									window.dataLayer.push(layer);
+								}
 							}
 						});
 					}
@@ -152,13 +156,15 @@ export default class lightbox extends React.Component {
 						if (root.data['see-more'][0].url.indexOf('#') >= 0) window.location.href = root.data['see-more'][0].url;
 						else window.open(root.data['see-more'][0].url);
 
-						let layer = root.data['see-more'][0].dataLayer;
-						if (layer) {
-							try {
-								layer = eval(`[${layer}]`)[0] || false;
-							} catch (e) {}
-							window.dataLayer = window.dataLayer || [];
-							window.dataLayer.push(layer);
+						if (root.data['see-more']) {
+							let layer = root.data['see-more'][0].dataLayer;
+							if (layer) {
+								try {
+									layer = eval(`[${layer}]`)[0] || false;
+								} catch (e) {}
+								window.dataLayer = window.dataLayer || [];
+								window.dataLayer.push(layer);
+							}
 						}
 					});
 
@@ -166,13 +172,15 @@ export default class lightbox extends React.Component {
 						root.setState({ buy: true });
 						this.upper();
 
-						let layer = root.data['buy-now-button'][0].dataLayer;
-						if (layer) {
-							try {
-								layer = eval(`[${layer}]`)[0] || false;
-							} catch (e) {}
-							window.dataLayer = window.dataLayer || [];
-							window.dataLayer.push(layer);
+						if (root.data['buy-now-button']) {
+							let layer = root.data['buy-now-button'][0].dataLayer;
+							if (layer) {
+								try {
+									layer = eval(`[${layer}]`)[0] || false;
+								} catch (e) {}
+								window.dataLayer = window.dataLayer || [];
+								window.dataLayer.push(layer);
+							}
 						}
 					});
 				},

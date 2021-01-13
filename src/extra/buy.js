@@ -61,13 +61,15 @@ export default class buy extends React.Component {
 				if (this.props.data[i].url.split('#').length > 1) window.location.href = this.props.data[i].url;
 				else window.open(this.props.data[i].url);
 
-				let layer = this.props.data[i].dataLayer;
-				if (layer) {
-					try {
-						layer = eval(`[${layer}]`)[0] || false;
-					} catch (e) {}
-					window.dataLayer = window.dataLayer || [];
-					window.dataLayer.push(layer);
+				if (this.props.data[i]) {
+					let layer = this.props.data[i].dataLayer;
+					if (layer) {
+						try {
+							layer = eval(`[${layer}]`)[0] || false;
+						} catch (e) {}
+						window.dataLayer = window.dataLayer || [];
+						window.dataLayer.push(layer);
+					}
 				}
 			});
 		}
