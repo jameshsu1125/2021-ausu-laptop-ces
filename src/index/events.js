@@ -265,7 +265,7 @@ module.exports = {
 			if (extra_dy_force > extra_dy_force_max) {
 				//if (extra_content_pushed) return;
 				//extra_content_pushed = true;
-				call_extra_fn();
+				if (call_extra_fn) call_extra_fn();
 			}
 		}
 	},
