@@ -34,14 +34,6 @@ export default class index extends React.Component {
 		$('.index').css('display', 'block');
 		this.resize();
 		Events.addEvent();
-		setInterval(() => this.setViewport(), 100);
-	}
-
-	setViewport() {
-		let dw = 731,
-			s = window.screen.width / dw,
-			p = document.querySelector('meta[name="viewport"]');
-		p.content = `width=${dw}, minimum-scale=${s}, maximum-scale=${s}, initial-scale=${s}`;
 	}
 
 	get_extra() {

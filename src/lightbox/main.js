@@ -206,11 +206,13 @@ export default class lightbox extends React.Component {
 						else s = window.innerHeight / h;
 					}
 
-					let sh = 723;
+					let sh = 723,
+						ss;
 					if (window.innerHeight - 125 < sh) {
-						let ss = (window.innerHeight - 125) / sh;
-						s = Math.min(s, ss);
+						ss = (window.innerHeight - 125) / sh;
 					}
+
+					s = Math.min(s, ss);
 
 					this.s = s;
 					this.tran();
