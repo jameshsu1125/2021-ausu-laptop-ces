@@ -201,7 +201,7 @@ export default class lightbox extends React.Component {
 						h = 1200;
 					s = window.innerWidth / w;
 
-					if (window.innerWidth <= 731) {
+					if (window.innerWidth <= 735) {
 						if (window.innerHeight > 1000) s = 1;
 						else s = window.innerHeight / h;
 					}
