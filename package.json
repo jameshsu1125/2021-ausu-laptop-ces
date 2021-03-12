@@ -14,11 +14,15 @@
 	"private": "true",
 	"browserslist": {
 		"production": [
-			"last 5 version",
-			"ie 9"
+			">0.2%",
+			"not dead",
+			"not op_mini all"
 		],
 		"development": [
-			"last 1 version"
+			"last 1 chrome version",
+			"last 1 firefox version",
+			"last 1 safari version",
+			"ie 11"
 		]
 	},
 	"keywords": [
@@ -45,6 +49,7 @@
 		"postcss": "^7.0.7",
 		"postcss-loader": "^3.0.0",
 		"react": "^16.6.3",
+		"react-app-polyfill": "^2.0.0",
 		"react-dom": "^16.6.3",
 		"react-hot-loader": "^4.6.1",
 		"react-html-parser": "^2.0.2",
@@ -56,11 +61,13 @@
 		"webpack-dev-server": "^3.11.1"
 	},
 	"dependencies": {
+		"@babel/polyfill": "^7.12.1",
+		"core-js": "^3.6.5",
 		"howler": "^2.2.1",
 		"jquery": "^3.5.0",
 		"jquery-easing": "0.0.1",
 		"jquery.waitforimages": "^2.4.0",
-		"lesca": "^0.1.51",
+		"lesca": "^0.2.4",
 		"lesca-dom2json": "^1.0.6",
 		"lesca-react-loading": "^1.0.0",
 		"lesca-react-video-playsinline": "^0.1.18",

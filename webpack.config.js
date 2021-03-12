@@ -10,7 +10,7 @@ const path = require('path');
 module.exports = (env) => {
 	const config = {
 		entry: {
-			index: './src/index.js',
+			index: ['@babel/polyfill', './src/index.js'],
 		},
 		module: {
 			rules: [
